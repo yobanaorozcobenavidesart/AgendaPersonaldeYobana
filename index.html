@@ -2,8 +2,8 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🌸 YOBANA HORARIO - Educación Artística 🌸</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+    <title>🌸 YOBANA  RESPONSIVE - Educación Artística 🌸</title>
     <style>
         * {
             margin: 0;
@@ -12,14 +12,32 @@
             font-family: 'Segoe UI', 'Arial', sans-serif;
         }
 
-        body {
-            background: #000000;
-            min-height: 100vh;
-            padding: 15px;
-            color: #ffffff;
+        :root {
+            --neon-pink: #ff1493;
+            --neon-cyan: #00ffff;
+            --neon-purple: #ff00ff;
+            --neon-orange: #ffaa00;
+            --whatsapp: #25D366;
+            --bg-dark: #000000;
+            --bg-card: #111111;
+            --bg-item: #1a1a1a;
         }
 
-        /* Efecto de luz de fondo */
+        html {
+            font-size: 16px;
+        }
+
+        body {
+            background: var(--bg-dark);
+            min-height: 100vh;
+            padding: clamp(10px, 2vw, 20px);
+            color: #ffffff;
+            position: relative;
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        /* Efecto de luz de fondo responsive */
         body::before {
             content: '';
             position: fixed;
@@ -27,380 +45,416 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at 20% 30%, rgba(255, 20, 147, 0.2) 0%, transparent 40%),
-                        radial-gradient(circle at 80% 70%, rgba(0, 255, 255, 0.2) 0%, transparent 40%),
-                        radial-gradient(circle at 40% 80%, rgba(255, 215, 0, 0.1) 0%, transparent 50%);
+            background: radial-gradient(circle at 20% 30%, rgba(255, 20, 147, 0.15) 0%, transparent 40%),
+                        radial-gradient(circle at 80% 70%, rgba(0, 255, 255, 0.15) 0%, transparent 40%);
             pointer-events: none;
             z-index: -1;
         }
 
         .container {
-            max-width: 1400px;
+            max-width: 1600px;
             margin: 0 auto;
+            width: 100%;
             position: relative;
         }
 
-        /* HEADER NEON */
+        /* HEADER NEON RESPONSIVE */
         .header {
-            background: #0a0a0a;
+            background: var(--bg-card);
             border-radius: 30px 30px 0 0;
-            padding: 30px;
-            border: 2px solid #ff1493;
-            box-shadow: 0 0 30px rgba(255, 20, 147, 0.7),
-                        inset 0 0 20px rgba(255, 20, 147, 0.3);
+            padding: clamp(20px, 4vw, 40px);
+            border: 2px solid var(--neon-pink);
+            box-shadow: 0 0 30px rgba(255, 20, 147, 0.5);
             margin-bottom: 2px;
             position: relative;
             overflow: hidden;
-        }
-
-        .header::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
-            animation: shine 8s infinite linear;
-        }
-
-        @keyframes shine {
-            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
-            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+            width: 100%;
         }
 
         .header h1 {
-            font-size: 3em;
+            font-size: clamp(1.8rem, 6vw, 3.5rem);
             margin-bottom: 10px;
-            text-shadow: 0 0 10px #ff1493, 0 0 20px #ff1493, 0 0 40px #ff1493;
+            text-shadow: 0 0 10px var(--neon-pink), 0 0 20px var(--neon-pink);
             color: #ffffff;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
+            word-break: break-word;
+            line-height: 1.2;
         }
 
         .subtitle {
-            font-size: 1.4em;
-            color: #00ffff;
-            text-shadow: 0 0 10px cyan, 0 0 20px cyan;
+            font-size: clamp(1rem, 3vw, 1.4rem);
+            color: var(--neon-cyan);
+            text-shadow: 0 0 10px var(--neon-cyan);
             margin-bottom: 15px;
+            word-break: break-word;
         }
 
         .date-badge {
             background: rgba(255, 20, 147, 0.2);
-            padding: 12px 25px;
+            padding: clamp(8px, 2vw, 12px) clamp(15px, 3vw, 25px);
             border-radius: 50px;
             display: inline-block;
-            border: 1px solid #00ffff;
-            box-shadow: 0 0 15px cyan;
+            border: 1px solid var(--neon-cyan);
+            box-shadow: 0 0 15px var(--neon-cyan);
             color: white;
             font-weight: bold;
             backdrop-filter: blur(5px);
+            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+            width: fit-content;
+            max-width: 100%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
-        /* PANEL PRINCIPAL */
+        /* PANEL PRINCIPAL RESPONSIVE */
         .main-panel {
-            background: #0a0a0a;
-            padding: 25px;
+            background: var(--bg-card);
+            padding: clamp(15px, 3vw, 25px);
             border-radius: 0 0 30px 30px;
-            border: 2px solid #00ffff;
-            box-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
+            border: 2px solid var(--neon-cyan);
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+            width: 100%;
         }
 
-        /* GRID PRINCIPAL */
+        /* GRID PRINCIPAL - TOTALMENTE RESPONSIVE */
         .dashboard-grid {
             display: grid;
-            grid-template-columns: 1.4fr 1.6fr 1fr;
-            gap: 25px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: clamp(15px, 2.5vw, 25px);
+            width: 100%;
         }
 
-        /* TARJETAS NEON */
+        /* TARJETAS NEON RESPONSIVE */
         .card {
-            background: #111111;
-            border-radius: 25px;
-            padding: 25px;
+            background: var(--bg-card);
+            border-radius: clamp(15px, 3vw, 25px);
+            padding: clamp(15px, 2.5vw, 25px);
             border: 2px solid;
             transition: all 0.4s;
             position: relative;
             overflow: hidden;
-        }
-
-        .card:hover {
-            transform: translateY(-5px) scale(1.01);
+            height: fit-content;
+            width: 100%;
         }
 
         .card:nth-child(1) {
-            border-color: #ff1493;
-            box-shadow: 0 0 25px rgba(255, 20, 147, 0.5);
+            border-color: var(--neon-pink);
+            box-shadow: 0 0 20px rgba(255, 20, 147, 0.3);
         }
         .card:nth-child(2) {
-            border-color: #00ffff;
-            box-shadow: 0 0 25px rgba(0, 255, 255, 0.5);
+            border-color: var(--neon-cyan);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
         }
         .card:nth-child(3) {
-            border-color: #ff00ff;
-            box-shadow: 0 0 25px rgba(255, 0, 255, 0.5);
+            border-color: var(--neon-purple);
+            box-shadow: 0 0 20px rgba(255, 0, 255, 0.3);
         }
 
         .card-title {
-            font-size: 1.5em;
-            margin-bottom: 20px;
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            margin-bottom: 15px;
             border-bottom: 2px solid currentColor;
-            padding-bottom: 12px;
+            padding-bottom: 10px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             text-shadow: 0 0 8px currentColor;
+            word-break: break-word;
         }
 
-        /* ===== HORARIO DE CLASES EN SECUENCIA ===== */
+        /* HORARIO RESPONSIVE */
         .horario-container {
             display: flex;
             flex-direction: column;
-            gap: 25px;
+            gap: 20px;
+            width: 100%;
         }
 
         .semana-block {
-            background: #1a1a1a;
-            border-radius: 20px;
-            padding: 15px;
-            border: 2px solid #ff1493;
-            box-shadow: 0 0 20px rgba(255, 20, 147, 0.3);
+            background: var(--bg-item);
+            border-radius: 15px;
+            padding: clamp(12px, 2vw, 15px);
+            border: 2px solid var(--neon-pink);
+            box-shadow: 0 0 15px rgba(255, 20, 147, 0.3);
+            width: 100%;
         }
 
         .semana-titulo {
-            color: #00ffff;
-            font-size: 1.4em;
+            color: var(--neon-cyan);
+            font-size: clamp(1.1rem, 2.8vw, 1.4rem);
             font-weight: bold;
-            margin-bottom: 15px;
-            text-shadow: 0 0 10px cyan;
-            border-left: 4px solid #ff1493;
-            padding-left: 15px;
+            margin-bottom: 12px;
+            text-shadow: 0 0 8px var(--neon-cyan);
+            border-left: 4px solid var(--neon-pink);
+            padding-left: 12px;
+            word-break: break-word;
         }
 
         .clase-item {
             background: #000000;
-            border-radius: 15px;
+            border-radius: 12px;
             margin-bottom: 10px;
-            padding: 15px;
+            padding: clamp(12px, 2vw, 15px);
             border-left: 6px solid;
             transition: all 0.3s;
-            box-shadow: 0 0 15px rgba(255, 20, 147, 0.2);
+            box-shadow: 0 0 10px rgba(255, 20, 147, 0.2);
+            width: 100%;
+        }
+
+        .clase-item:last-child {
+            margin-bottom: 0;
         }
 
         .clase-item:hover {
-            transform: translateX(8px);
-            box-shadow: 0 0 30px #ff1493;
+            transform: translateX(5px);
+            box-shadow: 0 0 25px var(--neon-pink);
         }
 
         .clase-hora {
-            color: #00ffff;
-            font-size: 1.3em;
+            color: var(--neon-cyan);
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
             font-weight: bold;
-            text-shadow: 0 0 8px cyan;
+            text-shadow: 0 0 5px var(--neon-cyan);
             margin-bottom: 5px;
+            word-break: break-word;
         }
 
         .clase-nombre {
             color: white;
-            font-size: 1.1em;
+            font-size: clamp(0.95rem, 2.2vw, 1.1rem);
             font-weight: bold;
-            text-shadow: 0 0 5px #ff1493;
+            text-shadow: 0 0 5px var(--neon-pink);
+            word-break: break-word;
+            line-height: 1.4;
         }
 
         .clase-codigo {
-            color: #ff1493;
-            font-size: 0.9em;
+            color: var(--neon-pink);
+            font-size: clamp(0.8rem, 2vw, 0.9rem);
             margin-top: 5px;
             font-family: monospace;
+            word-break: break-word;
         }
 
         .clase-duracion {
             display: inline-block;
             margin-top: 8px;
-            padding: 4px 12px;
+            padding: 4px 10px;
             background: rgba(255, 20, 147, 0.2);
-            border: 1px solid #ff1493;
+            border: 1px solid var(--neon-pink);
             border-radius: 20px;
-            color: #ff1493;
-            font-size: 0.85em;
+            color: var(--neon-pink);
+            font-size: clamp(0.75rem, 1.8vw, 0.85rem);
         }
 
-        /* FORMULARIO NEON */
+        /* FORMULARIO RESPONSIVE */
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 15px;
+            width: 100%;
         }
 
         .form-group label {
             display: block;
-            margin-bottom: 8px;
-            color: #00ffff;
+            margin-bottom: 5px;
+            color: var(--neon-cyan);
             font-weight: 600;
-            text-shadow: 0 0 5px cyan;
+            text-shadow: 0 0 5px var(--neon-cyan);
+            font-size: clamp(0.9rem, 2.2vw, 1rem);
         }
 
-        .form-group input, .form-group textarea, .form-group select {
+        .form-group input, 
+        .form-group textarea, 
+        .form-group select {
             width: 100%;
-            padding: 14px;
+            padding: clamp(10px, 2vw, 14px);
             background: #000000;
-            border: 2px solid #ff1493;
-            border-radius: 15px;
+            border: 2px solid var(--neon-pink);
+            border-radius: 12px;
             color: white;
-            font-size: 1em;
+            font-size: clamp(0.9rem, 2.2vw, 1rem);
             transition: all 0.3s;
         }
 
-        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
-            border-color: #00ffff;
-            box-shadow: 0 0 20px cyan;
+        .form-group input:focus, 
+        .form-group textarea:focus, 
+        .form-group select:focus {
+            border-color: var(--neon-cyan);
+            box-shadow: 0 0 15px var(--neon-cyan);
             outline: none;
         }
 
         .btn {
-            background: linear-gradient(45deg, #ff1493, #00ffff);
+            background: linear-gradient(45deg, var(--neon-pink), var(--neon-cyan));
             color: black;
             font-weight: bold;
             border: none;
-            padding: 16px 20px;
-            border-radius: 15px;
-            font-size: 1.1em;
+            padding: clamp(12px, 2.5vw, 16px) clamp(15px, 3vw, 20px);
+            border-radius: 12px;
+            font-size: clamp(0.95rem, 2.5vw, 1.1rem);
             cursor: pointer;
             width: 100%;
             transition: all 0.4s;
             text-transform: uppercase;
             letter-spacing: 1px;
             border: 2px solid white;
-            box-shadow: 0 0 20px #ff1493;
+            box-shadow: 0 0 15px var(--neon-pink);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 40px #00ffff, 0 0 60px #ff1493;
+            transform: scale(1.02);
+            box-shadow: 0 0 30px var(--neon-cyan), 0 0 45px var(--neon-pink);
         }
 
         .btn-small {
-            padding: 10px 18px;
-            font-size: 0.95em;
+            padding: clamp(8px, 1.5vw, 10px) clamp(12px, 2vw, 18px);
+            font-size: clamp(0.85rem, 2vw, 0.95rem);
             background: transparent;
             border: 2px solid;
-            border-radius: 10px;
+            border-radius: 8px;
             cursor: pointer;
             transition: all 0.3s;
             font-weight: bold;
+            white-space: nowrap;
         }
 
-        /* EVENTOS NEON */
+        /* EVENTOS RESPONSIVE */
         .eventos-container {
-            max-height: 450px;
+            max-height: 400px;
             overflow-y: auto;
             scrollbar-width: thin;
-            scrollbar-color: #00ffff #000;
+            scrollbar-color: var(--neon-cyan) #000;
+            width: 100%;
+        }
+
+        .eventos-container::-webkit-scrollbar {
+            width: 6px;
+        }
+        .eventos-container::-webkit-scrollbar-track {
+            background: #000;
+        }
+        .eventos-container::-webkit-scrollbar-thumb {
+            background: var(--neon-cyan);
+            border-radius: 10px;
         }
 
         .evento-card {
-            background: #1a1a1a;
-            border-radius: 15px;
-            padding: 18px;
-            margin-bottom: 15px;
+            background: var(--bg-item);
+            border-radius: 12px;
+            padding: clamp(12px, 2vw, 18px);
+            margin-bottom: 12px;
             border-left: 6px solid;
             position: relative;
-            box-shadow: 0 0 20px rgba(255, 20, 147, 0.3);
+            box-shadow: 0 0 15px rgba(255, 20, 147, 0.2);
+            width: 100%;
         }
 
         .evento-fecha {
-            color: #00ffff;
+            color: var(--neon-cyan);
             font-weight: bold;
-            margin-bottom: 8px;
-            text-shadow: 0 0 5px cyan;
+            margin-bottom: 5px;
+            text-shadow: 0 0 5px var(--neon-cyan);
+            font-size: clamp(0.85rem, 2.2vw, 0.95rem);
+            word-break: break-word;
         }
 
-        /* CALENDARIO NEON */
+        /* CALENDARIO RESPONSIVE */
         .calendario-grid {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
-            gap: 8px;
-            margin-top: 20px;
+            gap: clamp(3px, 1vw, 5px);
+            margin-top: 15px;
+            width: 100%;
         }
 
         .calendario-dia-header {
             text-align: center;
             font-weight: bold;
-            color: #00ffff;
-            padding: 10px;
-            text-shadow: 0 0 8px cyan;
-            border-bottom: 2px solid #ff1493;
+            color: var(--neon-cyan);
+            padding: clamp(5px, 1.5vw, 8px);
+            text-shadow: 0 0 5px var(--neon-cyan);
+            border-bottom: 2px solid var(--neon-pink);
+            font-size: clamp(0.7rem, 2vw, 0.9rem);
         }
 
         .calendario-dia {
             aspect-ratio: 1;
             background: #000000;
-            border: 2px solid #ff1493;
-            border-radius: 10px;
-            padding: 5px;
+            border: 2px solid var(--neon-pink);
+            border-radius: 8px;
+            padding: 3px;
             cursor: pointer;
             transition: all 0.3s;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: bold;
+            font-size: clamp(0.8rem, 2.2vw, 1rem);
         }
 
         .calendario-dia:hover {
-            transform: scale(1.1);
-            border-color: #00ffff;
-            box-shadow: 0 0 25px cyan;
+            transform: scale(1.05);
+            border-color: var(--neon-cyan);
+            box-shadow: 0 0 15px var(--neon-cyan);
         }
 
         .calendario-dia.today {
-            background: #ff1493;
+            background: var(--neon-pink);
             color: black;
             border-color: white;
-            box-shadow: 0 0 30px #ff1493;
+            box-shadow: 0 0 20px var(--neon-pink);
         }
 
         .calendario-dia.has-evento {
-            border-color: #00ffff;
-            box-shadow: 0 0 20px cyan;
+            border-color: var(--neon-cyan);
+            box-shadow: 0 0 15px var(--neon-cyan);
             position: relative;
         }
 
-        /* NOTAS CONFIDENCIALES */
+        /* NOTAS CONFIDENCIALES RESPONSIVE */
         .notas-personales {
-            margin-top: 25px;
-            background: #0a0a0a;
-            padding: 20px;
-            border-radius: 20px;
-            border: 3px dashed #ff1493;
-            box-shadow: 0 0 30px rgba(255, 20, 147, 0.3);
+            margin-top: 20px;
+            background: var(--bg-card);
+            padding: clamp(12px, 2.5vw, 20px);
+            border-radius: 15px;
+            border: 3px dashed var(--neon-pink);
+            box-shadow: 0 0 20px rgba(255, 20, 147, 0.3);
+            width: 100%;
         }
 
         .notas-personales textarea {
             width: 100%;
-            padding: 18px;
+            padding: clamp(12px, 2.5vw, 18px);
             background: #000000;
-            border: 2px solid #00ffff;
-            border-radius: 15px;
-            min-height: 150px;
+            border: 2px solid var(--neon-cyan);
+            border-radius: 12px;
+            min-height: clamp(120px, 25vh, 150px);
             color: white;
-            font-size: 1.1em;
+            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
             font-family: 'Courier New', monospace;
+            resize: vertical;
         }
 
-        /* WHATSAPP NEON FLOATING */
+        /* WHATSAPP FLOTANTE RESPONSIVE */
         .whatsapp-share {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
+            bottom: clamp(15px, 4vw, 30px);
+            right: clamp(15px, 4vw, 30px);
             background: transparent;
-            border: 3px solid #25D366;
-            color: #25D366;
-            width: 70px;
-            height: 70px;
+            border: 3px solid var(--whatsapp);
+            color: var(--whatsapp);
+            width: clamp(50px, 12vw, 70px);
+            height: clamp(50px, 12vw, 70px);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2.5em;
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
             cursor: pointer;
-            box-shadow: 0 0 30px #25D366;
+            box-shadow: 0 0 20px var(--whatsapp);
             transition: all 0.4s;
             z-index: 1000;
             backdrop-filter: blur(5px);
@@ -408,20 +462,147 @@
         }
 
         @keyframes pulse {
-            0% { box-shadow: 0 0 30px #25D366; }
-            50% { box-shadow: 0 0 60px #25D366; }
-            100% { box-shadow: 0 0 30px #25D366; }
+            0% { box-shadow: 0 0 20px var(--whatsapp); }
+            50% { box-shadow: 0 0 40px var(--whatsapp); }
+            100% { box-shadow: 0 0 20px var(--whatsapp); }
         }
 
         .whatsapp-share:hover {
-            transform: scale(1.2) rotate(360deg);
-            background: #25D366;
+            transform: scale(1.1);
+            background: var(--whatsapp);
             color: black;
         }
 
-        @media (max-width: 1024px) {
+        /* ===== MEDIA QUERIES PARA DIFERENTES PANTALLAS ===== */
+        
+        /* Tablets y pantallas medianas */
+        @media screen and (max-width: 1100px) {
+            .dashboard-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .card:last-child {
+                grid-column: span 2;
+            }
+        }
+
+        /* Móviles grandes */
+        @media screen and (max-width: 768px) {
+            html {
+                font-size: 14px;
+            }
+            
             .dashboard-grid {
                 grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .card:last-child {
+                grid-column: span 1;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .date-badge {
+                white-space: normal;
+                word-break: break-word;
+            }
+            
+            .clase-item:hover {
+                transform: none;
+            }
+            
+            .btn:hover {
+                transform: none;
+            }
+        }
+
+        /* Móviles pequeños */
+        @media screen and (max-width: 480px) {
+            html {
+                font-size: 12px;
+            }
+            
+            .header {
+                padding: 15px;
+            }
+            
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .main-panel {
+                padding: 12px;
+            }
+            
+            .card {
+                padding: 12px;
+            }
+            
+            .calendario-dia-header {
+                font-size: 0.7rem;
+                padding: 3px;
+            }
+            
+            .calendario-dia {
+                font-size: 0.7rem;
+            }
+            
+            .btn-small {
+                padding: 6px 8px;
+                font-size: 0.8rem;
+                white-space: normal;
+                word-break: break-word;
+            }
+            
+            .evento-card .btn-small {
+                padding: 4px 6px;
+            }
+        }
+
+        /* Pantallas muy grandes */
+        @media screen and (min-width: 1600px) {
+            html {
+                font-size: 18px;
+            }
+            
+            .container {
+                max-width: 1800px;
+            }
+            
+            .dashboard-grid {
+                gap: 30px;
+            }
+        }
+
+        /* Orientación horizontal en móviles */
+        @media screen and (max-height: 500px) and (orientation: landscape) {
+            .dashboard-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .notas-personales textarea {
+                min-height: 80px;
+            }
+            
+            .eventos-container {
+                max-height: 200px;
+            }
+        }
+
+        /* Ajustes para pantallas táctiles */
+        @media (hover: none) and (pointer: coarse) {
+            .clase-item:hover,
+            .calendario-dia:hover,
+            .btn:hover {
+                transform: none;
+            }
+            
+            .clase-item:active,
+            .calendario-dia:active {
+                transform: scale(0.98);
             }
         }
     </style>
@@ -431,7 +612,7 @@
         <!-- HEADER NEON -->
         <div class="header">
             <h1>
-                <i>⚡</i> Agenda Personal de Yobana<i>⚡</i>
+                <i>Agenda Personal de Yobana </i>
             </h1>
             <div class="subtitle">
                 ✦ Licenciatura en Educación Artística - Semestre IX ✦
@@ -442,19 +623,17 @@
         <!-- MAIN PANEL -->
         <div class="main-panel">
             <div class="dashboard-grid">
-                <!-- COLUMNA 1: HORARIO DE CLASES EN SECUENCIA -->
+                <!-- COLUMNA 1: HORARIO SECUENCIAL -->
                 <div class="card">
                     <div class="card-title" style="color: #ff1493;">
-                        <span>⏰</span> HORARIO SECUENCIAL - SÁBADOS
+                        <span>⏰</span> HORARIO SÁBADOS
                     </div>
                     
-                    <div class="horario-container" id="horarioContainer">
-                        <!-- Se carga con JS en orden secuencial -->
-                    </div>
+                    <div class="horario-container" id="horarioContainer"></div>
                     
                     <div class="notas-personales">
                         <div class="card-title" style="color: #ff1493; margin-top: 0; border-bottom-color: #ff1493;">
-                            <span>🔐</span> MIS APUNTES CONFIDENCIALES
+                            <span>🔐</span> ZONA CONFIDENCIAL
                         </div>
                         <textarea id="notasConfidenciales" placeholder="📝 Escribe aquí tus apuntes personales... (se guarda automáticamente)"></textarea>
                     </div>
@@ -463,12 +642,12 @@
                 <!-- COLUMNA 2: CREAR EVENTOS Y CALENDARIO -->
                 <div class="card">
                     <div class="card-title" style="color: #00ffff;">
-                        <span>⏰</span> CREAR EVENTO CON ALARMA
+                        <span>⏰</span> CREAR EVENTO
                     </div>
                     
                     <form id="eventoForm">
                         <div class="form-group">
-                            <label>⚡ TÍTULO DEL EVENTO:</label>
+                            <label>⚡ TÍTULO:</label>
                             <input type="text" id="eventoTitulo" placeholder="Ej: Parcial de Teatro" required>
                         </div>
                         
@@ -483,7 +662,6 @@
                                 <option value="personal">🌸 Personal</option>
                                 <option value="universidad">📚 Universidad</option>
                                 <option value="examen">📝 Examen</option>
-                                <option value="practica">🎭 Práctica</option>
                             </select>
                         </div>
                         
@@ -493,29 +671,28 @@
                         </div>
                         
                         <div class="form-group">
-                            <label>⏱️ ACTIVAR ALARMA:</label>
+                            <label>⏱️ ALARMA:</label>
                             <select id="alarmaTiempo">
                                 <option value="0">🔔 En el momento</option>
                                 <option value="5">⏰ 5 minutos antes</option>
                                 <option value="15">⏰ 15 minutos antes</option>
                                 <option value="30">⏰ 30 minutos antes</option>
                                 <option value="60">⏰ 1 hora antes</option>
-                                <option value="1440">⏰ 1 día antes</option>
                             </select>
                         </div>
                         
-                        <button type="submit" class="btn">⚡ GUARDAR Y ACTIVAR ALARMA ⚡</button>
+                        <button type="submit" class="btn">⚡ GUARDAR CON ALARMA ⚡</button>
                     </form>
 
-                    <!-- CALENDARIO NEON -->
-                    <div style="margin-top: 35px;">
+                    <!-- CALENDARIO -->
+                    <div style="margin-top: 25px;">
                         <div class="card-title" style="color: #00ffff;">
                             <span>📆</span> CALENDARIO
                         </div>
-                        <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
-                            <button class="btn-small" id="prevMonthBtn" style="border-color: #ff1493; color: #ff1493;">← ANTERIOR</button>
-                            <span id="monthYearDisplay" style="color: #00ffff; text-shadow: 0 0 10px cyan; font-weight: bold;"></span>
-                            <button class="btn-small" id="nextMonthBtn" style="border-color: #ff1493; color: #ff1493;">SIGUIENTE →</button>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; flex-wrap: wrap; gap: 10px;">
+                            <button class="btn-small" id="prevMonthBtn" style="border-color: #ff1493; color: #ff1493;">←</button>
+                            <span id="monthYearDisplay" style="color: #00ffff; text-shadow: 0 0 8px cyan; font-weight: bold; font-size: clamp(0.9rem, 2.5vw, 1.2rem);"></span>
+                            <button class="btn-small" id="nextMonthBtn" style="border-color: #ff1493; color: #ff1493;">→</button>
                         </div>
                         <div class="calendario-grid" id="calendarioGrid"></div>
                     </div>
@@ -529,16 +706,10 @@
                     
                     <div class="eventos-container" id="eventosContainer"></div>
                     
-                    <div style="margin-top: 25px; display: grid; gap: 10px;">
-                        <button class="btn-small" onclick="verificarAlarmas()" style="border-color: #00ffff; color: #00ffff; width: 100%; padding: 12px;">
-                            🔔 VERIFICAR ALARMAS
-                        </button>
-                        <button class="btn-small" onclick="compartirWhatsApp()" style="border-color: #25D366; color: #25D366; width: 100%; padding: 12px;">
-                            📱 COMPARTIR WHATSAPP
-                        </button>
-                        <button class="btn-small" onclick="exportarRespaldo()" style="border-color: #ff1493; color: #ff1493; width: 100%; padding: 12px;">
-                            💾 GUARDAR RESPALDO
-                        </button>
+                    <div style="margin-top: 20px; display: grid; gap: 8px;">
+                        <button class="btn-small" onclick="verificarAlarmas()" style="border-color: #00ffff; color: #00ffff; width: 100%;">🔔 VERIFICAR ALARMAS</button>
+                        <button class="btn-small" onclick="compartirWhatsApp()" style="border-color: #25D366; color: #25D366; width: 100%;">📱 COMPARTIR</button>
+                        <button class="btn-small" onclick="exportarRespaldo()" style="border-color: #ff1493; color: #ff1493; width: 100%;">💾 RESPALDO</button>
                     </div>
                 </div>
             </div>
@@ -551,9 +722,9 @@
     </div>
 
     <script>
-        // ==================== MATERIAS ORGANIZADAS EN SECUENCIA HORARIA ====================
+        // ==================== MATERIAS EN SECUENCIA HORARIA ====================
         const materias = [
-            // SEMANA 1 - Ordenadas por hora
+            // SEMANA 1
             {
                 nombre: "PRACTICA EN OTROS CONTEXTOS I",
                 codigo: "5031553",
@@ -562,30 +733,30 @@
                 duracion: "4h",
                 semana: "1",
                 orden: 1,
-                horaCompleta: "7:00 am a 11:00 am"
+                horaCompleta: "7:00 am - 11:00 am"
             },
             {
-                nombre: "SEMINARIO INTEGRAL PARA LA EDUCACIÓN ARTÍSTICA",
+                nombre: "SEMINARIO EDUCACIÓN ARTÍSTICA",
                 codigo: "5031555",
                 horaInicio: "11:00 am",
                 horaFin: "2:00 pm",
                 duracion: "3h",
                 semana: "1",
                 orden: 2,
-                horaCompleta: "11:00 am a 2:00 pm"
+                horaCompleta: "11:00 am - 2:00 pm"
             },
             {
-                nombre: "TALLER DE EXPLORACIÓN CORPORAL",
+                nombre: "TALLER EXPLORACIÓN CORPORAL",
                 codigo: "1202104",
                 horaInicio: "2:00 pm",
                 horaFin: "5:00 pm",
                 duracion: "3h",
                 semana: "1",
                 orden: 3,
-                horaCompleta: "2:00 pm a 5:00 pm"
+                horaCompleta: "2:00 pm - 5:00 pm"
             },
             
-            // SEMANA 2 - Ordenadas por hora
+            // SEMANA 2
             {
                 nombre: "TEXTO Y REPRESENTACION TEATRAL",
                 codigo: "1102134",
@@ -594,17 +765,17 @@
                 duracion: "4h",
                 semana: "2",
                 orden: 1,
-                horaCompleta: "7:00 am a 11:00 am"
+                horaCompleta: "7:00 am - 11:00 am"
             },
             {
-                nombre: "FUNDAMENTOS DE CREACIÓN MUSICAL",
+                nombre: "FUNDAMENTOS CREACIÓN MUSICAL",
                 codigo: "1102135",
                 horaInicio: "11:00 am",
                 horaFin: "3:00 pm",
                 duracion: "4h",
                 semana: "2",
                 orden: 2,
-                horaCompleta: "11:00 am a 3:00 pm"
+                horaCompleta: "11:00 am - 3:00 pm"
             },
             {
                 nombre: "DIDACTICA DE LA MUSICA",
@@ -614,18 +785,16 @@
                 duracion: "4h",
                 semana: "2",
                 orden: 3,
-                horaCompleta: "3:00 pm a 7:00 pm"
+                horaCompleta: "3:00 pm - 7:00 pm"
             }
         ];
 
-        // ==================== VARIABLES ====================
         let eventos = JSON.parse(localStorage.getItem('eventosYobanaNeon')) || [];
         let notasConfidenciales = localStorage.getItem('notasYobanaNeon') || '';
         let currentDate = new Date();
         let currentMonth = currentDate.getMonth();
         let currentYear = currentDate.getFullYear();
 
-        // ==================== ELEMENTOS DOM ====================
         const horarioContainer = document.getElementById('horarioContainer');
         const eventosContainer = document.getElementById('eventosContainer');
         const fechaActualElement = document.getElementById('fechaActual');
@@ -634,28 +803,26 @@
         const calendarioGrid = document.getElementById('calendarioGrid');
         const monthYearDisplay = document.getElementById('monthYearDisplay');
 
-        // ==================== MOSTRAR HORARIO EN SECUENCIA ====================
         function mostrarHorarioSecuencial() {
             horarioContainer.innerHTML = '';
             
-            // Agrupar por semana
             const semana1 = materias.filter(m => m.semana === "1").sort((a, b) => a.orden - b.orden);
             const semana2 = materias.filter(m => m.semana === "2").sort((a, b) => a.orden - b.orden);
             
             // Semana 1
             const semana1Block = document.createElement('div');
             semana1Block.className = 'semana-block';
-            semana1Block.innerHTML = '<div class="semana-titulo">📅 SEMANA 1 - PRIMER SÁBADO</div>';
+            semana1Block.innerHTML = '<div class="semana-titulo">📅 SEMANA 1</div>';
             
             semana1.forEach(clase => {
                 const claseDiv = document.createElement('div');
                 claseDiv.className = 'clase-item';
                 claseDiv.style.borderLeftColor = getColorPorHora(clase.horaInicio);
                 claseDiv.innerHTML = `
-                    <div class="clase-hora">⏰ ${clase.horaInicio} - ${clase.horaFin}</div>
+                    <div class="clase-hora">⏰ ${clase.horaCompleta}</div>
                     <div class="clase-nombre">${clase.nombre}</div>
-                    <div class="clase-codigo">📌 Código: ${clase.codigo}</div>
-                    <span class="clase-duracion">⏱️ Duración: ${clase.duracion}</span>
+                    <div class="clase-codigo">📌 ${clase.codigo}</div>
+                    <span class="clase-duracion">⏱️ ${clase.duracion}</span>
                 `;
                 semana1Block.appendChild(claseDiv);
             });
@@ -663,17 +830,17 @@
             // Semana 2
             const semana2Block = document.createElement('div');
             semana2Block.className = 'semana-block';
-            semana2Block.innerHTML = '<div class="semana-titulo">📅 SEMANA 2 - SEGUNDO SÁBADO</div>';
+            semana2Block.innerHTML = '<div class="semana-titulo">📅 SEMANA 2</div>';
             
             semana2.forEach(clase => {
                 const claseDiv = document.createElement('div');
                 claseDiv.className = 'clase-item';
                 claseDiv.style.borderLeftColor = getColorPorHora(clase.horaInicio);
                 claseDiv.innerHTML = `
-                    <div class="clase-hora">⏰ ${clase.horaInicio} - ${clase.horaFin}</div>
+                    <div class="clase-hora">⏰ ${clase.horaCompleta}</div>
                     <div class="clase-nombre">${clase.nombre}</div>
-                    <div class="clase-codigo">📌 Código: ${clase.codigo}</div>
-                    <span class="clase-duracion">⏱️ Duración: ${clase.duracion}</span>
+                    <div class="clase-codigo">📌 ${clase.codigo}</div>
+                    <span class="clase-duracion">⏱️ ${clase.duracion}</span>
                 `;
                 semana2Block.appendChild(claseDiv);
             });
@@ -682,11 +849,10 @@
             horarioContainer.appendChild(semana2Block);
         }
 
-        // Función para colores según la hora
         function getColorPorHora(hora) {
-            if (hora.includes('7:00')) return '#ff1493'; // Rosa neón para mañana
-            if (hora.includes('11:00')) return '#00ffff'; // Cyan para medio día
-            if (hora.includes('2:00') || hora.includes('3:00')) return '#ffaa00'; // Naranja neón para tarde
+            if (hora.includes('7:00')) return '#ff1493';
+            if (hora.includes('11:00')) return '#00ffff';
+            if (hora.includes('2:00') || hora.includes('3:00')) return '#ffaa00';
             return '#ff1493';
         }
 
@@ -706,7 +872,7 @@
             eventosContainer.innerHTML = '';
             
             if (eventos.length === 0) {
-                eventosContainer.innerHTML = '<p style="text-align: center; color: #666; text-shadow: 0 0 10px #ff1493;">✨ No hay eventos programados ✨</p>';
+                eventosContainer.innerHTML = '<p style="text-align: center; color: #666; padding: 20px;">✨ No hay eventos ✨</p>';
                 return;
             }
 
@@ -717,10 +883,9 @@
             eventosFuturos.forEach((evento, index) => {
                 const fechaEvento = new Date(evento.fecha);
                 const opcionesFecha = { 
-                    weekday: 'long', 
-                    year: 'numeric', 
-                    month: 'long', 
+                    weekday: 'short', 
                     day: 'numeric',
+                    month: 'short',
                     hour: '2-digit',
                     minute: '2-digit'
                 };
@@ -729,26 +894,23 @@
                 eventoCard.className = `evento-card ${evento.tipo}`;
                 eventoCard.innerHTML = `
                     <div class="evento-fecha">⚡ ${fechaEvento.toLocaleDateString('es-ES', opcionesFecha)}</div>
-                    <div style="font-size: 1.2em; margin-bottom: 5px;">${evento.titulo}</div>
-                    <div style="color: #ccc; margin: 8px 0;">${evento.descripcion || ''}</div>
-                    ${evento.alarmaTiempo !== undefined ? '<span style="display:inline-block; padding:4px 12px; background:rgba(255,20,147,0.3); border:1px solid #ff1493; border-radius:15px;">🔔 ALARMA ACTIVADA</span>' : ''}
-                    <div style="margin-top: 12px; display: flex; gap: 8px;">
-                        <button class="btn-small" onclick="eliminarEvento(${index})" style="border-color: #f44336; color: #f44336;">ELIMINAR</button>
-                        <button class="btn-small" onclick="editarEvento(${index})" style="border-color: #00ffff; color: #00ffff;">EDITAR</button>
+                    <div style="font-weight: bold; margin: 5px 0;">${evento.titulo}</div>
+                    <div style="font-size: 0.9em; color: #ccc; margin-bottom: 8px;">${evento.descripcion || ''}</div>
+                    <div style="display: flex; gap: 5px; flex-wrap: wrap;">
+                        <button class="btn-small" onclick="eliminarEvento(${index})" style="border-color: #f44336; color: #f44336; padding: 4px 8px;">✖</button>
+                        <button class="btn-small" onclick="editarEvento(${index})" style="border-color: #00ffff; color: #00ffff; padding: 4px 8px;">✎</button>
                     </div>
                 `;
                 eventosContainer.appendChild(eventoCard);
             });
         }
 
-        // Guardar evento con alarma
         eventoForm.addEventListener('submit', (e) => {
             e.preventDefault();
             
             const fechaEvento = new Date(document.getElementById('eventoFecha').value);
             const alarmaTiempo = parseInt(document.getElementById('alarmaTiempo').value);
             
-            // Programar alarma
             if (alarmaTiempo > 0) {
                 const tiempoAlarma = new Date(fechaEvento.getTime() - (alarmaTiempo * 60 * 1000));
                 const ahora = new Date();
@@ -757,12 +919,11 @@
                     const tiempoEspera = tiempoAlarma - ahora;
                     setTimeout(() => {
                         if (Notification.permission === 'granted') {
-                            new Notification('🔔 YOBANA - ALARMA NEON 🔔', {
-                                body: `${document.getElementById('eventoTitulo').value}\n${document.getElementById('eventoDesc').value}`,
-                                icon: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png'
+                            new Notification('🔔 ALARMA YOBANA', {
+                                body: document.getElementById('eventoTitulo').value
                             });
                         }
-                        alert(`🔔 ¡ALARMA! 🔔\n\n${document.getElementById('eventoTitulo').value}\n${document.getElementById('eventoDesc').value}`);
+                        alert(`🔔 ${document.getElementById('eventoTitulo').value}`);
                     }, tiempoEspera);
                 }
             }
@@ -781,74 +942,51 @@
             eventoForm.reset();
             mostrarEventos();
             renderCalendario();
-            
-            alert('⚡ EVENTO GUARDADO CON ALARMA ⚡');
+            alert('✅ Evento guardado');
         });
 
         window.eliminarEvento = (index) => {
-            if (confirm('¿Eliminar este evento?')) {
-                eventos.splice(index, 1);
-                localStorage.setItem('eventosYobanaNeon', JSON.stringify(eventos));
-                mostrarEventos();
-                renderCalendario();
-            }
+            eventos.splice(index, 1);
+            localStorage.setItem('eventosYobanaNeon', JSON.stringify(eventos));
+            mostrarEventos();
+            renderCalendario();
         };
 
         window.editarEvento = (index) => {
             const evento = eventos[index];
-            
             document.getElementById('eventoTitulo').value = evento.titulo;
             document.getElementById('eventoFecha').value = evento.fecha;
             document.getElementById('eventoTipo').value = evento.tipo;
             document.getElementById('eventoDesc').value = evento.descripcion || '';
-            document.getElementById('alarmaTiempo').value = evento.alarmaTiempo || '0';
-            
             eliminarEvento(index);
         };
 
         window.verificarAlarmas = () => {
             const ahora = new Date();
-            let alarmasActivas = 0;
-            
             eventos.forEach(evento => {
                 const fechaEvento = new Date(evento.fecha);
-                const diferenciaMinutos = Math.round((fechaEvento - ahora) / (1000 * 60));
-                
-                if (diferenciaMinutos <= 5 && diferenciaMinutos >= 0) {
-                    alert(`🔔 EVENTO PRÓXIMO 🔔\n\n${evento.titulo}\n${evento.descripcion}\n\n📅 ${fechaEvento.toLocaleString()}`);
-                    alarmasActivas++;
+                const diferencia = Math.round((fechaEvento - ahora) / (1000 * 60));
+                if (diferencia <= 5 && diferencia >= 0) {
+                    alert(`🔔 PRONTO: ${evento.titulo}`);
                 }
             });
-            
-            if (alarmasActivas === 0) {
-                alert('✨ No hay eventos en los próximos 5 minutos ✨');
-            }
         };
 
-        // Notas confidenciales
-        if (notasConfidenciales) {
-            notasTextarea.value = notasConfidenciales;
-        }
-        
+        if (notasConfidenciales) notasTextarea.value = notasConfidenciales;
         notasTextarea.addEventListener('input', (e) => {
             localStorage.setItem('notasYobanaNeon', e.target.value);
         });
 
-        // Calendario
         function renderCalendario() {
-            const monthNames = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
-                'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
-            
+            const monthNames = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
             monthYearDisplay.textContent = `${monthNames[currentMonth]} ${currentYear}`;
             
             const firstDay = new Date(currentYear, currentMonth, 1).getDay();
             const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
-            
             let startDay = firstDay === 0 ? 6 : firstDay - 1;
             
             let calendarHTML = '';
-            
-            const weekDays = ['LUN', 'MAR', 'MIÉ', 'JUE', 'VIE', 'SÁB', 'DOM'];
+            const weekDays = ['L', 'M', 'M', 'J', 'V', 'S', 'D'];
             weekDays.forEach(day => {
                 calendarHTML += `<div class="calendario-dia-header">${day}</div>`;
             });
@@ -864,17 +1002,15 @@
                 const isToday = day === today.getDate() && currentMonth === today.getMonth() && currentYear === today.getFullYear();
                 
                 calendarHTML += `<div class="calendario-dia ${isToday ? 'today' : ''} ${tieneEvento ? 'has-evento' : ''}" 
-                                    onclick="seleccionarDia(${currentYear}, ${currentMonth}, ${day})">
-                                    ${day}
-                                </div>`;
+                                    onclick="seleccionarDia(${currentYear}, ${currentMonth}, ${day})">${day}</div>`;
             }
             
             calendarioGrid.innerHTML = calendarHTML;
         }
 
         window.seleccionarDia = (year, month, day) => {
-            const fechaStr = `${year}-${String(month+1).padStart(2,'0')}-${String(day).padStart(2,'0')}T12:00`;
-            document.getElementById('eventoFecha').value = fechaStr;
+            document.getElementById('eventoFecha').value = 
+                `${year}-${String(month+1).padStart(2,'0')}-${String(day).padStart(2,'0')}T12:00`;
         };
 
         document.getElementById('prevMonthBtn').addEventListener('click', () => {
@@ -898,23 +1034,16 @@
         });
 
         window.compartirWhatsApp = () => {
-            let mensaje = "⚡ *YOBANA HORARIO NEON* ⚡\n\n";
-            mensaje += "📅 *HORARIO DE CLASES:*\n\n";
-            
-            mensaje += "*SEMANA 1 (Primer Sábado):*\n";
-            const semana1 = materias.filter(m => m.semana === "1").sort((a, b) => a.orden - b.orden);
-            semana1.forEach(m => {
-                mensaje += `⏰ ${m.horaCompleta} - ${m.nombre}\n`;
+            let mensaje = "⚡ *MI HORARIO* ⚡\n\n";
+            mensaje += "*SEMANA 1:*\n";
+            materias.filter(m => m.semana === "1").sort((a, b) => a.orden - b.orden).forEach(m => {
+                mensaje += `⏰ ${m.horaCompleta}\n📌 ${m.nombre}\n\n`;
             });
-            
-            mensaje += "\n*SEMANA 2 (Segundo Sábado):*\n";
-            const semana2 = materias.filter(m => m.semana === "2").sort((a, b) => a.orden - b.orden);
-            semana2.forEach(m => {
-                mensaje += `⏰ ${m.horaCompleta} - ${m.nombre}\n`;
+            mensaje += "*SEMANA 2:*\n";
+            materias.filter(m => m.semana === "2").sort((a, b) => a.orden - b.orden).forEach(m => {
+                mensaje += `⏰ ${m.horaCompleta}\n📌 ${m.nombre}\n\n`;
             });
-            
-            const url = `https://wa.me/?text=${encodeURIComponent(mensaje)}`;
-            window.open(url, '_blank');
+            window.open(`https://wa.me/?text=${encodeURIComponent(mensaje)}`, '_blank');
         };
 
         window.exportarRespaldo = () => {
@@ -923,21 +1052,14 @@
                 notas: notasTextarea.value,
                 fecha: new Date().toLocaleString()
             };
-            
-            const dataStr = JSON.stringify(respaldo, null, 2);
-            const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
-            
-            const exportFileDefaultName = `yobana_respaldo_${new Date().toISOString().slice(0,10)}.json`;
-            
-            const linkElement = document.createElement('a');
-            linkElement.setAttribute('href', dataUri);
-            linkElement.setAttribute('download', exportFileDefaultName);
-            linkElement.click();
+            const dataStr = JSON.stringify(respaldo);
+            const link = document.createElement('a');
+            link.download = `yobana_backup_${new Date().toISOString().slice(0,10)}.json`;
+            link.href = 'data:text/json;charset=utf-8,' + encodeURIComponent(dataStr);
+            link.click();
         };
 
-        if (Notification.permission !== 'granted' && Notification.permission !== 'denied') {
-            Notification.requestPermission();
-        }
+        if (Notification.permission !== 'granted') Notification.requestPermission();
 
         function inicializar() {
             mostrarHorarioSecuencial();
