@@ -2,8 +2,8 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
-    <title>🌸 YOBANA  RESPONSIVE - Educación Artística 🌸</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+    <title>🌸 YOBANA NEON COMPLETA - Educación Artística 🌸</title>
     <style>
         * {
             margin: 0;
@@ -24,20 +24,19 @@
         }
 
         html {
-            font-size: 16px;
+            font-size: 13px; /* Tamaño base 13px como solicitaste */
         }
 
         body {
             background: var(--bg-dark);
             min-height: 100vh;
-            padding: clamp(10px, 2vw, 20px);
+            padding: 10px;
             color: #ffffff;
             position: relative;
             overflow-x: hidden;
             width: 100%;
         }
 
-        /* Efecto de luz de fondo responsive */
         body::before {
             content: '';
             position: fixed;
@@ -52,206 +51,188 @@
         }
 
         .container {
-            max-width: 1600px;
+            max-width: 1400px;
             margin: 0 auto;
             width: 100%;
-            position: relative;
         }
 
-        /* HEADER NEON RESPONSIVE */
+        /* HEADER */
         .header {
             background: var(--bg-card);
-            border-radius: 30px 30px 0 0;
-            padding: clamp(20px, 4vw, 40px);
-            border: 2px solid var(--neon-pink);
-            box-shadow: 0 0 30px rgba(255, 20, 147, 0.5);
+            border-radius: 25px 25px 0 0;
+            padding: 20px;
+            border: 3px solid var(--neon-pink);
+            box-shadow: 0 0 30px rgba(255, 20, 147, 0.6);
             margin-bottom: 2px;
-            position: relative;
-            overflow: hidden;
-            width: 100%;
         }
 
         .header h1 {
-            font-size: clamp(1.8rem, 6vw, 3.5rem);
-            margin-bottom: 10px;
-            text-shadow: 0 0 10px var(--neon-pink), 0 0 20px var(--neon-pink);
-            color: #ffffff;
-            letter-spacing: 1px;
-            word-break: break-word;
-            line-height: 1.2;
+            font-size: 2rem;
+            margin-bottom: 8px;
+            text-shadow: 0 0 15px var(--neon-pink);
         }
 
         .subtitle {
-            font-size: clamp(1rem, 3vw, 1.4rem);
+            font-size: 1.2rem;
             color: var(--neon-cyan);
-            text-shadow: 0 0 10px var(--neon-cyan);
-            margin-bottom: 15px;
-            word-break: break-word;
+            text-shadow: 0 0 12px var(--neon-cyan);
+            margin-bottom: 12px;
         }
 
         .date-badge {
-            background: rgba(255, 20, 147, 0.2);
-            padding: clamp(8px, 2vw, 12px) clamp(15px, 3vw, 25px);
+            background: rgba(255, 20, 147, 0.3);
+            padding: 10px 20px;
             border-radius: 50px;
             display: inline-block;
-            border: 1px solid var(--neon-cyan);
-            box-shadow: 0 0 15px var(--neon-cyan);
+            border: 2px solid var(--neon-cyan);
+            box-shadow: 0 0 20px var(--neon-cyan);
             color: white;
             font-weight: bold;
-            backdrop-filter: blur(5px);
-            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
-            width: fit-content;
-            max-width: 100%;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
+            font-size: 1rem;
         }
 
-        /* PANEL PRINCIPAL RESPONSIVE */
+        /* MAIN PANEL */
         .main-panel {
             background: var(--bg-card);
-            padding: clamp(15px, 3vw, 25px);
-            border-radius: 0 0 30px 30px;
-            border: 2px solid var(--neon-cyan);
-            box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
-            width: 100%;
+            padding: 15px;
+            border-radius: 0 0 25px 25px;
+            border: 3px solid var(--neon-cyan);
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.4);
         }
 
-        /* GRID PRINCIPAL - TOTALMENTE RESPONSIVE */
+        /* GRID */
         .dashboard-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: clamp(15px, 2.5vw, 25px);
-            width: 100%;
+            grid-template-columns: 1fr;
+            gap: 15px;
         }
 
-        /* TARJETAS NEON RESPONSIVE */
+        /* TARJETAS */
         .card {
             background: var(--bg-card);
-            border-radius: clamp(15px, 3vw, 25px);
-            padding: clamp(15px, 2.5vw, 25px);
-            border: 2px solid;
-            transition: all 0.4s;
-            position: relative;
-            overflow: hidden;
-            height: fit-content;
-            width: 100%;
+            border-radius: 20px;
+            padding: 15px;
+            border: 3px solid;
+            transition: all 0.3s;
         }
 
-        .card:nth-child(1) {
-            border-color: var(--neon-pink);
-            box-shadow: 0 0 20px rgba(255, 20, 147, 0.3);
-        }
-        .card:nth-child(2) {
-            border-color: var(--neon-cyan);
-            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
-        }
-        .card:nth-child(3) {
-            border-color: var(--neon-purple);
-            box-shadow: 0 0 20px rgba(255, 0, 255, 0.3);
-        }
+        .card:nth-child(1) { border-color: var(--neon-pink); box-shadow: 0 0 25px rgba(255, 20, 147, 0.4); }
+        .card:nth-child(2) { border-color: var(--neon-cyan); box-shadow: 0 0 25px rgba(0, 255, 255, 0.4); }
+        .card:nth-child(3) { border-color: var(--neon-purple); box-shadow: 0 0 25px rgba(255, 0, 255, 0.4); }
 
         .card-title {
-            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            font-size: 1.4rem;
             margin-bottom: 15px;
-            border-bottom: 2px solid currentColor;
-            padding-bottom: 10px;
+            border-bottom: 3px solid currentColor;
+            padding-bottom: 8px;
             display: flex;
             align-items: center;
             gap: 8px;
-            text-shadow: 0 0 8px currentColor;
-            word-break: break-word;
+            text-shadow: 0 0 10px currentColor;
         }
 
-        /* HORARIO RESPONSIVE */
-        .horario-container {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            width: 100%;
-        }
-
-        .semana-block {
-            background: var(--bg-item);
+        /* ===== HORARIO COMPLETO CON FECHAS ===== */
+        .materia-completa {
+            background: #000000;
             border-radius: 15px;
-            padding: clamp(12px, 2vw, 15px);
+            margin-bottom: 15px;
+            padding: 15px;
+            border-left: 8px solid;
             border: 2px solid var(--neon-pink);
             box-shadow: 0 0 15px rgba(255, 20, 147, 0.3);
-            width: 100%;
         }
 
-        .semana-titulo {
-            color: var(--neon-cyan);
-            font-size: clamp(1.1rem, 2.8vw, 1.4rem);
-            font-weight: bold;
-            margin-bottom: 12px;
-            text-shadow: 0 0 8px var(--neon-cyan);
-            border-left: 4px solid var(--neon-pink);
-            padding-left: 12px;
-            word-break: break-word;
-        }
-
-        .clase-item {
-            background: #000000;
-            border-radius: 12px;
+        .materia-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             margin-bottom: 10px;
-            padding: clamp(12px, 2vw, 15px);
-            border-left: 6px solid;
-            transition: all 0.3s;
-            box-shadow: 0 0 10px rgba(255, 20, 147, 0.2);
-            width: 100%;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
-        .clase-item:last-child {
-            margin-bottom: 0;
-        }
-
-        .clase-item:hover {
-            transform: translateX(5px);
-            box-shadow: 0 0 25px var(--neon-pink);
-        }
-
-        .clase-hora {
+        .materia-nombre {
             color: var(--neon-cyan);
-            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            font-size: 1.2rem;
             font-weight: bold;
-            text-shadow: 0 0 5px var(--neon-cyan);
-            margin-bottom: 5px;
-            word-break: break-word;
+            text-shadow: 0 0 8px var(--neon-cyan);
         }
 
-        .clase-nombre {
-            color: white;
-            font-size: clamp(0.95rem, 2.2vw, 1.1rem);
-            font-weight: bold;
-            text-shadow: 0 0 5px var(--neon-pink);
-            word-break: break-word;
-            line-height: 1.4;
-        }
-
-        .clase-codigo {
+        .materia-codigo {
             color: var(--neon-pink);
-            font-size: clamp(0.8rem, 2vw, 0.9rem);
-            margin-top: 5px;
-            font-family: monospace;
-            word-break: break-word;
+            font-size: 1rem;
+            background: rgba(255,20,147,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
         }
 
-        .clase-duracion {
-            display: inline-block;
-            margin-top: 8px;
-            padding: 4px 10px;
-            background: rgba(255, 20, 147, 0.2);
+        .materia-horario {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+            color: white;
+            font-size: 1rem;
+        }
+
+        .materia-docente {
+            background: #1a1a1a;
+            padding: 10px;
+            border-radius: 10px;
+            margin: 10px 0;
+            border-left: 4px solid var(--neon-orange);
+        }
+
+        .docente-email {
+            color: var(--neon-orange);
+            font-size: 0.95rem;
+            word-break: break-all;
+        }
+
+        .fechas-container {
+            margin-top: 12px;
+        }
+
+        .fechas-titulo {
+            color: var(--neon-cyan);
+            font-size: 1rem;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .fechas-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .fecha-badge {
+            background: rgba(255,20,147,0.2);
             border: 1px solid var(--neon-pink);
             border-radius: 20px;
-            color: var(--neon-pink);
-            font-size: clamp(0.75rem, 1.8vw, 0.85rem);
+            padding: 5px 12px;
+            font-size: 0.9rem;
+            color: white;
         }
 
-        /* FORMULARIO RESPONSIVE */
+        .fecha-badge.ap {
+            background: rgba(0,255,255,0.2);
+            border-color: var(--neon-cyan);
+        }
+
+        .fecha-badge.tutoria {
+            background: rgba(255,165,0,0.2);
+            border-color: orange;
+        }
+
+        .fecha-badge.convocatoria {
+            background: rgba(255,0,255,0.2);
+            border-color: var(--neon-purple);
+        }
+
+        /* FORMULARIO MEJORADO */
         .form-group {
-            margin-bottom: 15px;
-            width: 100%;
+            margin-bottom: 12px;
         }
 
         .form-group label {
@@ -259,29 +240,43 @@
             margin-bottom: 5px;
             color: var(--neon-cyan);
             font-weight: 600;
-            text-shadow: 0 0 5px var(--neon-cyan);
-            font-size: clamp(0.9rem, 2.2vw, 1rem);
+            font-size: 1rem;
         }
 
         .form-group input, 
         .form-group textarea, 
         .form-group select {
             width: 100%;
-            padding: clamp(10px, 2vw, 14px);
+            padding: 10px;
             background: #000000;
             border: 2px solid var(--neon-pink);
             border-radius: 12px;
             color: white;
-            font-size: clamp(0.9rem, 2.2vw, 1rem);
-            transition: all 0.3s;
+            font-size: 1rem;
         }
 
-        .form-group input:focus, 
-        .form-group textarea:focus, 
-        .form-group select:focus {
-            border-color: var(--neon-cyan);
-            box-shadow: 0 0 15px var(--neon-cyan);
-            outline: none;
+        .file-upload {
+            border: 2px dashed var(--neon-cyan);
+            padding: 15px;
+            text-align: center;
+            border-radius: 12px;
+            cursor: pointer;
+            background: #000;
+            margin-bottom: 10px;
+        }
+
+        .file-upload:hover {
+            background: #1a1a1a;
+        }
+
+        .link-item {
+            background: #1a1a1a;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .btn {
@@ -289,366 +284,178 @@
             color: black;
             font-weight: bold;
             border: none;
-            padding: clamp(12px, 2.5vw, 16px) clamp(15px, 3vw, 20px);
+            padding: 12px;
             border-radius: 12px;
-            font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+            font-size: 1.1rem;
             cursor: pointer;
             width: 100%;
-            transition: all 0.4s;
-            text-transform: uppercase;
-            letter-spacing: 1px;
             border: 2px solid white;
             box-shadow: 0 0 15px var(--neon-pink);
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .btn:hover {
-            transform: scale(1.02);
-            box-shadow: 0 0 30px var(--neon-cyan), 0 0 45px var(--neon-pink);
+            margin-top: 5px;
         }
 
         .btn-small {
-            padding: clamp(8px, 1.5vw, 10px) clamp(12px, 2vw, 18px);
-            font-size: clamp(0.85rem, 2vw, 0.95rem);
+            padding: 8px 12px;
+            font-size: 0.95rem;
             background: transparent;
             border: 2px solid;
             border-radius: 8px;
             cursor: pointer;
-            transition: all 0.3s;
             font-weight: bold;
-            white-space: nowrap;
         }
 
-        /* EVENTOS RESPONSIVE */
-        .eventos-container {
-            max-height: 400px;
-            overflow-y: auto;
-            scrollbar-width: thin;
-            scrollbar-color: var(--neon-cyan) #000;
-            width: 100%;
+        /* CALENDARIO 7 DÍAS */
+        .calendario-wrapper {
+            background: #000000;
+            border-radius: 15px;
+            padding: 12px;
+            border: 3px solid var(--neon-cyan);
+            margin-top: 15px;
         }
 
-        .eventos-container::-webkit-scrollbar {
-            width: 6px;
-        }
-        .eventos-container::-webkit-scrollbar-track {
-            background: #000;
-        }
-        .eventos-container::-webkit-scrollbar-thumb {
-            background: var(--neon-cyan);
-            border-radius: 10px;
-        }
-
-        .evento-card {
-            background: var(--bg-item);
-            border-radius: 12px;
-            padding: clamp(12px, 2vw, 18px);
-            margin-bottom: 12px;
-            border-left: 6px solid;
-            position: relative;
-            box-shadow: 0 0 15px rgba(255, 20, 147, 0.2);
-            width: 100%;
-        }
-
-        .evento-fecha {
-            color: var(--neon-cyan);
-            font-weight: bold;
-            margin-bottom: 5px;
-            text-shadow: 0 0 5px var(--neon-cyan);
-            font-size: clamp(0.85rem, 2.2vw, 0.95rem);
-            word-break: break-word;
-        }
-
-        /* CALENDARIO RESPONSIVE */
         .calendario-grid {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
-            gap: clamp(3px, 1vw, 5px);
-            margin-top: 15px;
-            width: 100%;
+            gap: 4px;
         }
 
         .calendario-dia-header {
             text-align: center;
             font-weight: bold;
             color: var(--neon-cyan);
-            padding: clamp(5px, 1.5vw, 8px);
-            text-shadow: 0 0 5px var(--neon-cyan);
+            padding: 6px 2px;
             border-bottom: 2px solid var(--neon-pink);
-            font-size: clamp(0.7rem, 2vw, 0.9rem);
+            font-size: 0.9rem;
         }
 
         .calendario-dia {
             aspect-ratio: 1;
-            background: #000000;
-            border: 2px solid var(--neon-pink);
-            border-radius: 8px;
-            padding: 3px;
-            cursor: pointer;
-            transition: all 0.3s;
+            background: #111111;
+            border: 1px solid var(--neon-pink);
+            border-radius: 6px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: bold;
-            font-size: clamp(0.8rem, 2.2vw, 1rem);
-        }
-
-        .calendario-dia:hover {
-            transform: scale(1.05);
-            border-color: var(--neon-cyan);
-            box-shadow: 0 0 15px var(--neon-cyan);
+            font-size: 0.9rem;
+            cursor: pointer;
         }
 
         .calendario-dia.today {
             background: var(--neon-pink);
             color: black;
-            border-color: white;
-            box-shadow: 0 0 20px var(--neon-pink);
         }
 
         .calendario-dia.has-evento {
             border-color: var(--neon-cyan);
-            box-shadow: 0 0 15px var(--neon-cyan);
-            position: relative;
+            box-shadow: 0 0 10px var(--neon-cyan);
         }
 
-        /* NOTAS CONFIDENCIALES RESPONSIVE */
-        .notas-personales {
-            margin-top: 20px;
-            background: var(--bg-card);
-            padding: clamp(12px, 2.5vw, 20px);
-            border-radius: 15px;
-            border: 3px dashed var(--neon-pink);
-            box-shadow: 0 0 20px rgba(255, 20, 147, 0.3);
-            width: 100%;
-        }
-
-        .notas-personales textarea {
-            width: 100%;
-            padding: clamp(12px, 2.5vw, 18px);
-            background: #000000;
-            border: 2px solid var(--neon-cyan);
+        /* ACTIVIDADES DEL DÍA */
+        .dia-actividades {
+            background: #1a1a1a;
             border-radius: 12px;
-            min-height: clamp(120px, 25vh, 150px);
-            color: white;
-            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
-            font-family: 'Courier New', monospace;
-            resize: vertical;
+            padding: 12px;
+            margin-top: 15px;
+            border: 2px solid var(--neon-orange);
         }
 
-        /* WHATSAPP FLOTANTE RESPONSIVE */
+        .actividad-item {
+            background: #000;
+            padding: 10px;
+            margin-bottom: 8px;
+            border-radius: 8px;
+            border-left: 4px solid var(--neon-cyan);
+        }
+
+        .archivo-link {
+            display: inline-block;
+            background: rgba(0,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 15px;
+            margin: 5px 5px 0 0;
+            font-size: 0.9rem;
+            border: 1px solid var(--neon-cyan);
+            color: white;
+            text-decoration: none;
+        }
+
+        .archivo-link:hover {
+            background: var(--neon-cyan);
+            color: black;
+        }
+
+        /* WHATSAPP FLOTANTE */
         .whatsapp-share {
             position: fixed;
-            bottom: clamp(15px, 4vw, 30px);
-            right: clamp(15px, 4vw, 30px);
+            bottom: 15px;
+            right: 15px;
             background: transparent;
             border: 3px solid var(--whatsapp);
             color: var(--whatsapp);
-            width: clamp(50px, 12vw, 70px);
-            height: clamp(50px, 12vw, 70px);
+            width: 55px;
+            height: 55px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            font-size: 2rem;
             cursor: pointer;
             box-shadow: 0 0 20px var(--whatsapp);
-            transition: all 0.4s;
             z-index: 1000;
-            backdrop-filter: blur(5px);
             animation: pulse 2s infinite;
         }
 
         @keyframes pulse {
             0% { box-shadow: 0 0 20px var(--whatsapp); }
-            50% { box-shadow: 0 0 40px var(--whatsapp); }
-            100% { box-shadow: 0 0 20px var(--whatsapp); }
+            50% { box-shadow: 0 0 35px var(--whatsapp); }
         }
 
-        .whatsapp-share:hover {
-            transform: scale(1.1);
-            background: var(--whatsapp);
-            color: black;
-        }
-
-        /* ===== MEDIA QUERIES PARA DIFERENTES PANTALLAS ===== */
-        
-        /* Tablets y pantallas medianas */
-        @media screen and (max-width: 1100px) {
-            .dashboard-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .card:last-child {
-                grid-column: span 2;
-            }
-        }
-
-        /* Móviles grandes */
-        @media screen and (max-width: 768px) {
-            html {
-                font-size: 14px;
-            }
-            
-            .dashboard-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-            
-            .card:last-child {
-                grid-column: span 1;
-            }
-            
-            .header h1 {
-                font-size: 2rem;
-            }
-            
-            .date-badge {
-                white-space: normal;
-                word-break: break-word;
-            }
-            
-            .clase-item:hover {
-                transform: none;
-            }
-            
-            .btn:hover {
-                transform: none;
-            }
-        }
-
-        /* Móviles pequeños */
+        /* RESPONSIVE */
         @media screen and (max-width: 480px) {
-            html {
-                font-size: 12px;
-            }
-            
-            .header {
-                padding: 15px;
-            }
-            
-            .header h1 {
-                font-size: 1.8rem;
-            }
-            
-            .main-panel {
-                padding: 12px;
-            }
-            
-            .card {
-                padding: 12px;
-            }
-            
-            .calendario-dia-header {
-                font-size: 0.7rem;
-                padding: 3px;
-            }
-            
-            .calendario-dia {
-                font-size: 0.7rem;
-            }
-            
-            .btn-small {
-                padding: 6px 8px;
-                font-size: 0.8rem;
-                white-space: normal;
-                word-break: break-word;
-            }
-            
-            .evento-card .btn-small {
-                padding: 4px 6px;
-            }
-        }
-
-        /* Pantallas muy grandes */
-        @media screen and (min-width: 1600px) {
-            html {
-                font-size: 18px;
-            }
-            
-            .container {
-                max-width: 1800px;
-            }
-            
-            .dashboard-grid {
-                gap: 30px;
-            }
-        }
-
-        /* Orientación horizontal en móviles */
-        @media screen and (max-height: 500px) and (orientation: landscape) {
-            .dashboard-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .notas-personales textarea {
-                min-height: 80px;
-            }
-            
-            .eventos-container {
-                max-height: 200px;
-            }
-        }
-
-        /* Ajustes para pantallas táctiles */
-        @media (hover: none) and (pointer: coarse) {
-            .clase-item:hover,
-            .calendario-dia:hover,
-            .btn:hover {
-                transform: none;
-            }
-            
-            .clase-item:active,
-            .calendario-dia:active {
-                transform: scale(0.98);
-            }
+            html { font-size: 12px; }
+            .header h1 { font-size: 1.8rem; }
+            .card-title { font-size: 1.3rem; }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- HEADER NEON -->
+        <!-- HEADER -->
         <div class="header">
-            <h1>
-                <i>Agenda Personal de Yobana </i>
-            </h1>
-            <div class="subtitle">
-                ✦ Licenciatura en Educación Artística - Semestre IX ✦
-            </div>
+            <h1><i> AGENDA PERSONAL 2026 </i></h1>
+            <div class="subtitle">✦ Licenciatura en Educación Artística - Semestre IX ✦</div>
             <div class="date-badge" id="fechaActual"></div>
         </div>
 
         <!-- MAIN PANEL -->
         <div class="main-panel">
             <div class="dashboard-grid">
-                <!-- COLUMNA 1: HORARIO SECUENCIAL -->
+                <!-- COLUMNA 1: HORARIO COMPLETO CON FECHAS -->
                 <div class="card">
                     <div class="card-title" style="color: #ff1493;">
-                        <span>⏰</span> HORARIO SÁBADOS
+                        <span>📅</span> HORARIO COMPLETO CON FECHAS
                     </div>
                     
-                    <div class="horario-container" id="horarioContainer"></div>
+                    <div id="horarioCompletoContainer"></div>
                     
-                    <div class="notas-personales">
-                        <div class="card-title" style="color: #ff1493; margin-top: 0; border-bottom-color: #ff1493;">
-                            <span>🔐</span> ZONA CONFIDENCIAL
-                        </div>
-                        <textarea id="notasConfidenciales" placeholder="📝 Escribe aquí tus apuntes personales... (se guarda automáticamente)"></textarea>
+                    <!-- NOTAS CONFIDENCIALES -->
+                    <div style="margin-top: 20px; background: #1a1a1a; padding: 12px; border-radius: 12px; border: 3px dashed #ff1493;">
+                        <div style="color: #ff1493; font-size: 1.2rem; margin-bottom: 10px;">🔐 MIS NOTAS CONFIDENCIALES</div>
+                        <textarea id="notasConfidenciales" placeholder="📝 Escribe aquí tus apuntes..." 
+                            style="width: 100%; padding: 12px; background: #000; border: 2px solid #00ffff; border-radius: 10px; color: white; font-size: 1rem; min-height: 100px;"></textarea>
                     </div>
                 </div>
 
-                <!-- COLUMNA 2: CREAR EVENTOS Y CALENDARIO -->
+                <!-- COLUMNA 2: CREAR EVENTO CON ARCHIVOS Y LINKS -->
                 <div class="card">
                     <div class="card-title" style="color: #00ffff;">
-                        <span>⏰</span> CREAR EVENTO
+                        <span>⏰</span> CREAR EVENTO + ARCHIVOS
                     </div>
                     
                     <form id="eventoForm">
                         <div class="form-group">
-                            <label>⚡ TÍTULO:</label>
-                            <input type="text" id="eventoTitulo" placeholder="Ej: Parcial de Teatro" required>
+                            <label>⚡ TÍTULO DEL EVENTO:</label>
+                            <input type="text" id="eventoTitulo" placeholder="Ej: Exposición de Teatro" required>
                         </div>
                         
                         <div class="form-group">
@@ -662,53 +469,80 @@
                                 <option value="personal">🌸 Personal</option>
                                 <option value="universidad">📚 Universidad</option>
                                 <option value="examen">📝 Examen</option>
+                                <option value="tutoria">👥 Tutoría</option>
                             </select>
                         </div>
                         
                         <div class="form-group">
-                            <label>📝 DESCRIPCIÓN:</label>
-                            <textarea id="eventoDesc" rows="2" placeholder="Detalles..."></textarea>
+                            <label>📝 DESCRIPCIÓN / TEMÁTICA:</label>
+                            <textarea id="eventoDesc" rows="2" placeholder="Describe tu actividad..."></textarea>
+                        </div>
+
+                        <!-- SECCIÓN DE LINKS -->
+                        <div class="form-group">
+                            <label>🔗 AGREGAR LINK:</label>
+                            <div style="display: flex; gap: 5px;">
+                                <input type="url" id="linkInput" placeholder="https://..." style="flex: 1;">
+                                <button type="button" class="btn-small" onclick="agregarLink()" style="border-color: #00ffff; color: #00ffff;">+</button>
+                            </div>
+                            <div id="linksContainer" style="margin-top: 8px;"></div>
+                        </div>
+
+                        <!-- SECCIÓN DE ARCHIVOS (simulado con links) -->
+                        <div class="form-group">
+                            <label>📎 AGREGAR ARCHIVO (link):</label>
+                            <div style="display: flex; gap: 5px;">
+                                <input type="url" id="archivoInput" placeholder="Link a drive/dropbox..." style="flex: 1;">
+                                <button type="button" class="btn-small" onclick="agregarArchivo()" style="border-color: #ff1493; color: #ff1493;">+</button>
+                            </div>
+                            <div id="archivosContainer" style="margin-top: 8px;"></div>
                         </div>
                         
                         <div class="form-group">
-                            <label>⏱️ ALARMA:</label>
+                            <label>⏱️ ACTIVAR ALARMA:</label>
                             <select id="alarmaTiempo">
                                 <option value="0">🔔 En el momento</option>
                                 <option value="5">⏰ 5 minutos antes</option>
                                 <option value="15">⏰ 15 minutos antes</option>
                                 <option value="30">⏰ 30 minutos antes</option>
                                 <option value="60">⏰ 1 hora antes</option>
+                                <option value="1440">⏰ 1 día antes</option>
+                                <option value="2880">⏰ 2 días antes</option>
                             </select>
                         </div>
                         
-                        <button type="submit" class="btn">⚡ GUARDAR CON ALARMA ⚡</button>
+                        <button type="submit" class="btn">⚡ GUARDAR EVENTO COMPLETO ⚡</button>
                     </form>
 
-                    <!-- CALENDARIO -->
-                    <div style="margin-top: 25px;">
-                        <div class="card-title" style="color: #00ffff;">
-                            <span>📆</span> CALENDARIO
-                        </div>
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; flex-wrap: wrap; gap: 10px;">
+                    <!-- CALENDARIO 7 DÍAS -->
+                    <div class="calendario-wrapper">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
                             <button class="btn-small" id="prevMonthBtn" style="border-color: #ff1493; color: #ff1493;">←</button>
-                            <span id="monthYearDisplay" style="color: #00ffff; text-shadow: 0 0 8px cyan; font-weight: bold; font-size: clamp(0.9rem, 2.5vw, 1.2rem);"></span>
+                            <span id="monthYearDisplay" style="color: #00ffff; font-weight: bold; font-size: 1.2rem;"></span>
                             <button class="btn-small" id="nextMonthBtn" style="border-color: #ff1493; color: #ff1493;">→</button>
                         </div>
+                        
                         <div class="calendario-grid" id="calendarioGrid"></div>
+                        
+                        <!-- ACTIVIDADES DEL DÍA SELECCIONADO -->
+                        <div id="actividadesDelDia" class="dia-actividades" style="display: none;">
+                            <div style="color: #ffaa00; font-size: 1.2rem; margin-bottom: 8px;" id="fechaSeleccionadaTitulo"></div>
+                            <div id="listaActividadesDia"></div>
+                        </div>
                     </div>
                 </div>
 
                 <!-- COLUMNA 3: PRÓXIMOS EVENTOS -->
                 <div class="card">
                     <div class="card-title" style="color: #ff00ff;">
-                        <span>⚡</span> PRÓXIMOS EVENTOS
+                        <span>⚡</span> MIS EVENTOS GUARDADOS
                     </div>
                     
-                    <div class="eventos-container" id="eventosContainer"></div>
+                    <div class="eventos-container" id="eventosContainer" style="max-height: 400px; overflow-y: auto;"></div>
                     
-                    <div style="margin-top: 20px; display: grid; gap: 8px;">
+                    <div style="margin-top: 15px; display: grid; gap: 8px;">
                         <button class="btn-small" onclick="verificarAlarmas()" style="border-color: #00ffff; color: #00ffff; width: 100%;">🔔 VERIFICAR ALARMAS</button>
-                        <button class="btn-small" onclick="compartirWhatsApp()" style="border-color: #25D366; color: #25D366; width: 100%;">📱 COMPARTIR</button>
+                        <button class="btn-small" onclick="compartirWhatsApp()" style="border-color: #25D366; color: #25D366; width: 100%;">📱 COMPARTIR TODO</button>
                         <button class="btn-small" onclick="exportarRespaldo()" style="border-color: #ff1493; color: #ff1493; width: 100%;">💾 RESPALDO</button>
                     </div>
                 </div>
@@ -716,195 +550,236 @@
         </div>
     </div>
 
-    <!-- BOTÓN WHATSAPP FLOTANTE -->
-    <div class="whatsapp-share" onclick="compartirWhatsApp()" title="Compartir en WhatsApp">
-        📱
-    </div>
+    <!-- BOTÓN WHATSAPP -->
+    <div class="whatsapp-share" onclick="compartirWhatsApp()">📱</div>
 
     <script>
-        // ==================== MATERIAS EN SECUENCIA HORARIA ====================
-        const materias = [
-            // SEMANA 1
+        // ===== DATOS COMPLETOS DE LAS MATERIAS CON FECHAS =====
+        const materiasCompletas = [
             {
                 nombre: "PRACTICA EN OTROS CONTEXTOS I",
                 codigo: "5031553",
-                horaInicio: "7:00 am",
-                horaFin: "11:00 am",
+                semana: "1",
+                dia: "Sábado",
+                hora: "7:00 am - 11:00 am",
                 duracion: "4h",
-                semana: "1",
-                orden: 1,
-                horaCompleta: "7:00 am - 11:00 am"
+                docente: "LUENGAS PATIÑO LUZ DARY",
+                email: "ldluengasp@ut.edu.co",
+                fechas: {
+                    ap: "7-mar-2026",
+                    tutorias: ["21-mar-2026", "11-abr-2026", "25-abr-2026", "9-may-2026", "30-may-2026"],
+                    convocatorias: ["13-jun-2026", "27-jun-2026"]
+                }
             },
             {
-                nombre: "SEMINARIO EDUCACIÓN ARTÍSTICA",
+                nombre: "SEMINARIO INTEGRAL PARA LA EDUCACIÓN ARTÍSTICA",
                 codigo: "5031555",
-                horaInicio: "11:00 am",
-                horaFin: "2:00 pm",
-                duracion: "3h",
                 semana: "1",
-                orden: 2,
-                horaCompleta: "11:00 am - 2:00 pm"
+                dia: "Sábado",
+                hora: "11:00 am - 2:00 pm",
+                duracion: "3h",
+                docente: "BELALCAZAR GONGORA NOHEMY",
+                email: "nbgongora@ut.edu.co",
+                fechas: {
+                    ap: "7-mar-2026",
+                    tutorias: ["21-mar-2026", "11-abr-2026", "25-abr-2026", "9-may-2026", "30-may-2026"],
+                    convocatorias: ["13-jun-2026", "27-jun-2026"]
+                }
             },
             {
-                nombre: "TALLER EXPLORACIÓN CORPORAL",
+                nombre: "TALLER DE EXPLORACIÓN CORPORAL",
                 codigo: "1202104",
-                horaInicio: "2:00 pm",
-                horaFin: "5:00 pm",
-                duracion: "3h",
                 semana: "1",
-                orden: 3,
-                horaCompleta: "2:00 pm - 5:00 pm"
+                dia: "Sábado",
+                hora: "2:00 pm - 5:00 pm",
+                duracion: "3h",
+                docente: "POR ASIGNAR",
+                email: "",
+                fechas: {
+                    ap: "7-mar-2026",
+                    tutorias: ["21-mar-2026", "11-abr-2026", "25-abr-2026", "9-may-2026", "30-may-2026"],
+                    convocatorias: ["13-jun-2026", "27-jun-2026"]
+                }
             },
-            
-            // SEMANA 2
             {
                 nombre: "TEXTO Y REPRESENTACION TEATRAL",
                 codigo: "1102134",
-                horaInicio: "7:00 am",
-                horaFin: "11:00 am",
-                duracion: "4h",
                 semana: "2",
-                orden: 1,
-                horaCompleta: "7:00 am - 11:00 am"
-            },
-            {
-                nombre: "FUNDAMENTOS CREACIÓN MUSICAL",
-                codigo: "1102135",
-                horaInicio: "11:00 am",
-                horaFin: "3:00 pm",
+                dia: "Sábado",
+                hora: "7:00 am - 11:00 am",
                 duracion: "4h",
-                semana: "2",
-                orden: 2,
-                horaCompleta: "11:00 am - 3:00 pm"
+                docente: "BELALCAZAR GONGORA NOHEMY",
+                email: "nbgongora@ut.edu.co",
+                fechas: {
+                    ap: "14-mar-2026",
+                    tutorias: ["28-mar-2026", "18-abr-2026", "2-may-2026", "23-may-2026", "6-jun-2026"],
+                    convocatorias: ["20-jun-2026", "27-jun-2026"]
+                }
             },
             {
                 nombre: "DIDACTICA DE LA MUSICA",
                 codigo: "5031554",
-                horaInicio: "3:00 pm",
-                horaFin: "7:00 pm",
-                duracion: "4h",
                 semana: "2",
-                orden: 3,
-                horaCompleta: "3:00 pm - 7:00 pm"
+                dia: "Sábado",
+                hora: "3:00 pm - 7:00 pm",
+                duracion: "4h",
+                docente: "VELEZ FLOREZ DAGOBERTO",
+                email: "dvelezf@ut.edu.co",
+                fechas: {
+                    ap: "14-mar-2026",
+                    tutorias: ["28-mar-2026", "18-abr-2026", "2-may-2026", "23-may-2026", "6-jun-2026"],
+                    convocatorias: ["20-jun-2026", "27-jun-2026"]
+                }
+            },
+            {
+                nombre: "FUNDAMENTOS DE CREACIÓN MUSICAL",
+                codigo: "1102135",
+                semana: "2",
+                dia: "Sábado",
+                hora: "11:00 am - 3:00 pm",
+                duracion: "4h",
+                docente: "GAMBOA RUIZ CARLOS ANDRES",
+                email: "cagamboar@ut.edu.co",
+                fechas: {
+                    ap: "14-mar-2026",
+                    tutorias: ["28-mar-2026", "18-abr-2026", "2-may-2026", "23-may-2026", "6-jun-2026"],
+                    convocatorias: ["20-jun-2026", "27-jun-2026"]
+                }
             }
         ];
 
-        let eventos = JSON.parse(localStorage.getItem('eventosYobanaNeon')) || [];
-        let notasConfidenciales = localStorage.getItem('notasYobanaNeon') || '';
+        // Variables globales
+        let eventos = JSON.parse(localStorage.getItem('eventosYobanaNeonCompleta')) || [];
+        let notas = localStorage.getItem('notasYobanaNeonCompleta') || '';
         let currentDate = new Date();
         let currentMonth = currentDate.getMonth();
         let currentYear = currentDate.getFullYear();
+        let fechaSeleccionada = null;
+        
+        // Links y archivos temporales para el nuevo evento
+        let linksTemp = [];
+        let archivosTemp = [];
 
-        const horarioContainer = document.getElementById('horarioContainer');
+        // Elementos DOM
+        const horarioContainer = document.getElementById('horarioCompletoContainer');
         const eventosContainer = document.getElementById('eventosContainer');
         const fechaActualElement = document.getElementById('fechaActual');
         const notasTextarea = document.getElementById('notasConfidenciales');
         const eventoForm = document.getElementById('eventoForm');
         const calendarioGrid = document.getElementById('calendarioGrid');
         const monthYearDisplay = document.getElementById('monthYearDisplay');
+        const actividadesDelDia = document.getElementById('actividadesDelDia');
+        const fechaSeleccionadaTitulo = document.getElementById('fechaSeleccionadaTitulo');
+        const listaActividadesDia = document.getElementById('listaActividadesDia');
+        const linksContainer = document.getElementById('linksContainer');
+        const archivosContainer = document.getElementById('archivosContainer');
 
-        function mostrarHorarioSecuencial() {
+        // ===== MOSTRAR HORARIO COMPLETO CON FECHAS =====
+        function mostrarHorarioCompleto() {
             horarioContainer.innerHTML = '';
             
-            const semana1 = materias.filter(m => m.semana === "1").sort((a, b) => a.orden - b.orden);
-            const semana2 = materias.filter(m => m.semana === "2").sort((a, b) => a.orden - b.orden);
-            
-            // Semana 1
-            const semana1Block = document.createElement('div');
-            semana1Block.className = 'semana-block';
-            semana1Block.innerHTML = '<div class="semana-titulo">📅 SEMANA 1</div>';
-            
-            semana1.forEach(clase => {
-                const claseDiv = document.createElement('div');
-                claseDiv.className = 'clase-item';
-                claseDiv.style.borderLeftColor = getColorPorHora(clase.horaInicio);
-                claseDiv.innerHTML = `
-                    <div class="clase-hora">⏰ ${clase.horaCompleta}</div>
-                    <div class="clase-nombre">${clase.nombre}</div>
-                    <div class="clase-codigo">📌 ${clase.codigo}</div>
-                    <span class="clase-duracion">⏱️ ${clase.duracion}</span>
-                `;
-                semana1Block.appendChild(claseDiv);
-            });
-            
-            // Semana 2
-            const semana2Block = document.createElement('div');
-            semana2Block.className = 'semana-block';
-            semana2Block.innerHTML = '<div class="semana-titulo">📅 SEMANA 2</div>';
-            
-            semana2.forEach(clase => {
-                const claseDiv = document.createElement('div');
-                claseDiv.className = 'clase-item';
-                claseDiv.style.borderLeftColor = getColorPorHora(clase.horaInicio);
-                claseDiv.innerHTML = `
-                    <div class="clase-hora">⏰ ${clase.horaCompleta}</div>
-                    <div class="clase-nombre">${clase.nombre}</div>
-                    <div class="clase-codigo">📌 ${clase.codigo}</div>
-                    <span class="clase-duracion">⏱️ ${clase.duracion}</span>
-                `;
-                semana2Block.appendChild(claseDiv);
-            });
-            
-            horarioContainer.appendChild(semana1Block);
-            horarioContainer.appendChild(semana2Block);
-        }
-
-        function getColorPorHora(hora) {
-            if (hora.includes('7:00')) return '#ff1493';
-            if (hora.includes('11:00')) return '#00ffff';
-            if (hora.includes('2:00') || hora.includes('3:00')) return '#ffaa00';
-            return '#ff1493';
-        }
-
-        function actualizarFechaActual() {
-            const opciones = { 
-                weekday: 'long', 
-                year: 'numeric', 
-                month: 'long', 
-                day: 'numeric',
-                hour: '2-digit',
-                minute: '2-digit'
-            };
-            fechaActualElement.textContent = new Date().toLocaleDateString('es-ES', opciones);
-        }
-
-        function mostrarEventos() {
-            eventosContainer.innerHTML = '';
-            
-            if (eventos.length === 0) {
-                eventosContainer.innerHTML = '<p style="text-align: center; color: #666; padding: 20px;">✨ No hay eventos ✨</p>';
-                return;
-            }
-
-            eventos.sort((a, b) => new Date(a.fecha) - new Date(b.fecha));
-            const ahora = new Date();
-            const eventosFuturos = eventos.filter(e => new Date(e.fecha) > ahora).slice(0, 10);
-            
-            eventosFuturos.forEach((evento, index) => {
-                const fechaEvento = new Date(evento.fecha);
-                const opcionesFecha = { 
-                    weekday: 'short', 
-                    day: 'numeric',
-                    month: 'short',
-                    hour: '2-digit',
-                    minute: '2-digit'
-                };
+            materiasCompletas.forEach(m => {
+                const materiaDiv = document.createElement('div');
+                materiaDiv.className = 'materia-completa';
+                materiaDiv.style.borderLeftColor = m.semana === '1' ? '#ff1493' : '#00ffff';
                 
-                const eventoCard = document.createElement('div');
-                eventoCard.className = `evento-card ${evento.tipo}`;
-                eventoCard.innerHTML = `
-                    <div class="evento-fecha">⚡ ${fechaEvento.toLocaleDateString('es-ES', opcionesFecha)}</div>
-                    <div style="font-weight: bold; margin: 5px 0;">${evento.titulo}</div>
-                    <div style="font-size: 0.9em; color: #ccc; margin-bottom: 8px;">${evento.descripcion || ''}</div>
-                    <div style="display: flex; gap: 5px; flex-wrap: wrap;">
-                        <button class="btn-small" onclick="eliminarEvento(${index})" style="border-color: #f44336; color: #f44336; padding: 4px 8px;">✖</button>
-                        <button class="btn-small" onclick="editarEvento(${index})" style="border-color: #00ffff; color: #00ffff; padding: 4px 8px;">✎</button>
+                // Fechas HTML
+                let fechasHtml = '';
+                if (m.fechas) {
+                    fechasHtml += '<div class="fechas-container">';
+                    fechasHtml += `<div class="fechas-titulo">📌 AP: <span class="fecha-badge ap">${m.fechas.ap}</span></div>`;
+                    
+                    if (m.fechas.tutorias) {
+                        fechasHtml += '<div class="fechas-titulo" style="margin-top:8px;">👥 Tutorías:</div>';
+                        fechasHtml += '<div class="fechas-grid">';
+                        m.fechas.tutorias.forEach(f => fechasHtml += `<span class="fecha-badge tutoria">${f}</span>`);
+                        fechasHtml += '</div>';
+                    }
+                    
+                    if (m.fechas.convocatorias) {
+                        fechasHtml += '<div class="fechas-titulo" style="margin-top:8px;">📢 Convocatorias:</div>';
+                        fechasHtml += '<div class="fechas-grid">';
+                        m.fechas.convocatorias.forEach(f => fechasHtml += `<span class="fecha-badge convocatoria">${f}</span>`);
+                        fechasHtml += '</div>';
+                    }
+                    fechasHtml += '</div>';
+                }
+                
+                materiaDiv.innerHTML = `
+                    <div class="materia-header">
+                        <span class="materia-nombre">${m.nombre}</span>
+                        <span class="materia-codigo">${m.codigo}</span>
+                    </div>
+                    <div class="materia-horario">
+                        <span>📅 Semana ${m.semana} - ${m.dia}</span>
+                        <span>⏰ ${m.hora}</span>
+                        <span>⏱️ ${m.duracion}</span>
+                    </div>
+                    <div class="materia-docente">
+                        <div>👩‍🏫 ${m.docente}</div>
+                        ${m.email ? `<div class="docente-email">📧 ${m.email}</div>` : ''}
+                    </div>
+                    ${fechasHtml}
+                `;
+                
+                horarioContainer.appendChild(materiaDiv);
+            });
+        }
+
+        // ===== FUNCIONES PARA LINKS Y ARCHIVOS =====
+        window.agregarLink = () => {
+            const link = document.getElementById('linkInput').value;
+            if (link) {
+                linksTemp.push(link);
+                actualizarLinksUI();
+                document.getElementById('linkInput').value = '';
+            }
+        };
+
+        window.agregarArchivo = () => {
+            const archivo = document.getElementById('archivoInput').value;
+            if (archivo) {
+                archivosTemp.push(archivo);
+                actualizarArchivosUI();
+                document.getElementById('archivoInput').value = '';
+            }
+        };
+
+        function actualizarLinksUI() {
+            linksContainer.innerHTML = '';
+            linksTemp.forEach((link, i) => {
+                linksContainer.innerHTML += `
+                    <div class="link-item">
+                        <a href="${link}" target="_blank" style="color: #00ffff; text-decoration: none; word-break: break-all;">🔗 ${link.substring(0,30)}...</a>
+                        <button class="btn-small" onclick="eliminarLink(${i})" style="border-color: #f44336; color: #f44336; padding: 2px 5px;">✖</button>
                     </div>
                 `;
-                eventosContainer.appendChild(eventoCard);
             });
         }
 
+        function actualizarArchivosUI() {
+            archivosContainer.innerHTML = '';
+            archivosTemp.forEach((arch, i) => {
+                archivosContainer.innerHTML += `
+                    <div class="link-item">
+                        <a href="${arch}" target="_blank" style="color: #ff1493; text-decoration: none; word-break: break-all;">📎 ${arch.substring(0,30)}...</a>
+                        <button class="btn-small" onclick="eliminarArchivo(${i})" style="border-color: #f44336; color: #f44336; padding: 2px 5px;">✖</button>
+                    </div>
+                `;
+            });
+        }
+
+        window.eliminarLink = (i) => {
+            linksTemp.splice(i, 1);
+            actualizarLinksUI();
+        };
+
+        window.eliminarArchivo = (i) => {
+            archivosTemp.splice(i, 1);
+            actualizarArchivosUI();
+        };
+
+        // ===== GUARDAR EVENTO =====
         eventoForm.addEventListener('submit', (e) => {
             e.preventDefault();
             
@@ -914,162 +789,254 @@
             if (alarmaTiempo > 0) {
                 const tiempoAlarma = new Date(fechaEvento.getTime() - (alarmaTiempo * 60 * 1000));
                 const ahora = new Date();
-                
                 if (tiempoAlarma > ahora) {
-                    const tiempoEspera = tiempoAlarma - ahora;
                     setTimeout(() => {
                         if (Notification.permission === 'granted') {
-                            new Notification('🔔 ALARMA YOBANA', {
-                                body: document.getElementById('eventoTitulo').value
+                            new Notification('🔔 ALARMA ACTIVADA', { 
+                                body: document.getElementById('eventoTitulo').value 
                             });
                         }
                         alert(`🔔 ${document.getElementById('eventoTitulo').value}`);
-                    }, tiempoEspera);
+                    }, tiempoAlarma - ahora);
                 }
             }
             
             const nuevoEvento = {
+                id: Date.now(),
                 titulo: document.getElementById('eventoTitulo').value,
                 fecha: document.getElementById('eventoFecha').value,
                 tipo: document.getElementById('eventoTipo').value,
                 descripcion: document.getElementById('eventoDesc').value,
-                alarmaTiempo: alarmaTiempo
+                alarma: alarmaTiempo,
+                links: [...linksTemp],
+                archivos: [...archivosTemp],
+                fechaCreacion: new Date().toISOString()
             };
             
             eventos.push(nuevoEvento);
-            localStorage.setItem('eventosYobanaNeon', JSON.stringify(eventos));
+            localStorage.setItem('eventosYobanaNeonCompleta', JSON.stringify(eventos));
             
+            // Limpiar
             eventoForm.reset();
+            linksTemp = [];
+            archivosTemp = [];
+            actualizarLinksUI();
+            actualizarArchivosUI();
+            
             mostrarEventos();
             renderCalendario();
-            alert('✅ Evento guardado');
+            if (fechaSeleccionada) mostrarActividadesDia(fechaSeleccionada);
+            
+            alert('✅ EVENTO GUARDADO CON ÉXITO');
         });
 
-        window.eliminarEvento = (index) => {
-            eventos.splice(index, 1);
-            localStorage.setItem('eventosYobanaNeon', JSON.stringify(eventos));
-            mostrarEventos();
-            renderCalendario();
-        };
-
-        window.editarEvento = (index) => {
-            const evento = eventos[index];
-            document.getElementById('eventoTitulo').value = evento.titulo;
-            document.getElementById('eventoFecha').value = evento.fecha;
-            document.getElementById('eventoTipo').value = evento.tipo;
-            document.getElementById('eventoDesc').value = evento.descripcion || '';
-            eliminarEvento(index);
-        };
-
-        window.verificarAlarmas = () => {
+        // ===== MOSTRAR EVENTOS =====
+        function mostrarEventos() {
+            eventosContainer.innerHTML = '';
+            if (eventos.length === 0) {
+                eventosContainer.innerHTML = '<p style="text-align: center; padding: 20px;">✨ No hay eventos guardados ✨</p>';
+                return;
+            }
+            
+            eventos.sort((a, b) => new Date(a.fecha) - new Date(b.fecha));
             const ahora = new Date();
-            eventos.forEach(evento => {
-                const fechaEvento = new Date(evento.fecha);
-                const diferencia = Math.round((fechaEvento - ahora) / (1000 * 60));
-                if (diferencia <= 5 && diferencia >= 0) {
-                    alert(`🔔 PRONTO: ${evento.titulo}`);
-                }
+            const futuros = eventos.filter(e => new Date(e.fecha) > ahora).slice(0, 10);
+            
+            futuros.forEach((e, i) => {
+                const f = new Date(e.fecha);
+                eventosContainer.innerHTML += `
+                    <div class="evento-card" style="background: #1a1a1a; padding: 12px; margin-bottom: 10px; border-radius: 10px; border-left: 6px solid #00ffff;">
+                        <div style="color: #00ffff;">📅 ${f.toLocaleDateString('es-ES', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })}</div>
+                        <div style="font-weight: bold; font-size: 1.1rem; margin: 5px 0;">${e.titulo}</div>
+                        <div style="color: #ccc; font-size: 0.95rem;">${e.descripcion || ''}</div>
+                        ${e.links && e.links.length ? `<div style="margin-top: 5px;">🔗 ${e.links.length} link(s)</div>` : ''}
+                        ${e.archivos && e.archivos.length ? `<div>📎 ${e.archivos.length} archivo(s)</div>` : ''}
+                        <div style="margin-top: 8px;">
+                            <button class="btn-small" onclick="eliminarEvento('${e.id}')" style="border-color: #f44336; color: #f44336;">ELIMINAR</button>
+                        </div>
+                    </div>
+                `;
             });
+        }
+
+        window.eliminarEvento = (id) => {
+            eventos = eventos.filter(e => e.id != id);
+            localStorage.setItem('eventosYobanaNeonCompleta', JSON.stringify(eventos));
+            mostrarEventos();
+            renderCalendario();
+            if (fechaSeleccionada) mostrarActividadesDia(fechaSeleccionada);
         };
 
-        if (notasConfidenciales) notasTextarea.value = notasConfidenciales;
-        notasTextarea.addEventListener('input', (e) => {
-            localStorage.setItem('notasYobanaNeon', e.target.value);
-        });
-
+        // ===== CALENDARIO =====
         function renderCalendario() {
-            const monthNames = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
-            monthYearDisplay.textContent = `${monthNames[currentMonth]} ${currentYear}`;
+            const months = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
+            monthYearDisplay.textContent = `${months[currentMonth]} ${currentYear}`;
             
             const firstDay = new Date(currentYear, currentMonth, 1).getDay();
             const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
             let startDay = firstDay === 0 ? 6 : firstDay - 1;
             
-            let calendarHTML = '';
+            let html = '';
             const weekDays = ['L', 'M', 'M', 'J', 'V', 'S', 'D'];
-            weekDays.forEach(day => {
-                calendarHTML += `<div class="calendario-dia-header">${day}</div>`;
-            });
+            weekDays.forEach(d => html += `<div class="calendario-dia-header">${d}</div>`);
             
-            for (let i = 0; i < startDay; i++) {
-                calendarHTML += '<div class="calendario-dia"></div>';
-            }
+            for (let i = 0; i < startDay; i++) html += '<div class="calendario-dia" style="opacity:0.3"></div>';
             
             const today = new Date();
-            for (let day = 1; day <= daysInMonth; day++) {
-                const fechaComparar = `${currentYear}-${String(currentMonth+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
-                const tieneEvento = eventos.some(e => e.fecha.startsWith(fechaComparar));
-                const isToday = day === today.getDate() && currentMonth === today.getMonth() && currentYear === today.getFullYear();
+            for (let d = 1; d <= daysInMonth; d++) {
+                const fechaStr = `${currentYear}-${String(currentMonth+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+                const tieneEvento = eventos.some(e => e.fecha.startsWith(fechaStr));
+                const esHoy = d === today.getDate() && currentMonth === today.getMonth() && currentYear === today.getFullYear();
                 
-                calendarHTML += `<div class="calendario-dia ${isToday ? 'today' : ''} ${tieneEvento ? 'has-evento' : ''}" 
-                                    onclick="seleccionarDia(${currentYear}, ${currentMonth}, ${day})">${day}</div>`;
+                let clase = 'calendario-dia';
+                if (esHoy) clase += ' today';
+                if (tieneEvento) clase += ' has-evento';
+                
+                html += `<div class="${clase}" onclick="seleccionarFecha(${currentYear}, ${currentMonth}, ${d})">${d}</div>`;
             }
             
-            calendarioGrid.innerHTML = calendarHTML;
+            const totalCeldas = startDay + daysInMonth;
+            for (let i = totalCeldas; i < 42; i++) html += '<div class="calendario-dia" style="opacity:0.3"></div>';
+            
+            calendarioGrid.innerHTML = html;
         }
 
-        window.seleccionarDia = (year, month, day) => {
-            document.getElementById('eventoFecha').value = 
-                `${year}-${String(month+1).padStart(2,'0')}-${String(day).padStart(2,'0')}T12:00`;
+        // ===== VER ACTIVIDADES DE UNA FECHA =====
+        window.seleccionarFecha = (year, month, day) => {
+            const fecha = new Date(year, month, day);
+            const fechaStr = `${year}-${String(month+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
+            fechaSeleccionada = fechaStr;
+            
+            // Eventos de esa fecha
+            const eventosDelDia = eventos.filter(e => e.fecha.startsWith(fechaStr));
+            
+            // Ver si hay clases (sábados)
+            const diaSemana = fecha.getDay();
+            let clasesDelDia = [];
+            
+            if (diaSemana === 6) { // Sábado
+                // Determinar semana (esto es aproximado - puedes ajustar)
+                const semana = "1"; // Por defecto semana 1
+                clasesDelDia = materiasCompletas.filter(m => m.semana === semana);
+            }
+            
+            fechaSeleccionadaTitulo.innerHTML = `📅 ${fecha.toLocaleDateString('es-ES', { weekday: 'long', day: 'numeric', month: 'long' })}`;
+            
+            let listaHtml = '';
+            
+            if (clasesDelDia.length > 0) {
+                listaHtml += '<div style="color: #00ffff; margin: 10px 0;">🎭 CLASES DEL DÍA:</div>';
+                clasesDelDia.forEach(c => {
+                    listaHtml += `
+                        <div class="actividad-item">
+                            <div style="font-weight: bold;">${c.nombre}</div>
+                            <div>⏰ ${c.hora}</div>
+                            <div>👩‍🏫 ${c.docente}</div>
+                        </div>
+                    `;
+                });
+            }
+            
+            if (eventosDelDia.length > 0) {
+                listaHtml += '<div style="color: #ff00ff; margin: 10px 0;">📌 MIS EVENTOS:</div>';
+                eventosDelDia.forEach(e => {
+                    const fechaHora = new Date(e.fecha);
+                    listaHtml += `
+                        <div class="actividad-item">
+                            <div style="font-weight: bold;">${e.titulo}</div>
+                            <div>⏰ ${fechaHora.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' })}</div>
+                            ${e.descripcion ? `<div style="color: #ccc;">${e.descripcion}</div>` : ''}
+                            ${e.links && e.links.length ? `<div style="margin-top:5px;">🔗 ${e.links.map(l => `<a href="${l}" target="_blank" class="archivo-link">link</a>`).join(' ')}</div>` : ''}
+                            ${e.archivos && e.archivos.length ? `<div>📎 ${e.archivos.map(a => `<a href="${a}" target="_blank" class="archivo-link">archivo</a>`).join(' ')}</div>` : ''}
+                        </div>
+                    `;
+                });
+            }
+            
+            if (clasesDelDia.length === 0 && eventosDelDia.length === 0) {
+                listaHtml = '<div style="text-align: center; padding: 20px;">✨ Sin actividades programadas ✨</div>';
+            }
+            
+            listaActividadesDia.innerHTML = listaHtml;
+            actividadesDelDia.style.display = 'block';
         };
 
+        // ===== NAVEGACIÓN MESES =====
         document.getElementById('prevMonthBtn').addEventListener('click', () => {
-            if (currentMonth === 0) {
-                currentMonth = 11;
-                currentYear--;
-            } else {
-                currentMonth--;
-            }
+            if (currentMonth === 0) { currentMonth = 11; currentYear--; } 
+            else { currentMonth--; }
             renderCalendario();
         });
 
         document.getElementById('nextMonthBtn').addEventListener('click', () => {
-            if (currentMonth === 11) {
-                currentMonth = 0;
-                currentYear++;
-            } else {
-                currentMonth++;
-            }
+            if (currentMonth === 11) { currentMonth = 0; currentYear++; } 
+            else { currentMonth++; }
             renderCalendario();
         });
 
-        window.compartirWhatsApp = () => {
-            let mensaje = "⚡ *MI HORARIO* ⚡\n\n";
-            mensaje += "*SEMANA 1:*\n";
-            materias.filter(m => m.semana === "1").sort((a, b) => a.orden - b.orden).forEach(m => {
-                mensaje += `⏰ ${m.horaCompleta}\n📌 ${m.nombre}\n\n`;
+        // ===== FECHA ACTUAL =====
+        function actualizarFecha() {
+            const op = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
+            fechaActualElement.textContent = new Date().toLocaleDateString('es-ES', op);
+        }
+
+        // ===== VERIFICAR ALARMAS =====
+        window.verificarAlarmas = () => {
+            const ahora = new Date();
+            eventos.forEach(e => {
+                const fecha = new Date(e.fecha);
+                const diff = Math.round((fecha - ahora) / (1000 * 60));
+                if (diff <= 5 && diff >= 0) alert(`🔔 ${e.titulo}`);
             });
-            mensaje += "*SEMANA 2:*\n";
-            materias.filter(m => m.semana === "2").sort((a, b) => a.orden - b.orden).forEach(m => {
-                mensaje += `⏰ ${m.horaCompleta}\n📌 ${m.nombre}\n\n`;
-            });
-            window.open(`https://wa.me/?text=${encodeURIComponent(mensaje)}`, '_blank');
         };
 
+        // ===== COMPARTIR WHATSAPP =====
+        window.compartirWhatsApp = () => {
+            let msg = "⚡ MI AGENDA COMPLETA ⚡\n\n";
+            
+            msg += "📅 *PRÓXIMOS EVENTOS:*\n";
+            const ahora = new Date();
+            eventos.filter(e => new Date(e.fecha) > ahora).slice(0, 5).forEach(e => {
+                const f = new Date(e.fecha);
+                msg += `• ${e.titulo} - ${f.toLocaleDateString('es-ES')}\n`;
+            });
+            
+            msg += "\n📚 *MIS CLASES:*\n";
+            materiasCompletas.slice(0, 3).forEach(m => {
+                msg += `• ${m.nombre} (Semana ${m.semana})\n`;
+            });
+            
+            window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`, '_blank');
+        };
+
+        // ===== RESPALDO =====
         window.exportarRespaldo = () => {
-            const respaldo = {
-                eventos: eventos,
-                notas: notasTextarea.value,
-                fecha: new Date().toLocaleString()
-            };
-            const dataStr = JSON.stringify(respaldo);
+            const backup = { eventos, notas: notasTextarea.value, materias: materiasCompletas };
             const link = document.createElement('a');
             link.download = `yobana_backup_${new Date().toISOString().slice(0,10)}.json`;
-            link.href = 'data:text/json;charset=utf-8,' + encodeURIComponent(dataStr);
+            link.href = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(backup));
             link.click();
         };
 
+        // ===== NOTAS =====
+        if (notas) notasTextarea.value = notas;
+        notasTextarea.addEventListener('input', (e) => {
+            localStorage.setItem('notasYobanaNeonCompleta', e.target.value);
+        });
+
+        // ===== PERMISOS =====
         if (Notification.permission !== 'granted') Notification.requestPermission();
 
-        function inicializar() {
-            mostrarHorarioSecuencial();
-            actualizarFechaActual();
+        // ===== INICIALIZAR =====
+        function init() {
+            mostrarHorarioCompleto();
+            actualizarFecha();
             mostrarEventos();
             renderCalendario();
-            setInterval(actualizarFechaActual, 1000);
+            setInterval(actualizarFecha, 60000);
         }
-
-        inicializar();
+        
+        init();
     </script>
 </body>
 </html>
