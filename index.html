@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=yes">
-    <title>🌸 YOBANA NEON COMPLETA - Educación Artística 🌸</title>
+    <title>AGENDA PERSONAL 2026 </title>
     <style>
         * {
             margin: 0;
@@ -24,7 +24,7 @@
         }
 
         html {
-            font-size: 13px; /* Tamaño base 13px como solicitaste */
+            font-size: 13px;
         }
 
         body {
@@ -56,7 +56,6 @@
             width: 100%;
         }
 
-        /* HEADER */
         .header {
             background: var(--bg-card);
             border-radius: 25px 25px 0 0;
@@ -91,7 +90,6 @@
             font-size: 1rem;
         }
 
-        /* MAIN PANEL */
         .main-panel {
             background: var(--bg-card);
             padding: 15px;
@@ -100,14 +98,12 @@
             box-shadow: 0 0 30px rgba(0, 255, 255, 0.4);
         }
 
-        /* GRID */
         .dashboard-grid {
             display: grid;
             grid-template-columns: 1fr;
             gap: 15px;
         }
 
-        /* TARJETAS */
         .card {
             background: var(--bg-card);
             border-radius: 20px;
@@ -131,7 +127,7 @@
             text-shadow: 0 0 10px currentColor;
         }
 
-        /* ===== HORARIO COMPLETO CON FECHAS ===== */
+        /* MATERIAS COMPLETAS */
         .materia-completa {
             background: #000000;
             border-radius: 15px;
@@ -215,22 +211,11 @@
             color: white;
         }
 
-        .fecha-badge.ap {
-            background: rgba(0,255,255,0.2);
-            border-color: var(--neon-cyan);
-        }
+        .fecha-badge.ap { background: rgba(0,255,255,0.2); border-color: var(--neon-cyan); }
+        .fecha-badge.tutoria { background: rgba(255,165,0,0.2); border-color: orange; }
+        .fecha-badge.convocatoria { background: rgba(255,0,255,0.2); border-color: var(--neon-purple); }
 
-        .fecha-badge.tutoria {
-            background: rgba(255,165,0,0.2);
-            border-color: orange;
-        }
-
-        .fecha-badge.convocatoria {
-            background: rgba(255,0,255,0.2);
-            border-color: var(--neon-purple);
-        }
-
-        /* FORMULARIO MEJORADO */
+        /* FORMULARIO */
         .form-group {
             margin-bottom: 12px;
         }
@@ -263,10 +248,6 @@
             cursor: pointer;
             background: #000;
             margin-bottom: 10px;
-        }
-
-        .file-upload:hover {
-            background: #1a1a1a;
         }
 
         .link-item {
@@ -304,7 +285,7 @@
             font-weight: bold;
         }
 
-        /* CALENDARIO 7 DÍAS */
+        /* CALENDARIO */
         .calendario-wrapper {
             background: #000000;
             border-radius: 15px;
@@ -340,15 +321,8 @@
             cursor: pointer;
         }
 
-        .calendario-dia.today {
-            background: var(--neon-pink);
-            color: black;
-        }
-
-        .calendario-dia.has-evento {
-            border-color: var(--neon-cyan);
-            box-shadow: 0 0 10px var(--neon-cyan);
-        }
+        .calendario-dia.today { background: var(--neon-pink); color: black; }
+        .calendario-dia.has-evento { border-color: var(--neon-cyan); box-shadow: 0 0 10px var(--neon-cyan); }
 
         /* ACTIVIDADES DEL DÍA */
         .dia-actividades {
@@ -361,8 +335,8 @@
 
         .actividad-item {
             background: #000;
-            padding: 10px;
-            margin-bottom: 8px;
+            padding: 12px;
+            margin-bottom: 10px;
             border-radius: 8px;
             border-left: 4px solid var(--neon-cyan);
         }
@@ -379,10 +353,7 @@
             text-decoration: none;
         }
 
-        .archivo-link:hover {
-            background: var(--neon-cyan);
-            color: black;
-        }
+        .archivo-link:hover { background: var(--neon-cyan); color: black; }
 
         /* WHATSAPP FLOTANTE */
         .whatsapp-share {
@@ -410,7 +381,17 @@
             50% { box-shadow: 0 0 35px var(--whatsapp); }
         }
 
-        /* RESPONSIVE */
+        /* MODO EDICIÓN */
+        .editando-indicator {
+            background: var(--neon-orange);
+            color: black;
+            padding: 8px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            text-align: center;
+            font-weight: bold;
+        }
+
         @media screen and (max-width: 480px) {
             html { font-size: 12px; }
             .header h1 { font-size: 1.8rem; }
@@ -420,17 +401,15 @@
 </head>
 <body>
     <div class="container">
-        <!-- HEADER -->
         <div class="header">
-            <h1><i> AGENDA PERSONAL 2026 </i></h1>
+            <h1><i>AGENDA PERSONAL 2026</i></h1>
             <div class="subtitle">✦ Licenciatura en Educación Artística - Semestre IX ✦</div>
             <div class="date-badge" id="fechaActual"></div>
         </div>
 
-        <!-- MAIN PANEL -->
         <div class="main-panel">
             <div class="dashboard-grid">
-                <!-- COLUMNA 1: HORARIO COMPLETO CON FECHAS -->
+                <!-- COLUMNA 1: HORARIO COMPLETO -->
                 <div class="card">
                     <div class="card-title" style="color: #ff1493;">
                         <span>📅</span> HORARIO COMPLETO CON FECHAS
@@ -438,7 +417,6 @@
                     
                     <div id="horarioCompletoContainer"></div>
                     
-                    <!-- NOTAS CONFIDENCIALES -->
                     <div style="margin-top: 20px; background: #1a1a1a; padding: 12px; border-radius: 12px; border: 3px dashed #ff1493;">
                         <div style="color: #ff1493; font-size: 1.2rem; margin-bottom: 10px;">🔐 MIS NOTAS CONFIDENCIALES</div>
                         <textarea id="notasConfidenciales" placeholder="📝 Escribe aquí tus apuntes..." 
@@ -446,10 +424,14 @@
                     </div>
                 </div>
 
-                <!-- COLUMNA 2: CREAR EVENTO CON ARCHIVOS Y LINKS -->
+                <!-- COLUMNA 2: CREAR/EDITAR EVENTOS -->
                 <div class="card">
                     <div class="card-title" style="color: #00ffff;">
-                        <span>⏰</span> CREAR EVENTO + ARCHIVOS
+                        <span>⏰</span> CREAR / EDITAR EVENTO
+                    </div>
+                    
+                    <div id="editandoIndicator" class="editando-indicator" style="display: none;">
+                        ✏️ EDITANDO EVENTO - ID: <span id="editandoId"></span>
                     </div>
                     
                     <form id="eventoForm">
@@ -470,6 +452,7 @@
                                 <option value="universidad">📚 Universidad</option>
                                 <option value="examen">📝 Examen</option>
                                 <option value="tutoria">👥 Tutoría</option>
+                                <option value="entrega">📤 Entrega</option>
                             </select>
                         </div>
                         
@@ -478,9 +461,8 @@
                             <textarea id="eventoDesc" rows="2" placeholder="Describe tu actividad..."></textarea>
                         </div>
 
-                        <!-- SECCIÓN DE LINKS -->
                         <div class="form-group">
-                            <label>🔗 AGREGAR LINK:</label>
+                            <label>🔗 LINKS:</label>
                             <div style="display: flex; gap: 5px;">
                                 <input type="url" id="linkInput" placeholder="https://..." style="flex: 1;">
                                 <button type="button" class="btn-small" onclick="agregarLink()" style="border-color: #00ffff; color: #00ffff;">+</button>
@@ -488,9 +470,8 @@
                             <div id="linksContainer" style="margin-top: 8px;"></div>
                         </div>
 
-                        <!-- SECCIÓN DE ARCHIVOS (simulado con links) -->
                         <div class="form-group">
-                            <label>📎 AGREGAR ARCHIVO (link):</label>
+                            <label>📎 ARCHIVOS (links):</label>
                             <div style="display: flex; gap: 5px;">
                                 <input type="url" id="archivoInput" placeholder="Link a drive/dropbox..." style="flex: 1;">
                                 <button type="button" class="btn-small" onclick="agregarArchivo()" style="border-color: #ff1493; color: #ff1493;">+</button>
@@ -499,7 +480,7 @@
                         </div>
                         
                         <div class="form-group">
-                            <label>⏱️ ACTIVAR ALARMA:</label>
+                            <label>⏱️ ALARMA:</label>
                             <select id="alarmaTiempo">
                                 <option value="0">🔔 En el momento</option>
                                 <option value="5">⏰ 5 minutos antes</option>
@@ -511,10 +492,11 @@
                             </select>
                         </div>
                         
-                        <button type="submit" class="btn">⚡ GUARDAR EVENTO COMPLETO ⚡</button>
+                        <button type="submit" class="btn" id="btnGuardar">⚡ GUARDAR EVENTO ⚡</button>
+                        <button type="button" class="btn-small" id="btnCancelarEdicion" onclick="cancelarEdicion()" style="width:100%; margin-top:8px; border-color:#f44336; color:#f44336; display:none;">CANCELAR EDICIÓN</button>
                     </form>
 
-                    <!-- CALENDARIO 7 DÍAS -->
+                    <!-- CALENDARIO -->
                     <div class="calendario-wrapper">
                         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
                             <button class="btn-small" id="prevMonthBtn" style="border-color: #ff1493; color: #ff1493;">←</button>
@@ -524,7 +506,6 @@
                         
                         <div class="calendario-grid" id="calendarioGrid"></div>
                         
-                        <!-- ACTIVIDADES DEL DÍA SELECCIONADO -->
                         <div id="actividadesDelDia" class="dia-actividades" style="display: none;">
                             <div style="color: #ffaa00; font-size: 1.2rem; margin-bottom: 8px;" id="fechaSeleccionadaTitulo"></div>
                             <div id="listaActividadesDia"></div>
@@ -532,18 +513,18 @@
                     </div>
                 </div>
 
-                <!-- COLUMNA 3: PRÓXIMOS EVENTOS -->
+                <!-- COLUMNA 3: MIS EVENTOS -->
                 <div class="card">
                     <div class="card-title" style="color: #ff00ff;">
                         <span>⚡</span> MIS EVENTOS GUARDADOS
                     </div>
                     
-                    <div class="eventos-container" id="eventosContainer" style="max-height: 400px; overflow-y: auto;"></div>
+                    <div class="eventos-container" id="eventosContainer" style="max-height: 450px; overflow-y: auto;"></div>
                     
                     <div style="margin-top: 15px; display: grid; gap: 8px;">
                         <button class="btn-small" onclick="verificarAlarmas()" style="border-color: #00ffff; color: #00ffff; width: 100%;">🔔 VERIFICAR ALARMAS</button>
-                        <button class="btn-small" onclick="compartirWhatsApp()" style="border-color: #25D366; color: #25D366; width: 100%;">📱 COMPARTIR TODO</button>
-                        <button class="btn-small" onclick="exportarRespaldo()" style="border-color: #ff1493; color: #ff1493; width: 100%;">💾 RESPALDO</button>
+                        <button class="btn-small" onclick="compartirWhatsAppCompleto()" style="border-color: #25D366; color: #25D366; width: 100%;">📱 COMPARTIR AGENDA COMPLETA</button>
+                        <button class="btn-small" onclick="exportarRespaldo()" style="border-color: #ff1493; color: #ff1493; width: 100%;">💾 RESPALDO COMPLETO</button>
                     </div>
                 </div>
             </div>
@@ -551,10 +532,10 @@
     </div>
 
     <!-- BOTÓN WHATSAPP -->
-    <div class="whatsapp-share" onclick="compartirWhatsApp()">📱</div>
+    <div class="whatsapp-share" onclick="compartirWhatsAppCompleto()">📱</div>
 
     <script>
-        // ===== DATOS COMPLETOS DE LAS MATERIAS CON FECHAS =====
+        // ===== DATOS DE MATERIAS =====
         const materiasCompletas = [
             {
                 nombre: "PRACTICA EN OTROS CONTEXTOS I",
@@ -648,7 +629,7 @@
             }
         ];
 
-        // Variables globales
+        // ===== VARIABLES GLOBALES =====
         let eventos = JSON.parse(localStorage.getItem('eventosYobanaNeonCompleta')) || [];
         let notas = localStorage.getItem('notasYobanaNeonCompleta') || '';
         let currentDate = new Date();
@@ -656,7 +637,8 @@
         let currentYear = currentDate.getFullYear();
         let fechaSeleccionada = null;
         
-        // Links y archivos temporales para el nuevo evento
+        // Para edición
+        let editandoId = null;
         let linksTemp = [];
         let archivosTemp = [];
 
@@ -673,17 +655,18 @@
         const listaActividadesDia = document.getElementById('listaActividadesDia');
         const linksContainer = document.getElementById('linksContainer');
         const archivosContainer = document.getElementById('archivosContainer');
+        const editandoIndicator = document.getElementById('editandoIndicator');
+        const editandoIdSpan = document.getElementById('editandoId');
+        const btnCancelarEdicion = document.getElementById('btnCancelarEdicion');
+        const btnGuardar = document.getElementById('btnGuardar');
 
-        // ===== MOSTRAR HORARIO COMPLETO CON FECHAS =====
+        // ===== MOSTRAR HORARIO COMPLETO =====
         function mostrarHorarioCompleto() {
             horarioContainer.innerHTML = '';
-            
             materiasCompletas.forEach(m => {
                 const materiaDiv = document.createElement('div');
                 materiaDiv.className = 'materia-completa';
-                materiaDiv.style.borderLeftColor = m.semana === '1' ? '#ff1493' : '#00ffff';
                 
-                // Fechas HTML
                 let fechasHtml = '';
                 if (m.fechas) {
                     fechasHtml += '<div class="fechas-container">';
@@ -721,12 +704,11 @@
                     </div>
                     ${fechasHtml}
                 `;
-                
                 horarioContainer.appendChild(materiaDiv);
             });
         }
 
-        // ===== FUNCIONES PARA LINKS Y ARCHIVOS =====
+        // ===== FUNCIONES PARA LINKS/ARCHIVOS =====
         window.agregarLink = () => {
             const link = document.getElementById('linkInput').value;
             if (link) {
@@ -737,9 +719,9 @@
         };
 
         window.agregarArchivo = () => {
-            const archivo = document.getElementById('archivoInput').value;
-            if (archivo) {
-                archivosTemp.push(archivo);
+            const arch = document.getElementById('archivoInput').value;
+            if (arch) {
+                archivosTemp.push(arch);
                 actualizarArchivosUI();
                 document.getElementById('archivoInput').value = '';
             }
@@ -779,13 +761,14 @@
             actualizarArchivosUI();
         };
 
-        // ===== GUARDAR EVENTO =====
+        // ===== GUARDAR O ACTUALIZAR EVENTO =====
         eventoForm.addEventListener('submit', (e) => {
             e.preventDefault();
             
             const fechaEvento = new Date(document.getElementById('eventoFecha').value);
             const alarmaTiempo = parseInt(document.getElementById('alarmaTiempo').value);
             
+            // Programar alarma si es nuevo o se actualizó la fecha
             if (alarmaTiempo > 0) {
                 const tiempoAlarma = new Date(fechaEvento.getTime() - (alarmaTiempo * 60 * 1000));
                 const ahora = new Date();
@@ -801,8 +784,8 @@
                 }
             }
             
-            const nuevoEvento = {
-                id: Date.now(),
+            const eventoData = {
+                id: editandoId || Date.now(),
                 titulo: document.getElementById('eventoTitulo').value,
                 fecha: document.getElementById('eventoFecha').value,
                 tipo: document.getElementById('eventoTipo').value,
@@ -810,13 +793,24 @@
                 alarma: alarmaTiempo,
                 links: [...linksTemp],
                 archivos: [...archivosTemp],
-                fechaCreacion: new Date().toISOString()
+                ultimaModificacion: new Date().toISOString()
             };
             
-            eventos.push(nuevoEvento);
+            if (editandoId) {
+                // Actualizar evento existente
+                const index = eventos.findIndex(e => e.id == editandoId);
+                if (index !== -1) {
+                    eventos[index] = eventoData;
+                }
+                cancelarEdicion();
+            } else {
+                // Nuevo evento
+                eventos.push(eventoData);
+            }
+            
             localStorage.setItem('eventosYobanaNeonCompleta', JSON.stringify(eventos));
             
-            // Limpiar
+            // Limpiar formulario
             eventoForm.reset();
             linksTemp = [];
             archivosTemp = [];
@@ -827,8 +821,58 @@
             renderCalendario();
             if (fechaSeleccionada) mostrarActividadesDia(fechaSeleccionada);
             
-            alert('✅ EVENTO GUARDADO CON ÉXITO');
+            alert(editandoId ? '✅ EVENTO ACTUALIZADO' : '✅ EVENTO GUARDADO');
         });
+
+        // ===== EDITAR EVENTO =====
+        window.editarEvento = (id) => {
+            const evento = eventos.find(e => e.id == id);
+            if (!evento) return;
+            
+            editandoId = id;
+            
+            // Llenar formulario
+            document.getElementById('eventoTitulo').value = evento.titulo || '';
+            document.getElementById('eventoFecha').value = evento.fecha || '';
+            document.getElementById('eventoTipo').value = evento.tipo || 'personal';
+            document.getElementById('eventoDesc').value = evento.descripcion || '';
+            document.getElementById('alarmaTiempo').value = evento.alarma || '0';
+            
+            // Cargar links y archivos
+            linksTemp = evento.links || [];
+            archivosTemp = evento.archivos || [];
+            actualizarLinksUI();
+            actualizarArchivosUI();
+            
+            // Mostrar indicador
+            editandoIndicator.style.display = 'block';
+            editandoIdSpan.textContent = id;
+            btnCancelarEdicion.style.display = 'block';
+            btnGuardar.textContent = '⚡ ACTUALIZAR EVENTO ⚡';
+        };
+
+        window.cancelarEdicion = () => {
+            editandoId = null;
+            eventoForm.reset();
+            linksTemp = [];
+            archivosTemp = [];
+            actualizarLinksUI();
+            actualizarArchivosUI();
+            editandoIndicator.style.display = 'none';
+            btnCancelarEdicion.style.display = 'none';
+            btnGuardar.textContent = '⚡ GUARDAR EVENTO ⚡';
+        };
+
+        window.eliminarEvento = (id) => {
+            if (confirm('¿Eliminar este evento?')) {
+                eventos = eventos.filter(e => e.id != id);
+                localStorage.setItem('eventosYobanaNeonCompleta', JSON.stringify(eventos));
+                mostrarEventos();
+                renderCalendario();
+                if (fechaSeleccionada) mostrarActividadesDia(fechaSeleccionada);
+                if (editandoId == id) cancelarEdicion();
+            }
+        };
 
         // ===== MOSTRAR EVENTOS =====
         function mostrarEventos() {
@@ -839,10 +883,8 @@
             }
             
             eventos.sort((a, b) => new Date(a.fecha) - new Date(b.fecha));
-            const ahora = new Date();
-            const futuros = eventos.filter(e => new Date(e.fecha) > ahora).slice(0, 10);
             
-            futuros.forEach((e, i) => {
+            eventos.forEach((e, i) => {
                 const f = new Date(e.fecha);
                 eventosContainer.innerHTML += `
                     <div class="evento-card" style="background: #1a1a1a; padding: 12px; margin-bottom: 10px; border-radius: 10px; border-left: 6px solid #00ffff;">
@@ -851,21 +893,14 @@
                         <div style="color: #ccc; font-size: 0.95rem;">${e.descripcion || ''}</div>
                         ${e.links && e.links.length ? `<div style="margin-top: 5px;">🔗 ${e.links.length} link(s)</div>` : ''}
                         ${e.archivos && e.archivos.length ? `<div>📎 ${e.archivos.length} archivo(s)</div>` : ''}
-                        <div style="margin-top: 8px;">
-                            <button class="btn-small" onclick="eliminarEvento('${e.id}')" style="border-color: #f44336; color: #f44336;">ELIMINAR</button>
+                        <div style="margin-top: 8px; display: flex; gap: 5px;">
+                            <button class="btn-small" onclick="editarEvento('${e.id}')" style="border-color: #00ffff; color: #00ffff;">✏️ EDITAR</button>
+                            <button class="btn-small" onclick="eliminarEvento('${e.id}')" style="border-color: #f44336; color: #f44336;">✖</button>
                         </div>
                     </div>
                 `;
             });
         }
-
-        window.eliminarEvento = (id) => {
-            eventos = eventos.filter(e => e.id != id);
-            localStorage.setItem('eventosYobanaNeonCompleta', JSON.stringify(eventos));
-            mostrarEventos();
-            renderCalendario();
-            if (fechaSeleccionada) mostrarActividadesDia(fechaSeleccionada);
-        };
 
         // ===== CALENDARIO =====
         function renderCalendario() {
@@ -915,9 +950,7 @@
             let clasesDelDia = [];
             
             if (diaSemana === 6) { // Sábado
-                // Determinar semana (esto es aproximado - puedes ajustar)
-                const semana = "1"; // Por defecto semana 1
-                clasesDelDia = materiasCompletas.filter(m => m.semana === semana);
+                clasesDelDia = materiasCompletas; // Mostrar todas las materias
             }
             
             fechaSeleccionadaTitulo.innerHTML = `📅 ${fecha.toLocaleDateString('es-ES', { weekday: 'long', day: 'numeric', month: 'long' })}`;
@@ -925,13 +958,14 @@
             let listaHtml = '';
             
             if (clasesDelDia.length > 0) {
-                listaHtml += '<div style="color: #00ffff; margin: 10px 0;">🎭 CLASES DEL DÍA:</div>';
+                listaHtml += '<div style="color: #00ffff; margin: 10px 0;">🎭 CLASES DEL DÍA (SÁBADO):</div>';
                 clasesDelDia.forEach(c => {
                     listaHtml += `
                         <div class="actividad-item">
                             <div style="font-weight: bold;">${c.nombre}</div>
                             <div>⏰ ${c.hora}</div>
                             <div>👩‍🏫 ${c.docente}</div>
+                            <div style="color: #ff1493;">📌 ${c.codigo}</div>
                         </div>
                     `;
                 });
@@ -945,9 +979,12 @@
                         <div class="actividad-item">
                             <div style="font-weight: bold;">${e.titulo}</div>
                             <div>⏰ ${fechaHora.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' })}</div>
-                            ${e.descripcion ? `<div style="color: #ccc;">${e.descripcion}</div>` : ''}
+                            ${e.descripcion ? `<div style="color: #ccc;">📝 ${e.descripcion}</div>` : ''}
                             ${e.links && e.links.length ? `<div style="margin-top:5px;">🔗 ${e.links.map(l => `<a href="${l}" target="_blank" class="archivo-link">link</a>`).join(' ')}</div>` : ''}
                             ${e.archivos && e.archivos.length ? `<div>📎 ${e.archivos.map(a => `<a href="${a}" target="_blank" class="archivo-link">archivo</a>`).join(' ')}</div>` : ''}
+                            <div style="margin-top: 5px;">
+                                <button class="btn-small" onclick="editarEvento('${e.id}')" style="border-color: #00ffff; color: #00ffff; padding: 2px 5px;">✏️</button>
+                            </div>
                         </div>
                     `;
                 });
@@ -959,6 +996,53 @@
             
             listaActividadesDia.innerHTML = listaHtml;
             actividadesDelDia.style.display = 'block';
+        };
+
+        // ===== COMPARTIR AGENDA COMPLETA EN WHATSAPP =====
+        window.compartirWhatsAppCompleto = () => {
+            let msg = "⚡ *MI AGENDA COMPLETA - YOBANA* ⚡\n\n";
+            msg += `📅 *FECHA:* ${new Date().toLocaleDateString('es-ES', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })}\n\n`;
+            
+            // MIS MATERIAS
+            msg += "📚 *MIS MATERIAS - SEMESTRE IX:*\n";
+            materiasCompletas.forEach(m => {
+                msg += `\n▪️ *${m.nombre}* (Semana ${m.semana})\n`;
+                msg += `   ⏰ ${m.hora}\n`;
+                msg += `   👩‍🏫 ${m.docente}\n`;
+                if (m.fechas) {
+                    msg += `   📌 AP: ${m.fechas.ap}\n`;
+                    if (m.fechas.tutorias) msg += `   👥 Tutorías: ${m.fechas.tutorias.join(', ')}\n`;
+                    if (m.fechas.convocatorias) msg += `   📢 Convocatorias: ${m.fechas.convocatorias.join(', ')}\n`;
+                }
+            });
+            
+            // PRÓXIMOS EVENTOS
+            msg += "\n\n⏰ *PRÓXIMOS EVENTOS:*\n";
+            const ahora = new Date();
+            const eventosFuturos = eventos.filter(e => new Date(e.fecha) > ahora).sort((a,b) => new Date(a.fecha) - new Date(b.fecha)).slice(0, 10);
+            
+            if (eventosFuturos.length === 0) {
+                msg += "✨ No hay eventos próximos\n";
+            } else {
+                eventosFuturos.forEach(e => {
+                    const f = new Date(e.fecha);
+                    msg += `\n▪️ *${e.titulo}*\n`;
+                    msg += `   📅 ${f.toLocaleDateString('es-ES', { day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit' })}\n`;
+                    if (e.descripcion) msg += `   📝 ${e.descripcion}\n`;
+                    if (e.links && e.links.length) msg += `   🔗 ${e.links.length} link(s)\n`;
+                    if (e.archivos && e.archivos.length) msg += `   📎 ${e.archivos.length} archivo(s)\n`;
+                });
+            }
+            
+            // NOTAS CONFIDENCIALES (solo un extracto)
+            if (notasTextarea.value) {
+                msg += "\n\n🔐 *MIS NOTAS:*\n";
+                msg += notasTextarea.value.substring(0, 200) + (notasTextarea.value.length > 200 ? "..." : "");
+            }
+            
+            msg += "\n\n✨ *Agenda personal de Yobana - Educación Artística* ✨";
+            
+            window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`, '_blank');
         };
 
         // ===== NAVEGACIÓN MESES =====
@@ -983,38 +1067,29 @@
         // ===== VERIFICAR ALARMAS =====
         window.verificarAlarmas = () => {
             const ahora = new Date();
+            let activas = false;
             eventos.forEach(e => {
                 const fecha = new Date(e.fecha);
                 const diff = Math.round((fecha - ahora) / (1000 * 60));
-                if (diff <= 5 && diff >= 0) alert(`🔔 ${e.titulo}`);
+                if (diff <= 5 && diff >= 0) {
+                    alert(`🔔 ${e.titulo} - ${e.descripcion || ''}`);
+                    activas = true;
+                }
             });
-        };
-
-        // ===== COMPARTIR WHATSAPP =====
-        window.compartirWhatsApp = () => {
-            let msg = "⚡ MI AGENDA COMPLETA ⚡\n\n";
-            
-            msg += "📅 *PRÓXIMOS EVENTOS:*\n";
-            const ahora = new Date();
-            eventos.filter(e => new Date(e.fecha) > ahora).slice(0, 5).forEach(e => {
-                const f = new Date(e.fecha);
-                msg += `• ${e.titulo} - ${f.toLocaleDateString('es-ES')}\n`;
-            });
-            
-            msg += "\n📚 *MIS CLASES:*\n";
-            materiasCompletas.slice(0, 3).forEach(m => {
-                msg += `• ${m.nombre} (Semana ${m.semana})\n`;
-            });
-            
-            window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`, '_blank');
+            if (!activas) alert('✨ No hay alarmas próximas');
         };
 
         // ===== RESPALDO =====
         window.exportarRespaldo = () => {
-            const backup = { eventos, notas: notasTextarea.value, materias: materiasCompletas };
+            const backup = { 
+                eventos, 
+                notas: notasTextarea.value,
+                materias: materiasCompletas,
+                fecha: new Date().toISOString()
+            };
             const link = document.createElement('a');
             link.download = `yobana_backup_${new Date().toISOString().slice(0,10)}.json`;
-            link.href = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(backup));
+            link.href = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(backup, null, 2));
             link.click();
         };
 
