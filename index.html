@@ -3,18 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=yes">
-    <title>AGENDA PERSONAL 2026</title>
-    <!-- Librería para generar PDF -->
+    <title>AGENDA COMPLETA 2026 - YOBANA</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', 'Arial', sans-serif;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', 'Arial', sans-serif; }
         :root {
             --neon-pink: #ff1493;
             --neon-cyan: #00ffff;
@@ -25,21 +18,14 @@
             --bg-card: #111111;
             --bg-item: #1a1a1a;
         }
-
-        html {
-            font-size: 13px;
-        }
-
+        html { font-size: 13px; }
         body {
             background: var(--bg-dark);
             min-height: 100vh;
             padding: 10px;
             color: #ffffff;
-            position: relative;
             overflow-x: hidden;
-            width: 100%;
         }
-
         body::before {
             content: '';
             position: fixed;
@@ -52,13 +38,7 @@
             pointer-events: none;
             z-index: -1;
         }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            width: 100%;
-        }
-
+        .container { max-width: 1400px; margin: 0 auto; width: 100%; }
         .header {
             background: var(--bg-card);
             border-radius: 25px 25px 0 0;
@@ -67,20 +47,8 @@
             box-shadow: 0 0 30px rgba(255, 20, 147, 0.6);
             margin-bottom: 2px;
         }
-
-        .header h1 {
-            font-size: 2rem;
-            margin-bottom: 8px;
-            text-shadow: 0 0 15px var(--neon-pink);
-        }
-
-        .subtitle {
-            font-size: 1.2rem;
-            color: var(--neon-cyan);
-            text-shadow: 0 0 12px var(--neon-cyan);
-            margin-bottom: 12px;
-        }
-
+        .header h1 { font-size: 2rem; margin-bottom: 8px; text-shadow: 0 0 15px var(--neon-pink); }
+        .subtitle { font-size: 1.2rem; color: var(--neon-cyan); text-shadow: 0 0 12px var(--neon-cyan); margin-bottom: 12px; }
         .date-badge {
             background: rgba(255, 20, 147, 0.3);
             padding: 10px 20px;
@@ -88,11 +56,9 @@
             display: inline-block;
             border: 2px solid var(--neon-cyan);
             box-shadow: 0 0 20px var(--neon-cyan);
-            color: white;
             font-weight: bold;
             font-size: 1rem;
         }
-
         .main-panel {
             background: var(--bg-card);
             padding: 15px;
@@ -100,13 +66,14 @@
             border: 3px solid var(--neon-cyan);
             box-shadow: 0 0 30px rgba(0, 255, 255, 0.4);
         }
-
         .dashboard-grid {
             display: grid;
-            grid-template-columns: 1fr;
+            grid-template-columns: 1fr 1.2fr 1fr;
             gap: 15px;
         }
-
+        @media screen and (max-width: 900px) {
+            .dashboard-grid { grid-template-columns: 1fr; }
+        }
         .card {
             background: var(--bg-card);
             border-radius: 20px;
@@ -114,11 +81,9 @@
             border: 3px solid;
             transition: all 0.3s;
         }
-
         .card:nth-child(1) { border-color: var(--neon-pink); box-shadow: 0 0 25px rgba(255, 20, 147, 0.4); }
         .card:nth-child(2) { border-color: var(--neon-cyan); box-shadow: 0 0 25px rgba(0, 255, 255, 0.4); }
         .card:nth-child(3) { border-color: var(--neon-purple); box-shadow: 0 0 25px rgba(255, 0, 255, 0.4); }
-
         .card-title {
             font-size: 1.4rem;
             margin-bottom: 15px;
@@ -127,132 +92,118 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            text-shadow: 0 0 10px currentColor;
         }
-
-        /* MATERIAS COMPLETAS */
         .materia-completa {
             background: #000000;
             border-radius: 15px;
             margin-bottom: 15px;
             padding: 15px;
-            border-left: 8px solid;
             border: 2px solid var(--neon-pink);
             box-shadow: 0 0 15px rgba(255, 20, 147, 0.3);
         }
-
-        .materia-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .materia-nombre {
-            color: var(--neon-cyan);
-            font-size: 1.2rem;
-            font-weight: bold;
-            text-shadow: 0 0 8px var(--neon-cyan);
-        }
-
-        .materia-codigo {
-            color: var(--neon-pink);
-            font-size: 1rem;
-            background: rgba(255,20,147,0.2);
-            padding: 4px 10px;
-            border-radius: 20px;
-        }
-
-        .materia-horario {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 12px;
-            flex-wrap: wrap;
-            color: white;
-            font-size: 1rem;
-        }
-
-        .materia-docente {
-            background: #1a1a1a;
-            padding: 10px;
-            border-radius: 10px;
-            margin: 10px 0;
-            border-left: 4px solid var(--neon-orange);
-        }
-
-        .docente-email {
-            color: var(--neon-orange);
-            font-size: 0.95rem;
-            word-break: break-all;
-        }
-
-        .fechas-container {
-            margin-top: 12px;
-        }
-
-        .fechas-titulo {
-            color: var(--neon-cyan);
-            font-size: 1rem;
-            margin-bottom: 8px;
-            font-weight: bold;
-        }
-
-        .fechas-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
+        .materia-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; flex-wrap: wrap; gap: 10px; }
+        .materia-nombre { color: var(--neon-cyan); font-size: 1.2rem; font-weight: bold; text-shadow: 0 0 8px var(--neon-cyan); }
+        .materia-codigo { color: var(--neon-pink); font-size: 1rem; background: rgba(255,20,147,0.2); padding: 4px 10px; border-radius: 20px; }
+        .materia-horario { display: flex; gap: 15px; margin-bottom: 12px; flex-wrap: wrap; font-size: 1rem; }
+        .materia-docente { background: #1a1a1a; padding: 10px; border-radius: 10px; margin: 10px 0; border-left: 4px solid var(--neon-orange); }
+        .docente-email { color: var(--neon-orange); font-size: 0.95rem; word-break: break-all; }
+        .fechas-container { margin-top: 12px; }
+        .fechas-titulo { color: var(--neon-cyan); font-size: 1rem; margin-bottom: 8px; font-weight: bold; }
+        .fechas-grid { display: flex; flex-wrap: wrap; gap: 8px; }
         .fecha-badge {
             background: rgba(255,20,147,0.2);
             border: 1px solid var(--neon-pink);
             border-radius: 20px;
             padding: 5px 12px;
             font-size: 0.9rem;
-            color: white;
+            cursor: pointer;
+            transition: all 0.2s;
         }
-
+        .fecha-badge:hover { transform: scale(1.05); background: var(--neon-pink); color: black; }
         .fecha-badge.ap { background: rgba(0,255,255,0.2); border-color: var(--neon-cyan); }
         .fecha-badge.tutoria { background: rgba(255,165,0,0.2); border-color: orange; }
         .fecha-badge.convocatoria { background: rgba(255,0,255,0.2); border-color: var(--neon-purple); }
-
-        /* FORMULARIO */
-        .form-group {
-            margin-bottom: 12px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            color: var(--neon-cyan);
-            font-weight: 600;
-            font-size: 1rem;
-        }
-
-        .form-group input, 
-        .form-group textarea, 
-        .form-group select {
-            width: 100%;
-            padding: 10px;
-            background: #000000;
-            border: 2px solid var(--neon-pink);
-            border-radius: 12px;
-            color: white;
-            font-size: 1rem;
-        }
-
-        .file-upload {
-            border: 2px dashed var(--neon-cyan);
-            padding: 15px;
-            text-align: center;
-            border-radius: 12px;
+        
+        .btn-small {
+            padding: 8px 12px;
+            font-size: 0.85rem;
+            background: transparent;
+            border: 2px solid;
+            border-radius: 8px;
             cursor: pointer;
-            background: #000;
-            margin-bottom: 10px;
+            font-weight: bold;
+            transition: all 0.3s;
         }
-
+        .btn {
+            background: linear-gradient(45deg, var(--neon-pink), var(--neon-cyan));
+            color: black;
+            font-weight: bold;
+            border: none;
+            padding: 12px;
+            border-radius: 12px;
+            font-size: 1rem;
+            cursor: pointer;
+            width: 100%;
+            border: 2px solid white;
+            margin-top: 5px;
+        }
+        .calendario-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 4px;
+        }
+        .calendario-dia-header {
+            text-align: center;
+            font-weight: bold;
+            color: var(--neon-cyan);
+            padding: 6px 2px;
+            border-bottom: 2px solid var(--neon-pink);
+            font-size: 0.85rem;
+        }
+        .calendario-dia {
+            aspect-ratio: 1;
+            background: #111111;
+            border: 1px solid var(--neon-pink);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .calendario-dia.today { background: var(--neon-pink); color: black; font-weight: bold; }
+        .calendario-dia.has-evento { border-color: var(--neon-cyan); box-shadow: 0 0 10px var(--neon-cyan); }
+        .calendario-dia.has-foto { border-color: var(--neon-orange); box-shadow: 0 0 8px var(--neon-orange); }
+        .calendario-dia:hover { transform: scale(1.05); background: var(--neon-pink); color: black; }
+        
+        .panel-dia {
+            background: #1a1a1a;
+            border-radius: 15px;
+            padding: 15px;
+            margin-top: 15px;
+            border: 2px solid var(--neon-orange);
+        }
+        .actividad-item {
+            background: #000;
+            padding: 12px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            border-left: 4px solid var(--neon-cyan);
+        }
+        .foto-item {
+            position: relative;
+            display: inline-block;
+            margin: 5px;
+        }
+        .foto-item img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 2px solid var(--neon-pink);
+            cursor: pointer;
+        }
         .link-item {
             background: #1a1a1a;
             padding: 10px;
@@ -262,8 +213,6 @@
             justify-content: space-between;
             align-items: center;
         }
-
-        /* LINKS CLICKEABLES - CORREGIDO */
         .link-clickeable {
             color: #00ffff;
             text-decoration: none;
@@ -276,13 +225,7 @@
             border: 1px solid #00ffff;
             transition: all 0.3s;
         }
-
-        .link-clickeable:hover {
-            background: #00ffff;
-            color: black;
-            transform: scale(1.05);
-        }
-
+        .link-clickeable:hover { background: #00ffff; color: black; transform: scale(1.05); }
         .archivo-clickeable {
             color: #ff1493;
             text-decoration: none;
@@ -293,104 +236,27 @@
             display: inline-block;
             margin: 2px;
             border: 1px solid #ff1493;
-            transition: all 0.3s;
         }
-
-        .archivo-clickeable:hover {
-            background: #ff1493;
+        .editando-indicator {
+            background: var(--neon-orange);
             color: black;
-            transform: scale(1.05);
-        }
-
-        .btn {
-            background: linear-gradient(45deg, var(--neon-pink), var(--neon-cyan));
-            color: black;
-            font-weight: bold;
-            border: none;
-            padding: 12px;
-            border-radius: 12px;
-            font-size: 1.1rem;
-            cursor: pointer;
-            width: 100%;
-            border: 2px solid white;
-            box-shadow: 0 0 15px var(--neon-pink);
-            margin-top: 5px;
-        }
-
-        .btn-small {
-            padding: 8px 12px;
-            font-size: 0.95rem;
-            background: transparent;
-            border: 2px solid;
+            padding: 8px;
             border-radius: 8px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        /* CALENDARIO */
-        .calendario-wrapper {
-            background: #000000;
-            border-radius: 15px;
-            padding: 12px;
-            border: 3px solid var(--neon-cyan);
-            margin-top: 15px;
-        }
-
-        .calendario-grid {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            gap: 4px;
-        }
-
-        .calendario-dia-header {
+            margin-bottom: 10px;
             text-align: center;
             font-weight: bold;
-            color: var(--neon-cyan);
-            padding: 6px 2px;
-            border-bottom: 2px solid var(--neon-pink);
-            font-size: 0.9rem;
         }
-
-        .calendario-dia {
-            aspect-ratio: 1;
-            background: #111111;
-            border: 1px solid var(--neon-pink);
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.9rem;
-            cursor: pointer;
-        }
-
-        .calendario-dia.today { background: var(--neon-pink); color: black; }
-        .calendario-dia.has-evento { border-color: var(--neon-cyan); box-shadow: 0 0 10px var(--neon-cyan); }
-
-        /* ACTIVIDADES DEL DÍA */
-        .dia-actividades {
-            background: #1a1a1a;
-            border-radius: 12px;
-            padding: 12px;
+        .reportes-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
             margin-top: 15px;
-            border: 2px solid var(--neon-orange);
         }
-
-        .actividad-item {
-            background: #000;
-            padding: 12px;
-            margin-bottom: 10px;
-            border-radius: 8px;
-            border-left: 4px solid var(--neon-cyan);
-        }
-
-        /* WHATSAPP FLOTANTE */
         .whatsapp-share {
             position: fixed;
             bottom: 15px;
             right: 15px;
-            background: transparent;
-            border: 3px solid var(--whatsapp);
-            color: var(--whatsapp);
+            background: var(--whatsapp);
             width: 55px;
             height: 55px;
             border-radius: 50%;
@@ -402,331 +268,412 @@
             box-shadow: 0 0 20px var(--whatsapp);
             z-index: 1000;
             animation: pulse 2s infinite;
+            border: none;
+            color: white;
         }
-
         @keyframes pulse {
-            0% { box-shadow: 0 0 20px var(--whatsapp); }
-            50% { box-shadow: 0 0 35px var(--whatsapp); }
+            0% { box-shadow: 0 0 20px var(--whatsapp); transform: scale(1); }
+            50% { box-shadow: 0 0 35px var(--whatsapp); transform: scale(1.05); }
+            100% { transform: scale(1); }
         }
-
-        .editando-indicator {
-            background: var(--neon-orange);
-            color: black;
-            padding: 8px;
-            border-radius: 8px;
-            margin-bottom: 10px;
+        textarea, input, select {
+            background: #000;
+            border: 2px solid var(--neon-pink);
+            border-radius: 10px;
+            color: white;
+            padding: 10px;
+            width: 100%;
+        }
+        .hidden { display: none; }
+        .evento-card { background: #1a1a1a; padding: 12px; margin-bottom: 10px; border-radius: 10px; border-left: 6px solid #00ffff; }
+        .form-group { margin-bottom: 12px; }
+        .form-group label { display: block; margin-bottom: 5px; color: var(--neon-cyan); font-weight: 600; font-size: 1rem; }
+        
+        /* Estilos para el PDF */
+        .pdf-container {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            padding: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .pdf-header {
             text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #ff1493;
+            padding-bottom: 15px;
+        }
+        .pdf-header h1 { color: #ff1493; font-size: 28px; }
+        .pdf-header h2 { color: #00ffff; font-size: 20px; margin-top: 10px; }
+        .pdf-section {
+            margin-bottom: 30px;
+            page-break-inside: avoid;
+        }
+        .pdf-section h3 {
+            background: #ff1493;
+            color: white;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        .pdf-materia {
+            border-left: 4px solid #ff1493;
+            padding-left: 15px;
+            margin-bottom: 20px;
+            page-break-inside: avoid;
+        }
+        .pdf-evento {
+            border-left: 4px solid #00ffff;
+            padding-left: 15px;
+            margin-bottom: 20px;
+            background: #f9f9f9;
+            padding: 12px;
+            border-radius: 8px;
+            page-break-inside: avoid;
+        }
+        .pdf-fecha {
             font-weight: bold;
+            color: #ff1493;
+            font-size: 18px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            border-bottom: 2px solid #ff1493;
         }
-
-        /* OPCIONES DE EXPORTACIÓN */
-        .export-options {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 8px;
-            margin-top: 15px;
+        .pdf-links {
+            margin-top: 8px;
+            font-size: 12px;
+            word-break: break-all;
         }
-
-        @media screen and (max-width: 480px) {
-            html { font-size: 12px; }
-            .header h1 { font-size: 1.8rem; }
-            .card-title { font-size: 1.3rem; }
+        .pdf-links a { color: #00ffff; text-decoration: none; }
+        .pdf-nota {
+            background: #f0f0f0;
+            padding: 12px;
+            border-radius: 8px;
+            margin-top: 10px;
+            font-style: italic;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background: #ff1493;
+            color: white;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1><i>AGENDA PERSONAL 2026</i></h1>
-            <div class="subtitle">✦ Licenciatura en Educación Artística - Semestre IX ✦</div>
+            <h1>📅 AGENDA COMPLETA 2026</h1>
+            <div class="subtitle">✦ Yobana - Licenciatura en Educación Artística - Semestre IX ✦</div>
             <div class="date-badge" id="fechaActual"></div>
         </div>
 
         <div class="main-panel">
             <div class="dashboard-grid">
-                <!-- COLUMNA 1: HORARIO COMPLETO -->
+                <!-- COLUMNA IZQUIERDA: MATERIAS -->
                 <div class="card">
-                    <div class="card-title" style="color: #ff1493;">
-                        <span>📅</span> HORARIO COMPLETO CON FECHAS
-                    </div>
-                    
-                    <div id="horarioCompletoContainer"></div>
-                    
-                    <div style="margin-top: 20px; background: #1a1a1a; padding: 12px; border-radius: 12px; border: 3px dashed #ff1493;">
-                        <div style="color: #ff1493; font-size: 1.2rem; margin-bottom: 10px;">🔐 MIS NOTAS CONFIDENCIALES</div>
-                        <textarea id="notasConfidenciales" placeholder="📝 Escribe aquí tus apuntes..." 
-                            style="width: 100%; padding: 12px; background: #000; border: 2px solid #00ffff; border-radius: 10px; color: white; font-size: 1rem; min-height: 100px;"></textarea>
+                    <div class="card-title" style="color: #ff1493;">📚 MIS MATERIAS</div>
+                    <div id="horarioCompletoContainer" style="max-height: 500px; overflow-y: auto;"></div>
+                    <div style="margin-top: 15px; background: #1a1a1a; padding: 12px; border-radius: 12px;">
+                        <div style="color: #ff1493; margin-bottom: 8px;">🔐 NOTAS GENERALES</div>
+                        <textarea id="notasGenerales" placeholder="📝 Notas generales..." rows="3"></textarea>
                     </div>
                 </div>
 
-                <!-- COLUMNA 2: CREAR/EDITAR EVENTOS -->
+                <!-- COLUMNA CENTRAL: CALENDARIO + FORMULARIO COMPLETO -->
                 <div class="card">
-                    <div class="card-title" style="color: #00ffff;">
-                        <span>⏰</span> CREAR / EDITAR EVENTO
+                    <div class="card-title" style="color: #00ffff;">📅 CALENDARIO</div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                        <button class="btn-small" id="prevMonthBtn" style="border-color: #ff1493; color: #ff1493;">◀ MES</button>
+                        <span id="monthYearDisplay" style="color: #00ffff; font-weight: bold; font-size: 1.2rem;"></span>
+                        <button class="btn-small" id="nextMonthBtn" style="border-color: #ff1493; color: #ff1493;">MES ▶</button>
+                    </div>
+                    <div class="calendario-grid" id="calendarioGrid"></div>
+                    
+                    <!-- FORMULARIO CREAR/EDITAR EVENTO COMPLETO -->
+                    <div style="margin-top: 15px; background: #000; border-radius: 15px; padding: 15px; border: 2px solid var(--neon-cyan);">
+                        <div class="card-title" style="color: #00ffff; font-size: 1.2rem;">✏️ CREAR / EDITAR EVENTO</div>
+                        
+                        <div id="editandoIndicator" class="editando-indicator" style="display: none;">
+                            ✏️ EDITANDO EVENTO - ID: <span id="editandoId"></span>
+                        </div>
+                        
+                        <form id="eventoForm">
+                            <div class="form-group">
+                                <label>⚡ TÍTULO DEL EVENTO:</label>
+                                <input type="text" id="eventoTitulo" placeholder="Ej: Exposición de Teatro" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>📅 FECHA Y HORA:</label>
+                                <input type="datetime-local" id="eventoFecha" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>🎭 TIPO:</label>
+                                <select id="eventoTipo">
+                                    <option value="personal">🌸 Personal</option>
+                                    <option value="universidad">📚 Universidad</option>
+                                    <option value="examen">📝 Examen</option>
+                                    <option value="tutoria">👥 Tutoría</option>
+                                    <option value="entrega">📤 Entrega</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>📝 DESCRIPCIÓN / TEMÁTICA:</label>
+                                <textarea id="eventoDesc" rows="2" placeholder="Describe tu actividad..."></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label>🔗 LINKS:</label>
+                                <div style="display: flex; gap: 5px;">
+                                    <input type="url" id="linkInput" placeholder="https://..." style="flex: 1;">
+                                    <button type="button" class="btn-small" onclick="agregarLink()" style="border-color: #00ffff; color: #00ffff;">+</button>
+                                </div>
+                                <div id="linksContainer" style="margin-top: 8px;"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>📎 ARCHIVOS (links):</label>
+                                <div style="display: flex; gap: 5px;">
+                                    <input type="url" id="archivoInput" placeholder="Link a drive/dropbox..." style="flex: 1;">
+                                    <button type="button" class="btn-small" onclick="agregarArchivo()" style="border-color: #ff1493; color: #ff1493;">+</button>
+                                </div>
+                                <div id="archivosContainer" style="margin-top: 8px;"></div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>⏱️ ALARMA:</label>
+                                <select id="alarmaTiempo">
+                                    <option value="0">🔔 En el momento</option>
+                                    <option value="5">⏰ 5 minutos antes</option>
+                                    <option value="15">⏰ 15 minutos antes</option>
+                                    <option value="30">⏰ 30 minutos antes</option>
+                                    <option value="60">⏰ 1 hora antes</option>
+                                    <option value="1440">⏰ 1 día antes</option>
+                                    <option value="2880">⏰ 2 días antes</option>
+                                </select>
+                            </div>
+                            
+                            <button type="submit" class="btn" id="btnGuardar">⚡ GUARDAR EVENTO ⚡</button>
+                            <button type="button" class="btn-small" id="btnCancelarEdicion" onclick="cancelarEdicion()" style="width:100%; margin-top:8px; border-color:#f44336; color:#f44336; display:none;">CANCELAR EDICIÓN</button>
+                        </form>
                     </div>
                     
-                    <div id="editandoIndicator" class="editando-indicator" style="display: none;">
-                        ✏️ EDITANDO EVENTO - ID: <span id="editandoId"></span>
-                    </div>
-                    
-                    <form id="eventoForm">
-                        <div class="form-group">
-                            <label>⚡ TÍTULO DEL EVENTO:</label>
-                            <input type="text" id="eventoTitulo" placeholder="Ej: Exposición de Teatro" required>
+                    <!-- Panel del día con fotos y notas -->
+                    <div id="panelDia" class="panel-dia">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                            <h3 id="fechaSeleccionadaTitulo" style="color: var(--neon-orange);">📌 Selecciona un día</h3>
+                            <button class="btn-small" id="btnRecordatorioWhatsapp" style="border-color: #25D366; color: #25D366;">📱 RECORDATORIO</button>
                         </div>
-                        
-                        <div class="form-group">
-                            <label>📅 FECHA Y HORA:</label>
-                            <input type="datetime-local" id="eventoFecha" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label>🎭 TIPO:</label>
-                            <select id="eventoTipo">
-                                <option value="personal">🌸 Personal</option>
-                                <option value="universidad">📚 Universidad</option>
-                                <option value="examen">📝 Examen</option>
-                                <option value="tutoria">👥 Tutoría</option>
-                                <option value="entrega">📤 Entrega</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label>📝 DESCRIPCIÓN / TEMÁTICA:</label>
-                            <textarea id="eventoDesc" rows="2" placeholder="Describe tu actividad..."></textarea>
-                        </div>
-
-                        <div class="form-group">
-                            <label>🔗 LINKS:</label>
-                            <div style="display: flex; gap: 5px;">
-                                <input type="url" id="linkInput" placeholder="https://..." style="flex: 1;">
-                                <button type="button" class="btn-small" onclick="agregarLink()" style="border-color: #00ffff; color: #00ffff;">+</button>
+                        <div id="actividadesDelDia"></div>
+                        <div style="margin-top: 20px; border-top: 2px dashed var(--neon-cyan); padding-top: 15px;">
+                            <div style="color: var(--neon-cyan); margin-bottom: 8px;">📸 EVIDENCIAS DEL DÍA</div>
+                            <input type="file" id="subirFoto" accept="image/*" multiple style="margin-bottom: 10px;">
+                            <div id="fotosContainer" style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px;"></div>
+                            <div style="margin-top: 15px;">
+                                <div style="color: var(--neon-cyan); margin-bottom: 5px;">📝 NOTA PERSONAL DEL DÍA</div>
+                                <textarea id="notaDelDia" rows="2" placeholder="Escribe aquí tus reflexiones, logros o pendientes para este día..."></textarea>
+                                <button id="btnGuardarDiario" class="btn-small" style="margin-top: 8px; border-color: #ff1493; color: #ff1493; width: 100%;">💾 GUARDAR REGISTRO</button>
                             </div>
-                            <div id="linksContainer" style="margin-top: 8px;"></div>
-                        </div>
-
-                        <div class="form-group">
-                            <label>📎 ARCHIVOS (links):</label>
-                            <div style="display: flex; gap: 5px;">
-                                <input type="url" id="archivoInput" placeholder="Link a drive/dropbox..." style="flex: 1;">
-                                <button type="button" class="btn-small" onclick="agregarArchivo()" style="border-color: #ff1493; color: #ff1493;">+</button>
-                            </div>
-                            <div id="archivosContainer" style="margin-top: 8px;"></div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label>⏱️ ALARMA:</label>
-                            <select id="alarmaTiempo">
-                                <option value="0">🔔 En el momento</option>
-                                <option value="5">⏰ 5 minutos antes</option>
-                                <option value="15">⏰ 15 minutos antes</option>
-                                <option value="30">⏰ 30 minutos antes</option>
-                                <option value="60">⏰ 1 hora antes</option>
-                                <option value="1440">⏰ 1 día antes</option>
-                                <option value="2880">⏰ 2 días antes</option>
-                            </select>
-                        </div>
-                        
-                        <button type="submit" class="btn" id="btnGuardar">⚡ GUARDAR EVENTO ⚡</button>
-                        <button type="button" class="btn-small" id="btnCancelarEdicion" onclick="cancelarEdicion()" style="width:100%; margin-top:8px; border-color:#f44336; color:#f44336; display:none;">CANCELAR EDICIÓN</button>
-                    </form>
-
-                    <!-- CALENDARIO -->
-                    <div class="calendario-wrapper">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                            <button class="btn-small" id="prevMonthBtn" style="border-color: #ff1493; color: #ff1493;">←</button>
-                            <span id="monthYearDisplay" style="color: #00ffff; font-weight: bold; font-size: 1.2rem;"></span>
-                            <button class="btn-small" id="nextMonthBtn" style="border-color: #ff1493; color: #ff1493;">→</button>
-                        </div>
-                        
-                        <div class="calendario-grid" id="calendarioGrid"></div>
-                        
-                        <div id="actividadesDelDia" class="dia-actividades" style="display: none;">
-                            <div style="color: #ffaa00; font-size: 1.2rem; margin-bottom: 8px;" id="fechaSeleccionadaTitulo"></div>
-                            <div id="listaActividadesDia"></div>
                         </div>
                     </div>
                 </div>
 
-                <!-- COLUMNA 3: MIS EVENTOS -->
+                <!-- COLUMNA DERECHA: EVENTOS GUARDADOS Y REPORTES -->
                 <div class="card">
-                    <div class="card-title" style="color: #ff00ff;">
-                        <span>⚡</span> MIS EVENTOS GUARDADOS
-                    </div>
+                    <div class="card-title" style="color: #ff00ff;">⚡ MIS EVENTOS GUARDADOS</div>
+                    <div id="eventosContainer" style="max-height: 350px; overflow-y: auto; margin-bottom: 15px;"></div>
                     
-                    <div class="eventos-container" id="eventosContainer" style="max-height: 450px; overflow-y: auto;"></div>
-                    
-                    <div class="export-options">
-                        <button class="btn-small" onclick="verificarAlarmas()" style="border-color: #00ffff; color: #00ffff;">🔔 VER ALARMAS</button>
-                        <button class="btn-small" onclick="compartirWhatsAppCompleto()" style="border-color: #25D366; color: #25D366;">📱 COMPARTIR</button>
-                        <button class="btn-small" onclick="exportarPDF()" style="border-color: #ff1493; color: #ff1493;">📄 PDF BONITO</button>
-                        <button class="btn-small" onclick="exportarRespaldo()" style="border-color: #ff00ff; color: #ff00ff;">💾 RESPALDO</button>
+                    <div class="reportes-grid">
+                        <button class="btn-small" onclick="exportarPDFCompleto('dia')" style="border-color: #ff1493; color: #ff1493;">📄 PDF DÍA</button>
+                        <button class="btn-small" onclick="exportarPDFCompleto('semana')" style="border-color: #00ffff; color: #00ffff;">📄 PDF SEMANA</button>
+                        <button class="btn-small" onclick="exportarPDFCompleto('mes')" style="border-color: #ff00ff; color: #ff00ff;">📄 PDF MES</button>
                     </div>
+                    <button class="btn-small" onclick="exportarRespaldo()" style="margin-top: 10px; width: 100%; border-color: #ffaa00; color: #ffaa00;">💾 RESPALDO COMPLETO</button>
+                    <button class="btn-small" onclick="verificarAlarmas()" style="margin-top: 8px; width: 100%; border-color: #ff1493; color: #ff1493;">🔔 VER ALARMAS</button>
                 </div>
             </div>
         </div>
     </div>
-
-    <!-- BOTÓN WHATSAPP -->
-    <div class="whatsapp-share" onclick="compartirWhatsAppCompleto()">📱</div>
+    <div class="whatsapp-share" onclick="enviarRecordatorioWhatsapp()">📱</div>
 
     <script>
-        // ===== DATOS DE MATERIAS =====
+        // ========== DATOS DE MATERIAS ==========
         const materiasCompletas = [
+            { nombre: "PRACTICA EN OTROS CONTEXTOS I", codigo: "5031553", semana: "1", dia: "Sábado", hora: "7:00 am - 11:00 am", duracion: "4h", docente: "LUENGAS PATIÑO LUZ DARY", email: "ldluengasp@ut.edu.co", fechas: { ap: "2026-03-07", tutorias: ["2026-03-21", "2026-04-11", "2026-04-25", "2026-05-09", "2026-05-30"], convocatorias: ["2026-06-13", "2026-06-27"] } },
+            { nombre: "SEMINARIO INTEGRAL PARA LA EDUCACIÓN ARTÍSTICA", codigo: "5031555", semana: "1", dia: "Sábado", hora: "11:00 am - 2:00 pm", duracion: "3h", docente: "BELALCAZAR GONGORA NOHEMY", email: "nbgongora@ut.edu.co", fechas: { ap: "2026-03-07", tutorias: ["2026-03-21", "2026-04-11", "2026-04-25", "2026-05-09", "2026-05-30"], convocatorias: ["2026-06-13", "2026-06-27"] } },
+            { nombre: "TALLER DE EXPLORACIÓN CORPORAL", codigo: "1202104", semana: "1", dia: "Sábado", hora: "2:00 pm - 5:00 pm", duracion: "3h", docente: "POR ASIGNAR", email: "", fechas: { ap: "2026-03-07", tutorias: ["2026-03-21", "2026-04-11", "2026-04-25", "2026-05-09", "2026-05-30"], convocatorias: ["2026-06-13", "2026-06-27"] } },
+            { nombre: "TEXTO Y REPRESENTACION TEATRAL", codigo: "1102134", semana: "2", dia: "Sábado", hora: "7:00 am - 11:00 am", duracion: "4h", docente: "BELALCAZAR GONGORA NOHEMY", email: "nbgongora@ut.edu.co", fechas: { ap: "2026-03-14", tutorias: ["2026-03-28", "2026-04-18", "2026-05-02", "2026-05-23", "2026-06-06"], convocatorias: ["2026-06-20", "2026-06-27"] } },
+            { nombre: "DIDACTICA DE LA MUSICA", codigo: "5031554", semana: "2", dia: "Sábado", hora: "3:00 pm - 7:00 pm", duracion: "4h", docente: "VELEZ FLOREZ DAGOBERTO", email: "dvelezf@ut.edu.co", fechas: { ap: "2026-03-14", tutorias: ["2026-03-28", "2026-04-18", "2026-05-02", "2026-05-23", "2026-06-06"], convocatorias: ["2026-06-20", "2026-06-27"] } },
+            { nombre: "FUNDAMENTOS DE CREACIÓN MUSICAL", codigo: "1102135", semana: "2", dia: "Sábado", hora: "11:00 am - 3:00 pm", duracion: "4h", docente: "GAMBOA RUIZ CARLOS ANDRES", email: "cagamboar@ut.edu.co", fechas: { ap: "2026-03-14", tutorias: ["2026-03-28", "2026-04-18", "2026-05-02", "2026-05-23", "2026-06-06"], convocatorias: ["2026-06-20", "2026-06-27"] } }
+        ];
+
+        // ========== TUS EVENTOS GUARDADOS ==========
+        const eventosPrecargados = [
             {
-                nombre: "PRACTICA EN OTROS CONTEXTOS I",
-                codigo: "5031553",
-                semana: "1",
-                dia: "Sábado",
-                hora: "7:00 am - 11:00 am",
-                duracion: "4h",
-                docente: "LUENGAS PATIÑO LUZ DARY",
-                email: "ldluengasp@ut.edu.co",
-                fechas: {
-                    ap: "2026-03-07", // Formato YYYY-MM-DD para comparar
-                    tutorias: ["2026-03-21", "2026-04-11", "2026-04-25", "2026-05-09", "2026-05-30"],
-                    convocatorias: ["2026-06-13", "2026-06-27"]
-                }
+                id: 1742505600000,
+                titulo: "COMPROMISOS SEBAS Y ÁGORA",
+                fecha: "2026-03-20T18:00:00",
+                tipo: "personal",
+                descripcion: "SEBAS 6 A 8 PM REUNIÓN PADRES DE FAMILIA primera Escuela de Padres presencial del año escolar 2026. El tema de este espacio será el No juzgamiento, y será orientado por nuestra Psicóloga Leidy Anacona.\n\nÁGORA ULTIMA CLASE 6-8 Tema: Unidad 4. La exposición museográfica como medio de comunicación\nHora: 20 mar 2026 06:00 p. m. Bogotá\nID de reunión: 892 3329 1012",
+                alarma: 30,
+                links: ["https://renata.zoom.us/j/89233291012"],
+                archivos: []
             },
             {
-                nombre: "SEMINARIO INTEGRAL PARA LA EDUCACIÓN ARTÍSTICA",
-                codigo: "5031555",
-                semana: "1",
-                dia: "Sábado",
-                hora: "11:00 am - 2:00 pm",
-                duracion: "3h",
-                docente: "BELALCAZAR GONGORA NOHEMY",
-                email: "nbgongora@ut.edu.co",
-                fechas: {
-                    ap: "2026-03-07",
-                    tutorias: ["2026-03-21", "2026-04-11", "2026-04-25", "2026-05-09", "2026-05-30"],
-                    convocatorias: ["2026-06-13", "2026-06-27"]
-                }
+                id: 1742592000000,
+                titulo: "ACTIVIDADES UNIVERSIDAD - TUTORÍA 1 (21/03/2026)",
+                fecha: "2026-03-21T08:00:00",
+                tipo: "universidad",
+                descripcion: "📌 PRÁCTICA EN OTROS CONTEXTOS I:\n¿Cómo puede la educación artística contribuir al desarrollo de proyectos culturales? Los proyectos culturales como practica de la educación artística. Definiciones. Conceptos de educación artística en contextos Rurales, Comunitarios y Conflicto.\n\n📌 SEMINARIO INTEGRAL PARA LA EDUCACIÓN ARTÍSTICA:\n¿Qué es el arte? ¿Cómo se relaciona la estética con la identidad personal y colectiva? ¿Puede la estética ser utilizada para manipular las emociones y las creencias de las personas? Lo estético. La práctica artística. ¿Qué es lo disciplinar en las artes? Las Bellas Artes. Disciplinas Artísticas, convergencias y divergencias.\n\n📌 TALLER DE EXPLORACIÓN CORPORAL:\n¿Cómo juntar y plasmar fragmentos de la historia escrita en un cuerpo? Cuerpo y memoria histórica. Memoria Corporal. Autoimagen corporal. Mapa corporal. Entrevista al cuerpo. Mi cuerpo encuentra su voz y su historia. Fotografías. Autorretrato. Redes sociales. Centro Nacional de Memoria histórica.\n\n✅ DEBO PRESENTAR UNA ACTIVIDAD LÚDICA",
+                alarma: 60,
+                links: [
+                    "https://docs.google.com/document/d/16w7miSJwLo8GQQRFg_VEhyIpzalesP_x",
+                    "https://docs.google.com/document/d/176dpcvT5yxQqNvTAD-oN3b4XaNLeXQY",
+                    "https://docs.google.com/document/d/1URkKPcMPfJqOcmd78mf3vvDHHHkjP29",
+                    "https://docs.google.com/document/d/1DTV8nQ1OKXOxPConM1yOwSCfVp9Nr",
+                    "https://docs.google.com/document/d/10zQAP5mxQTv_vEYAzk3xA0y1n_8Zhq6",
+                    "https://docs.google.com/document/d/1zOedW5cXoOFpRo79Y3MVQ0VFvrk3JqWxgvJVmuA4n4/edit?usp=sharing",
+                    "https://docs.google.com/document/d/1Wv8t1UBoxTo716LXm5fS0ePQmakQLVw4QY/edit?usp=sharing"
+                ],
+                archivos: []
             },
             {
-                nombre: "TALLER DE EXPLORACIÓN CORPORAL",
-                codigo: "1202104",
-                semana: "1",
-                dia: "Sábado",
-                hora: "2:00 pm - 5:00 pm",
-                duracion: "3h",
-                docente: "POR ASIGNAR",
-                email: "",
-                fechas: {
-                    ap: "2026-03-07",
-                    tutorias: ["2026-03-21", "2026-04-11", "2026-04-25", "2026-05-09", "2026-05-30"],
-                    convocatorias: ["2026-06-13", "2026-06-27"]
-                }
+                id: 1742851200000,
+                titulo: "ACTIVIDADES UNIVERSIDAD - TUTORÍA 2 (11/04/2026)",
+                fecha: "2026-04-11T08:00:00",
+                tipo: "universidad",
+                descripcion: "📌 PRÁCTICA EN OTROS CONTEXTOS I:\n¿Qué impacto tienen los proyectos culturales y artísticos en la promoción de la diversidad en comunidades específicas? Los Proyectos culturales y artísticos en y para la diversidad. Diversidad. Interculturalidad. Discapacidad. Inclusión.\n\n📌 SEMINARIO INTEGRAL PARA LA EDUCACIÓN ARTÍSTICA:\n1. ¿Es la educación artística una herramienta para desarrollar la creatividad o simplemente para transmitir técnicas y habilidades?\n2. ¿Cómo se puede equilibrar la formación técnica con la expresión personal en la educación artística?\n3. ¿Es la educación artística accesible para todos, o está reservada para aquellos con talento o recursos económicos?\nSustantivamente Educación, Adjetivamente artística. Concepto de Educación. Educación Artística. Enseñar, instruir y educar.\n\n📌 TALLER DE EXPRESIÓN CORPORAL:\n¿Qué es lo que puede un cuerpo emancipado que reconoce ser territorio? Indicios del cuerpo-conceptos. Cuerpos indóciles-Foucault. Políticas punitivas del cuerpo. Mi cuerpo mi territorio. Teatro. Videos. Noticias.",
+                alarma: 60,
+                links: [
+                    "https://docs.google.com/document/d/16w7miSJwLo8GQQRFg_VEhyIpzalesP_x",
+                    "https://docs.google.com/document/d/176dpcvT5yxQqNvTAD-oN3b4XaNLeXQY",
+                    "https://docs.google.com/document/d/1URkKPcMPfJqOcmd78mf3vvDHHHkjP29"
+                ],
+                archivos: []
             },
             {
-                nombre: "TEXTO Y REPRESENTACION TEATRAL",
-                codigo: "1102134",
-                semana: "2",
-                dia: "Sábado",
-                hora: "7:00 am - 11:00 am",
-                duracion: "4h",
-                docente: "BELALCAZAR GONGORA NOHEMY",
-                email: "nbgongora@ut.edu.co",
-                fechas: {
-                    ap: "2026-03-14",
-                    tutorias: ["2026-03-28", "2026-04-18", "2026-05-02", "2026-05-23", "2026-06-06"],
-                    convocatorias: ["2026-06-20", "2026-06-27"]
-                }
+                id: 1743456000000,
+                titulo: "ACTIVIDADES UNIVERSIDAD - TUTORÍA 3 (25/04/2026)",
+                fecha: "2026-04-25T08:00:00",
+                tipo: "universidad",
+                descripcion: "📌 PRÁCTICA EN OTROS CONTEXTOS I:\n¿Cuáles son los principales desafíos que enfrentan los educadores al implementar programas de educación artística en escenarios no escolarizados? ¿Qué oportunidades únicas ofrecen estos escenarios para la innovación y la experimentación en la educación artística? Los escenarios no escolarizados en la práctica de la educación artística. Educación artística hospitalaria. Educación artística con población vulnerable. Educación artística cárceles. Educación artística para el emprendimiento.\n\n📌 SEMINARIO INTEGRAL PARA LA EDUCACIÓN ARTÍSTICA:\n1. ¿Cuáles son los principales modelos de educación artística y cómo se diferencian entre sí?\n2. ¿Qué características definen al modelo de educación artística centrado en el estudiante y cómo se implementa en el aula?\n3. ¿Cómo se relaciona el modelo de educación artística basado en la disciplina con la enseñanza de técnicas y habilidades artísticas específicas?\nModelos Pedagógicos en Educación Artística: Modelo logocentrista, Modelo Expresionista, Modelo Filolingüista.\n\n📌 TALLER DE EXPRESIÓN CORPORAL:\n¿Por qué ejercer soberanía corporal y ampliar la comunicación corporal en la escuela? Pedagogías del cuerpo. El cuerpo un campo de batalla. Inclusión y no discriminación. Estereotipos. Performance. Maguaré. Ley 1257. Canciones, películas. Bodyart.",
+                alarma: 60,
+                links: [],
+                archivos: []
             },
             {
-                nombre: "DIDACTICA DE LA MUSICA",
-                codigo: "5031554",
-                semana: "2",
-                dia: "Sábado",
-                hora: "3:00 pm - 7:00 pm",
-                duracion: "4h",
-                docente: "VELEZ FLOREZ DAGOBERTO",
-                email: "dvelezf@ut.edu.co",
-                fechas: {
-                    ap: "2026-03-14",
-                    tutorias: ["2026-03-28", "2026-04-18", "2026-05-02", "2026-05-23", "2026-06-06"],
-                    convocatorias: ["2026-06-20", "2026-06-27"]
-                }
-            },
-            {
-                nombre: "FUNDAMENTOS DE CREACIÓN MUSICAL",
-                codigo: "1102135",
-                semana: "2",
-                dia: "Sábado",
-                hora: "11:00 am - 3:00 pm",
-                duracion: "4h",
-                docente: "GAMBOA RUIZ CARLOS ANDRES",
-                email: "cagamboar@ut.edu.co",
-                fechas: {
-                    ap: "2026-03-14",
-                    tutorias: ["2026-03-28", "2026-04-18", "2026-05-02", "2026-05-23", "2026-06-06"],
-                    convocatorias: ["2026-06-20", "2026-06-27"]
-                }
+                id: 1744060800000,
+                titulo: "ACTIVIDADES UNIVERSIDAD - TUTORÍA 4 (09/05/2026)",
+                fecha: "2026-05-09T08:00:00",
+                tipo: "universidad",
+                descripcion: "📌 PRÁCTICA EN OTROS CONTEXTOS I:\n¿Cómo influye el contexto geográfico y cultural del territorio en la práctica y los contenidos de la educación artística? Territorio como escenario para la práctica de la educación artística. Cartografías educativas. Patrimonio cultural.\n\n📌 SEMINARIO INTEGRAL PARA LA EDUCACIÓN ARTÍSTICA:\n1. ¿Cómo se relaciona la cultura con la ciudadanía y la participación ciudadana?\n2. ¿Qué papel juega la cultura en la formación de la identidad ciudadana?\n3. ¿Qué papel juega la educación en la promoción de la ciudadanía crítica y reflexiva?\nEducación, Cultura y Ciudadanía. Usos y funciones de las artes en la educación y el desarrollo humano. Construcción ciudadana y educación artística. Diversidad cultural y educación artística. Aproximaciones o enfoques de la educación artística.\n\n📌 TALLER DE EXPRESIÓN CORPORAL:\n¿Cómo se puede fomentar la creatividad y la emancipación corporal en la escuela? Corporeidad - Lenguaje corporal. Cuerpos sonoros en movimiento. El cuerpo habla, narra, escribe. Secuencia de imágenes corporales. Colegio del Cuerpo. Pelotas y objetos: palos, máscaras, sombreros. Escenario teatral.",
+                alarma: 60,
+                links: [],
+                archivos: []
             }
         ];
 
-        // ===== VARIABLES GLOBALES =====
-        let eventos = JSON.parse(localStorage.getItem('eventosYobanaNeonCompleta')) || [];
-        let notas = localStorage.getItem('notasYobanaNeonCompleta') || '';
-        let currentDate = new Date();
-        let currentMonth = currentDate.getMonth();
-        let currentYear = currentDate.getFullYear();
-        let fechaSeleccionada = null;
+        // ========== CARGAR EVENTOS ==========
+        let eventosGuardados = JSON.parse(localStorage.getItem('eventosYobanaNeonCompleta')) || [];
         
-        // Para edición
+        if(eventosGuardados.length === 0){
+            eventosGuardados = eventosPrecargados;
+            localStorage.setItem('eventosYobanaNeonCompleta', JSON.stringify(eventosGuardados));
+        } else {
+            eventosPrecargados.forEach(eventoPre => {
+                const existe = eventosGuardados.some(e => e.id === eventoPre.id);
+                if(!existe){
+                    eventosGuardados.push(eventoPre);
+                }
+            });
+            localStorage.setItem('eventosYobanaNeonCompleta', JSON.stringify(eventosGuardados));
+        }
+        
+        let eventos = eventosGuardados;
+        let diarioPersonal = JSON.parse(localStorage.getItem('diarioYobanaUnificado')) || {};
+        let notasGenerales = localStorage.getItem('notasYobanaNeonCompleta') || '';
+        
         let editandoId = null;
         let linksTemp = [];
         let archivosTemp = [];
-
+        
+        let currentMonth = new Date().getMonth();
+        let currentYear = new Date().getFullYear();
+        let fechaSeleccionada = new Date().toISOString().split('T')[0];
+        
         // Elementos DOM
         const horarioContainer = document.getElementById('horarioCompletoContainer');
         const eventosContainer = document.getElementById('eventosContainer');
-        const fechaActualElement = document.getElementById('fechaActual');
-        const notasTextarea = document.getElementById('notasConfidenciales');
-        const eventoForm = document.getElementById('eventoForm');
         const calendarioGrid = document.getElementById('calendarioGrid');
         const monthYearDisplay = document.getElementById('monthYearDisplay');
-        const actividadesDelDia = document.getElementById('actividadesDelDia');
         const fechaSeleccionadaTitulo = document.getElementById('fechaSeleccionadaTitulo');
-        const listaActividadesDia = document.getElementById('listaActividadesDia');
-        const linksContainer = document.getElementById('linksContainer');
-        const archivosContainer = document.getElementById('archivosContainer');
-        const editandoIndicator = document.getElementById('editandoIndicator');
-        const editandoIdSpan = document.getElementById('editandoId');
-        const btnCancelarEdicion = document.getElementById('btnCancelarEdicion');
-        const btnGuardar = document.getElementById('btnGuardar');
-
-        // ===== MOSTRAR HORARIO COMPLETO =====
-        function mostrarHorarioCompleto() {
+        const actividadesDelDia = document.getElementById('actividadesDelDia');
+        const fotosContainer = document.getElementById('fotosContainer');
+        const notaDelDia = document.getElementById('notaDelDia');
+        const subirFoto = document.getElementById('subirFoto');
+        const btnGuardarDiario = document.getElementById('btnGuardarDiario');
+        const btnRecordatorioWhatsapp = document.getElementById('btnRecordatorioWhatsapp');
+        const notasGeneralesTextarea = document.getElementById('notasGenerales');
+        
+        // ========== FUNCIONES AUXILIARES ==========
+        function formatearFechaMostrar(fechaStr) {
+            if(!fechaStr) return '';
+            const partes = fechaStr.split('-');
+            if (partes.length === 3) {
+                const meses = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
+                return `${partes[2]}-${meses[parseInt(partes[1])-1]}-${partes[0]}`;
+            }
+            return fechaStr;
+        }
+        
+        function formatearFechaCompleta(fechaStr) {
+            if(!fechaStr) return '';
+            const fecha = new Date(fechaStr);
+            return fecha.toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+        }
+        
+        function obtenerActividadesPorFecha(fecha) {
+            const materias = [];
+            materiasCompletas.forEach(m => {
+                if (m.fechas.ap === fecha) materias.push({...m, tipo: '📌 AP'});
+                if (m.fechas.tutorias && m.fechas.tutorias.includes(fecha)) materias.push({...m, tipo: '👥 Tutoría'});
+                if (m.fechas.convocatorias && m.fechas.convocatorias.includes(fecha)) materias.push({...m, tipo: '📢 Convocatoria'});
+            });
+            const eventosDia = eventos.filter(e => e.fecha && e.fecha.startsWith(fecha));
+            return { materias, eventos: eventosDia };
+        }
+        
+        // ========== MOSTRAR HORARIO ==========
+        function mostrarHorario() {
             horarioContainer.innerHTML = '';
             materiasCompletas.forEach(m => {
-                // Convertir fechas para mostrar
-                const apFormateada = m.fechas.ap ? formatearFechaParaMostrar(m.fechas.ap) : '';
-                const tutoriasFormateadas = m.fechas.tutorias ? m.fechas.tutorias.map(f => formatearFechaParaMostrar(f)) : [];
-                const convocatoriasFormateadas = m.fechas.convocatorias ? m.fechas.convocatorias.map(f => formatearFechaParaMostrar(f)) : [];
-                
-                const materiaDiv = document.createElement('div');
-                materiaDiv.className = 'materia-completa';
+                const div = document.createElement('div');
+                div.className = 'materia-completa';
                 
                 let fechasHtml = '<div class="fechas-container">';
-                fechasHtml += `<div class="fechas-titulo">📌 AP: <span class="fecha-badge ap">${apFormateada}</span></div>`;
+                fechasHtml += `<div class="fechas-titulo">📌 AP: <span class="fecha-badge ap" onclick="seleccionarFechaPorString('${m.fechas.ap}')">${formatearFechaMostrar(m.fechas.ap)}</span></div>`;
+                fechasHtml += '<div class="fechas-titulo">👥 Tutorías:</div><div class="fechas-grid">';
+                m.fechas.tutorias.forEach(f => {
+                    fechasHtml += `<span class="fecha-badge tutoria" onclick="seleccionarFechaPorString('${f}')">${formatearFechaMostrar(f)}</span>`;
+                });
+                fechasHtml += '</div><div class="fechas-titulo">📢 Convocatorias:</div><div class="fechas-grid">';
+                m.fechas.convocatorias.forEach(f => {
+                    fechasHtml += `<span class="fecha-badge convocatoria" onclick="seleccionarFechaPorString('${f}')">${formatearFechaMostrar(f)}</span>`;
+                });
+                fechasHtml += '</div></div>';
                 
-                if (tutoriasFormateadas.length > 0) {
-                    fechasHtml += '<div class="fechas-titulo" style="margin-top:8px;">👥 Tutorías:</div>';
-                    fechasHtml += '<div class="fechas-grid">';
-                    tutoriasFormateadas.forEach(f => fechasHtml += `<span class="fecha-badge tutoria">${f}</span>`);
-                    fechasHtml += '</div>';
-                }
-                
-                if (convocatoriasFormateadas.length > 0) {
-                    fechasHtml += '<div class="fechas-titulo" style="margin-top:8px;">📢 Convocatorias:</div>';
-                    fechasHtml += '<div class="fechas-grid">';
-                    convocatoriasFormateadas.forEach(f => fechasHtml += `<span class="fecha-badge convocatoria">${f}</span>`);
-                    fechasHtml += '</div>';
-                }
-                fechasHtml += '</div>';
-                
-                materiaDiv.innerHTML = `
+                div.innerHTML = `
                     <div class="materia-header">
                         <span class="materia-nombre">${m.nombre}</span>
                         <span class="materia-codigo">${m.codigo}</span>
@@ -742,49 +689,26 @@
                     </div>
                     ${fechasHtml}
                 `;
-                horarioContainer.appendChild(materiaDiv);
+                horarioContainer.appendChild(div);
             });
         }
-
-        // ===== FORMATEAR FECHAS =====
-        function formatearFechaParaMostrar(fechaStr) {
+        
+        window.seleccionarFechaPorString = (fechaStr) => {
+            if(!fechaStr) return;
             const partes = fechaStr.split('-');
-            if (partes.length === 3) {
-                const año = partes[0];
-                const mes = partes[1];
-                const dia = partes[2];
-                const meses = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
-                return `${dia}-${meses[parseInt(mes)-1]}-${año}`;
+            if(partes.length === 3){
+                fechaSeleccionada = fechaStr;
+                const año = parseInt(partes[0]);
+                const mes = parseInt(partes[1]) - 1;
+                currentYear = año;
+                currentMonth = mes;
+                renderCalendario();
+                cargarDiaSeleccionado();
+                document.getElementById('panelDia').scrollIntoView({ behavior: 'smooth' });
             }
-            return fechaStr;
-        }
-
-        // ===== FUNCIÓN PARA OBTENER MATERIAS POR FECHA =====
-        function obtenerMateriasPorFecha(fecha) {
-            const fechaStr = fecha.toISOString().split('T')[0];
-            const materiasDelDia = [];
-            
-            materiasCompletas.forEach(m => {
-                // Verificar AP
-                if (m.fechas.ap === fechaStr) {
-                    materiasDelDia.push({...m, tipo: 'AP'});
-                }
-                
-                // Verificar tutorías
-                if (m.fechas.tutorias && m.fechas.tutorias.includes(fechaStr)) {
-                    materiasDelDia.push({...m, tipo: 'Tutoría'});
-                }
-                
-                // Verificar convocatorias
-                if (m.fechas.convocatorias && m.fechas.convocatorias.includes(fechaStr)) {
-                    materiasDelDia.push({...m, tipo: 'Convocatoria'});
-                }
-            });
-            
-            return materiasDelDia;
-        }
-
-        // ===== FUNCIONES PARA LINKS/ARCHIVOS =====
+        };
+        
+        // ========== LINKS/ARCHIVOS ==========
         window.agregarLink = () => {
             const link = document.getElementById('linkInput').value;
             if (link) {
@@ -793,7 +717,7 @@
                 document.getElementById('linkInput').value = '';
             }
         };
-
+        
         window.agregarArchivo = () => {
             const arch = document.getElementById('archivoInput').value;
             if (arch) {
@@ -802,8 +726,9 @@
                 document.getElementById('archivoInput').value = '';
             }
         };
-
+        
         function actualizarLinksUI() {
+            const linksContainer = document.getElementById('linksContainer');
             linksContainer.innerHTML = '';
             linksTemp.forEach((link, i) => {
                 linksContainer.innerHTML += `
@@ -814,8 +739,9 @@
                 `;
             });
         }
-
+        
         function actualizarArchivosUI() {
+            const archivosContainer = document.getElementById('archivosContainer');
             archivosContainer.innerHTML = '';
             archivosTemp.forEach((arch, i) => {
                 archivosContainer.innerHTML += `
@@ -826,34 +752,30 @@
                 `;
             });
         }
-
-        window.eliminarLink = (i) => {
-            linksTemp.splice(i, 1);
-            actualizarLinksUI();
-        };
-
-        window.eliminarArchivo = (i) => {
-            archivosTemp.splice(i, 1);
-            actualizarArchivosUI();
-        };
-
-        // ===== GUARDAR O ACTUALIZAR EVENTO =====
+        
+        window.eliminarLink = (i) => { linksTemp.splice(i, 1); actualizarLinksUI(); };
+        window.eliminarArchivo = (i) => { archivosTemp.splice(i, 1); actualizarArchivosUI(); };
+        
+        // ========== GUARDAR EVENTO (SIN RESTRICCIÓN DE FECHA) ==========
+        const eventoForm = document.getElementById('eventoForm');
+        const editandoIndicator = document.getElementById('editandoIndicator');
+        const editandoIdSpan = document.getElementById('editandoId');
+        const btnCancelarEdicion = document.getElementById('btnCancelarEdicion');
+        const btnGuardar = document.getElementById('btnGuardar');
+        
         eventoForm.addEventListener('submit', (e) => {
             e.preventDefault();
             
             const fechaEvento = new Date(document.getElementById('eventoFecha').value);
             const alarmaTiempo = parseInt(document.getElementById('alarmaTiempo').value);
             
-            // Programar alarma
             if (alarmaTiempo > 0) {
                 const tiempoAlarma = new Date(fechaEvento.getTime() - (alarmaTiempo * 60 * 1000));
                 const ahora = new Date();
                 if (tiempoAlarma > ahora) {
                     setTimeout(() => {
                         if (Notification.permission === 'granted') {
-                            new Notification('🔔 ALARMA ACTIVADA', { 
-                                body: document.getElementById('eventoTitulo').value 
-                            });
+                            new Notification('🔔 ALARMA ACTIVADA', { body: document.getElementById('eventoTitulo').value });
                         }
                         alert(`🔔 ${document.getElementById('eventoTitulo').value}`);
                     }, tiempoAlarma - ahora);
@@ -873,20 +795,15 @@
             };
             
             if (editandoId) {
-                // Actualizar evento existente
                 const index = eventos.findIndex(e => e.id == editandoId);
-                if (index !== -1) {
-                    eventos[index] = eventoData;
-                }
+                if (index !== -1) eventos[index] = eventoData;
                 cancelarEdicion();
             } else {
-                // Nuevo evento
                 eventos.push(eventoData);
             }
             
             localStorage.setItem('eventosYobanaNeonCompleta', JSON.stringify(eventos));
             
-            // Limpiar formulario
             eventoForm.reset();
             linksTemp = [];
             archivosTemp = [];
@@ -895,12 +812,11 @@
             
             mostrarEventos();
             renderCalendario();
-            if (fechaSeleccionada) mostrarActividadesDia(fechaSeleccionada);
+            cargarDiaSeleccionado();
             
             alert(editandoId ? '✅ EVENTO ACTUALIZADO' : '✅ EVENTO GUARDADO');
         });
-
-        // ===== EDITAR EVENTO =====
+        
         window.editarEvento = (id) => {
             const evento = eventos.find(e => e.id == id);
             if (!evento) return;
@@ -923,7 +839,7 @@
             btnCancelarEdicion.style.display = 'block';
             btnGuardar.textContent = '⚡ ACTUALIZAR EVENTO ⚡';
         };
-
+        
         window.cancelarEdicion = () => {
             editandoId = null;
             eventoForm.reset();
@@ -935,37 +851,30 @@
             btnCancelarEdicion.style.display = 'none';
             btnGuardar.textContent = '⚡ GUARDAR EVENTO ⚡';
         };
-
+        
         window.eliminarEvento = (id) => {
             if (confirm('¿Eliminar este evento?')) {
                 eventos = eventos.filter(e => e.id != id);
                 localStorage.setItem('eventosYobanaNeonCompleta', JSON.stringify(eventos));
                 mostrarEventos();
                 renderCalendario();
-                if (fechaSeleccionada) mostrarActividadesDia(fechaSeleccionada);
+                cargarDiaSeleccionado();
                 if (editandoId == id) cancelarEdicion();
             }
         };
-
-        // ===== MOSTRAR EVENTOS =====
+        
+        // ========== MOSTRAR EVENTOS ==========
         function mostrarEventos() {
             eventosContainer.innerHTML = '';
             if (eventos.length === 0) {
-                eventosContainer.innerHTML = '<p style="text-align: center; padding: 20px;">✨ No hay eventos guardados ✨</p>';
+                eventosContainer.innerHTML = '<p style="text-align:center; padding:20px;">✨ No hay eventos guardados ✨</p>';
                 return;
             }
             
-            eventos.sort((a, b) => new Date(a.fecha) - new Date(b.fecha));
-            
-            eventos.forEach((e) => {
-                const f = new Date(e.fecha);
-                const eventosCard = document.createElement('div');
-                eventosCard.className = 'evento-card';
-                eventosCard.style.background = '#1a1a1a';
-                eventosCard.style.padding = '12px';
-                eventosCard.style.marginBottom = '10px';
-                eventosCard.style.borderRadius = '10px';
-                eventosCard.style.borderLeft = '6px solid #00ffff';
+            eventos.sort((a,b) => new Date(a.fecha) - new Date(b.fecha)).forEach(e => {
+                const fecha = new Date(e.fecha);
+                const div = document.createElement('div');
+                div.className = 'evento-card';
                 
                 let linksHtml = '';
                 if (e.links && e.links.length) {
@@ -976,276 +885,158 @@
                     linksHtml += '</div>';
                 }
                 
-                let archivosHtml = '';
-                if (e.archivos && e.archivos.length) {
-                    archivosHtml = '<div style="margin-top:5px;">📎 ';
-                    e.archivos.forEach(a => {
-                        archivosHtml += `<a href="${a}" target="_blank" class="archivo-clickeable" style="margin-right:5px;">archivo</a>`;
-                    });
-                    archivosHtml += '</div>';
-                }
-                
-                eventosCard.innerHTML = `
-                    <div style="color: #00ffff;">📅 ${f.toLocaleDateString('es-ES', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })}</div>
+                div.innerHTML = `
+                    <div style="color: #00ffff;">📅 ${fecha.toLocaleDateString('es-ES', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })}</div>
                     <div style="font-weight: bold; font-size: 1.1rem; margin: 5px 0;">${e.titulo}</div>
-                    <div style="color: #ccc; font-size: 0.95rem;">${e.descripcion || ''}</div>
+                    <div style="color: #ccc; font-size: 0.9rem;">${e.descripcion ? e.descripcion.substring(0, 120) + (e.descripcion.length > 120 ? '...' : '') : ''}</div>
                     ${linksHtml}
-                    ${archivosHtml}
                     <div style="margin-top: 8px; display: flex; gap: 5px;">
                         <button class="btn-small" onclick="editarEvento('${e.id}')" style="border-color: #00ffff; color: #00ffff;">✏️ EDITAR</button>
                         <button class="btn-small" onclick="eliminarEvento('${e.id}')" style="border-color: #f44336; color: #f44336;">✖</button>
                     </div>
                 `;
-                eventosContainer.appendChild(eventosCard);
+                eventosContainer.appendChild(div);
             });
         }
-
-        // ===== CALENDARIO =====
+        
+        // ========== DIARIO PERSONAL ==========
+        function cargarDiaSeleccionado() {
+            fechaSeleccionadaTitulo.innerHTML = `📌 ${formatearFechaMostrar(fechaSeleccionada)}`;
+            const { materias, eventos: eventosDia } = obtenerActividadesPorFecha(fechaSeleccionada);
+            
+            let html = '';
+            if(materias.length > 0){
+                html += '<div style="color:#00ffff; margin:8px 0;">🎭 ACTIVIDADES ACADÉMICAS:</div>';
+                materias.forEach(m => {
+                    html += `<div class="actividad-item"><strong>${m.nombre}</strong><br>📌 ${m.tipo}<br>⏰ ${m.hora}<br>👩‍🏫 ${m.docente}</div>`;
+                });
+            }
+            if(eventosDia.length > 0){
+                html += '<div style="color:#ff00ff; margin:8px 0;">📌 MIS EVENTOS:</div>';
+                eventosDia.forEach(e => {
+                    let linksEvHtml = '';
+                    if(e.links && e.links.length){
+                        linksEvHtml = '<div style="margin-top:5px;">🔗 ' + e.links.map(l => `<a href="${l}" target="_blank" class="link-clickeable">link</a>`).join(' ') + '</div>';
+                    }
+                    html += `<div class="actividad-item"><strong>${e.titulo}</strong><br>📝 ${e.descripcion || ''}<br>${linksEvHtml}</div>`;
+                });
+            }
+            if(materias.length === 0 && eventosDia.length === 0) html = '<div style="text-align:center; padding:20px;">✨ Sin actividades programadas ✨</div>';
+            actividadesDelDia.innerHTML = html;
+            
+            const dataDia = diarioPersonal[fechaSeleccionada] || { nota: '', fotos: [] };
+            notaDelDia.value = dataDia.nota;
+            fotosContainer.innerHTML = '';
+            if(dataDia.fotos){
+                dataDia.fotos.forEach((fotoBase64, idx) => {
+                    const div = document.createElement('div');
+                    div.className = 'foto-item';
+                    div.innerHTML = `
+                        <img src="${fotoBase64}" onclick="window.open('${fotoBase64}')">
+                        <button class="btn-small" onclick="eliminarFoto(${idx})" style="position:absolute; top:-5px; right:-5px; background:red; border-radius:50%; width:20px; height:20px; padding:0; font-size:10px;">✖</button>
+                    `;
+                    fotosContainer.appendChild(div);
+                });
+            }
+        }
+        
+        window.eliminarFoto = (idx) => {
+            const dataDia = diarioPersonal[fechaSeleccionada] || { nota: '', fotos: [] };
+            dataDia.fotos.splice(idx, 1);
+            diarioPersonal[fechaSeleccionada] = dataDia;
+            localStorage.setItem('diarioYobanaUnificado', JSON.stringify(diarioPersonal));
+            cargarDiaSeleccionado();
+            renderCalendario();
+        };
+        
+        subirFoto.addEventListener('change', (e) => {
+            const files = Array.from(e.target.files);
+            const dataDia = diarioPersonal[fechaSeleccionada] || { nota: '', fotos: [] };
+            files.forEach(file => {
+                const reader = new FileReader();
+                reader.onload = (ev) => {
+                    dataDia.fotos.push(ev.target.result);
+                    diarioPersonal[fechaSeleccionada] = dataDia;
+                    localStorage.setItem('diarioYobanaUnificado', JSON.stringify(diarioPersonal));
+                    cargarDiaSeleccionado();
+                    renderCalendario();
+                };
+                reader.readAsDataURL(file);
+            });
+            subirFoto.value = '';
+        });
+        
+        btnGuardarDiario.addEventListener('click', () => {
+            const dataDia = diarioPersonal[fechaSeleccionada] || { nota: '', fotos: [] };
+            dataDia.nota = notaDelDia.value;
+            diarioPersonal[fechaSeleccionada] = dataDia;
+            localStorage.setItem('diarioYobanaUnificado', JSON.stringify(diarioPersonal));
+            alert('✅ Registro del día guardado');
+            renderCalendario();
+        });
+        
+        // ========== CALENDARIO ==========
         function renderCalendario() {
             const months = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
             monthYearDisplay.textContent = `${months[currentMonth]} ${currentYear}`;
-            
             const firstDay = new Date(currentYear, currentMonth, 1).getDay();
             const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
             let startDay = firstDay === 0 ? 6 : firstDay - 1;
-            
             let html = '';
-            const weekDays = ['L', 'M', 'M', 'J', 'V', 'S', 'D'];
-            weekDays.forEach(d => html += `<div class="calendario-dia-header">${d}</div>`);
-            
-            for (let i = 0; i < startDay; i++) html += '<div class="calendario-dia" style="opacity:0.3"></div>';
+            ['L', 'M', 'M', 'J', 'V', 'S', 'D'].forEach(d => html += `<div class="calendario-dia-header">${d}</div>`);
+            for(let i=0; i<startDay; i++) html += '<div class="calendario-dia" style="opacity:0.3"></div>';
             
             const today = new Date();
-            for (let d = 1; d <= daysInMonth; d++) {
+            for(let d=1; d<=daysInMonth; d++){
                 const fechaStr = `${currentYear}-${String(currentMonth+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
-                const tieneEvento = eventos.some(e => e.fecha.startsWith(fechaStr));
+                const tieneEvento = eventos.some(e => e.fecha && e.fecha.startsWith(fechaStr));
+                const tieneFoto = diarioPersonal[fechaStr] && diarioPersonal[fechaStr].fotos && diarioPersonal[fechaStr].fotos.length > 0;
                 const esHoy = d === today.getDate() && currentMonth === today.getMonth() && currentYear === today.getFullYear();
-                
                 let clase = 'calendario-dia';
-                if (esHoy) clase += ' today';
-                if (tieneEvento) clase += ' has-evento';
-                
+                if(esHoy) clase += ' today';
+                if(tieneEvento) clase += ' has-evento';
+                if(tieneFoto) clase += ' has-foto';
                 html += `<div class="${clase}" onclick="seleccionarFecha(${currentYear}, ${currentMonth}, ${d})">${d}</div>`;
             }
-            
-            const totalCeldas = startDay + daysInMonth;
-            for (let i = totalCeldas; i < 42; i++) html += '<div class="calendario-dia" style="opacity:0.3"></div>';
-            
             calendarioGrid.innerHTML = html;
         }
-
-        // ===== VER ACTIVIDADES DE UNA FECHA =====
+        
         window.seleccionarFecha = (year, month, day) => {
-            const fecha = new Date(year, month, day);
-            const fechaStr = `${year}-${String(month+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
-            fechaSeleccionada = fechaStr;
-            
-            // Eventos de esa fecha
-            const eventosDelDia = eventos.filter(e => e.fecha.startsWith(fechaStr));
-            
-            // Materias de esa fecha (CORREGIDO - ahora filtra por fecha real)
-            const materiasDelDia = obtenerMateriasPorFecha(fecha);
-            
-            fechaSeleccionadaTitulo.innerHTML = `📅 ${fecha.toLocaleDateString('es-ES', { weekday: 'long', day: 'numeric', month: 'long' })}`;
-            
-            let listaHtml = '';
-            
-            if (materiasDelDia.length > 0) {
-                listaHtml += '<div style="color: #00ffff; margin: 10px 0;">🎭 ACTIVIDADES ACADÉMICAS:</div>';
-                materiasDelDia.forEach(m => {
-                    listaHtml += `
-                        <div class="actividad-item">
-                            <div style="font-weight: bold; color: #ff1493;">${m.nombre}</div>
-                            <div>📌 ${m.tipo} - ${m.codigo}</div>
-                            <div>⏰ ${m.hora}</div>
-                            <div>👩‍🏫 ${m.docente}</div>
-                        </div>
-                    `;
-                });
-            }
-            
-            if (eventosDelDia.length > 0) {
-                listaHtml += '<div style="color: #ff00ff; margin: 10px 0;">📌 MIS EVENTOS:</div>';
-                eventosDelDia.forEach(e => {
-                    const fechaHora = new Date(e.fecha);
-                    
-                    let linksHtml = '';
-                    if (e.links && e.links.length) {
-                        linksHtml = '<div style="margin-top:5px;">🔗 ';
-                        e.links.forEach(l => {
-                            linksHtml += `<a href="${l}" target="_blank" class="link-clickeable">link</a> `;
-                        });
-                        linksHtml += '</div>';
-                    }
-                    
-                    let archivosHtml = '';
-                    if (e.archivos && e.archivos.length) {
-                        archivosHtml = '<div style="margin-top:5px;">📎 ';
-                        e.archivos.forEach(a => {
-                            archivosHtml += `<a href="${a}" target="_blank" class="archivo-clickeable">archivo</a> `;
-                        });
-                        archivosHtml += '</div>';
-                    }
-                    
-                    listaHtml += `
-                        <div class="actividad-item">
-                            <div style="font-weight: bold;">${e.titulo}</div>
-                            <div>⏰ ${fechaHora.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' })}</div>
-                            ${e.descripcion ? `<div style="color: #ccc;">📝 ${e.descripcion}</div>` : ''}
-                            ${linksHtml}
-                            ${archivosHtml}
-                            <div style="margin-top: 5px;">
-                                <button class="btn-small" onclick="editarEvento('${e.id}')" style="border-color: #00ffff; color: #00ffff; padding: 2px 5px;">✏️</button>
-                            </div>
-                        </div>
-                    `;
-                });
-            }
-            
-            if (materiasDelDia.length === 0 && eventosDelDia.length === 0) {
-                listaHtml = '<div style="text-align: center; padding: 20px;">✨ Sin actividades programadas ✨</div>';
-            }
-            
-            listaActividadesDia.innerHTML = listaHtml;
-            actividadesDelDia.style.display = 'block';
+            fechaSeleccionada = `${year}-${String(month+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
+            cargarDiaSeleccionado();
         };
-
-        // ===== COMPARTIR AGENDA COMPLETA EN WHATSAPP =====
-        window.compartirWhatsAppCompleto = () => {
-            let msg = "⚡ *MI AGENDA COMPLETA - YOBANA* ⚡\n\n";
-            msg += `📅 *FECHA:* ${new Date().toLocaleDateString('es-ES', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })}\n\n`;
+        
+        // ========== RECORDATORIO WHATSAPP ==========
+        function enviarRecordatorioWhatsapp() {
+            const hoy = new Date();
+            const manana = new Date(hoy);
+            manana.setDate(hoy.getDate() + 1);
+            const fechaManana = manana.toISOString().split('T')[0];
             
-            // MIS MATERIAS (con fechas)
-            msg += "📚 *MIS MATERIAS - SEMESTRE IX:*\n";
-            materiasCompletas.forEach(m => {
-                msg += `\n▪️ *${m.nombre}* (Semana ${m.semana})\n`;
-                msg += `   ⏰ ${m.hora}\n`;
-                msg += `   👩‍🏫 ${m.docente}\n`;
-                if (m.fechas) {
-                    msg += `   📌 AP: ${formatearFechaParaMostrar(m.fechas.ap)}\n`;
-                    if (m.fechas.tutorias) {
-                        const tutoriasFormateadas = m.fechas.tutorias.map(f => formatearFechaParaMostrar(f)).join(', ');
-                        msg += `   👥 Tutorías: ${tutoriasFormateadas}\n`;
-                    }
-                    if (m.fechas.convocatorias) {
-                        const convsFormateadas = m.fechas.convocatorias.map(f => formatearFechaParaMostrar(f)).join(', ');
-                        msg += `   📢 Convocatorias: ${convsFormateadas}\n`;
-                    }
-                }
-            });
-            
-            // PRÓXIMOS EVENTOS
-            msg += "\n\n⏰ *PRÓXIMOS EVENTOS:*\n";
-            const ahora = new Date();
-            const eventosFuturos = eventos.filter(e => new Date(e.fecha) > ahora).sort((a,b) => new Date(a.fecha) - new Date(b.fecha)).slice(0, 10);
-            
-            if (eventosFuturos.length === 0) {
-                msg += "✨ No hay eventos próximos\n";
-            } else {
-                eventosFuturos.forEach(e => {
-                    const f = new Date(e.fecha);
-                    msg += `\n▪️ *${e.titulo}*\n`;
-                    msg += `   📅 ${f.toLocaleDateString('es-ES', { day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit' })}\n`;
-                    if (e.descripcion) msg += `   📝 ${e.descripcion}\n`;
-                    if (e.links && e.links.length) {
-                        msg += `   🔗 Links: ${e.links.map(l => l.substring(0,30)).join(', ')}\n`;
-                    }
-                });
+            let msg = "📅 *RECORDATORIO DE ACTIVIDADES*\n\n";
+            msg += `📌 *HOY (${formatearFechaMostrar(fechaSeleccionada)})*:\n`;
+            const { materias: matHoy, eventos: evHoy } = obtenerActividadesPorFecha(fechaSeleccionada);
+            if(matHoy.length === 0 && evHoy.length === 0) msg += "✨ Sin actividades\n";
+            else {
+                matHoy.forEach(m => msg += `🎭 ${m.nombre} - ${m.tipo}\n`);
+                evHoy.forEach(e => msg += `📌 ${e.titulo}\n`);
             }
             
-            // NOTAS CONFIDENCIALES
-            if (notasTextarea.value) {
-                msg += "\n\n🔐 *MIS NOTAS:*\n";
-                msg += notasTextarea.value.substring(0, 200) + (notasTextarea.value.length > 200 ? "..." : "");
+            msg += `\n📌 *MAÑANA (${formatearFechaMostrar(fechaManana)})*:\n`;
+            const { materias: matManana, eventos: evManana } = obtenerActividadesPorFecha(fechaManana);
+            if(matManana.length === 0 && evManana.length === 0) msg += "✨ Sin actividades programadas\n";
+            else {
+                matManana.forEach(m => msg += `🎭 ${m.nombre} - ${m.tipo}\n`);
+                evManana.forEach(e => msg += `📌 ${e.titulo}\n`);
             }
             
-            msg += "\n\n✨ *Agenda personal de Yobana - Educación Artística* ✨";
-            
+            msg += "\n✨ *Agenda Yobana - Educación Artística* ✨";
             window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`, '_blank');
-        };
-
-        // ===== EXPORTAR PDF BONITO =====
-        window.exportarPDF = () => {
-            // Crear contenido HTML para el PDF
-            const contenidoPDF = `
-                <html>
-                <head>
-                    <style>
-                        body { font-family: Arial; padding: 20px; background: white; color: black; }
-                        h1 { color: #ff1493; text-align: center; }
-                        h2 { color: #00ffff; border-bottom: 2px solid #ff1493; padding-bottom: 5px; }
-                        .materia { margin-bottom: 20px; border-left: 5px solid #ff1493; padding-left: 10px; }
-                        .evento { margin-bottom: 10px; border-left: 5px solid #00ffff; padding-left: 10px; }
-                        .fecha { color: #666; }
-                        table { width: 100%; border-collapse: collapse; }
-                        th { background: #ff1493; color: white; padding: 8px; }
-                        td { border: 1px solid #ddd; padding: 8px; }
-                    </style>
-                </head>
-                <body>
-                    <h1>📅 AGENDA DE YOBANA - EDUCACIÓN ARTÍSTICA</h1>
-                    <p>📌 Fecha de generación: ${new Date().toLocaleDateString('es-ES')}</p>
-                    
-                    <h2>📚 MATERIAS DEL SEMESTRE IX</h2>
-                    ${materiasCompletas.map(m => `
-                        <div class="materia">
-                            <h3>${m.nombre} (${m.codigo})</h3>
-                            <p><strong>Horario:</strong> ${m.hora} - Semana ${m.semana}</p>
-                            <p><strong>Docente:</strong> ${m.docente} ${m.email ? '- ' + m.email : ''}</p>
-                            <p><strong>AP:</strong> ${formatearFechaParaMostrar(m.fechas.ap)}</p>
-                            <p><strong>Tutorías:</strong> ${m.fechas.tutorias ? m.fechas.tutorias.map(f => formatearFechaParaMostrar(f)).join(', ') : ''}</p>
-                            <p><strong>Convocatorias:</strong> ${m.fechas.convocatorias ? m.fechas.convocatorias.map(f => formatearFechaParaMostrar(f)).join(', ') : ''}</p>
-                        </div>
-                    `).join('')}
-                    
-                    <h2>⏰ MIS EVENTOS PROGRAMADOS</h2>
-                    ${eventos.length > 0 ? `
-                        <table>
-                            <tr>
-                                <th>Fecha</th>
-                                <th>Evento</th>
-                                <th>Descripción</th>
-                                <th>Links</th>
-                            </tr>
-                            ${eventos.sort((a,b) => new Date(a.fecha) - new Date(b.fecha)).map(e => `
-                                <tr>
-                                    <td>${new Date(e.fecha).toLocaleDateString('es-ES')}</td>
-                                    <td>${e.titulo}</td>
-                                    <td>${e.descripcion || ''}</td>
-                                    <td>${e.links ? e.links.join(', ') : ''}</td>
-                                </tr>
-                            `).join('')}
-                        </table>
-                    ` : '<p>No hay eventos programados</p>'}
-                    
-                    <h2>🔐 NOTAS CONFIDENCIALES</h2>
-                    <p>${notasTextarea.value || 'Sin notas guardadas'}</p>
-                </body>
-                </html>
-            `;
-            
-            // Abrir en nueva ventana para imprimir/guardar como PDF
-            const ventana = window.open('', '_blank');
-            ventana.document.write(contenidoPDF);
-            ventana.document.close();
-            ventana.print();
-        };
-
-        // ===== RESPALDO JSON =====
-        window.exportarRespaldo = () => {
-            const backup = { 
-                eventos, 
-                notas: notasTextarea.value,
-                materias: materiasCompletas,
-                fecha: new Date().toISOString()
-            };
-            const link = document.createElement('a');
-            link.download = `yobana_backup_${new Date().toISOString().slice(0,10)}.json`;
-            link.href = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(backup, null, 2));
-            link.click();
-        };
-
-        // ===== VERIFICAR ALARMAS =====
+        }
+        
+        btnRecordatorioWhatsapp.addEventListener('click', enviarRecordatorioWhatsapp);
+        
+        // ========== VERIFICAR ALARMAS ==========
         window.verificarAlarmas = () => {
             const ahora = new Date();
             let activas = false;
@@ -1253,47 +1044,296 @@
                 const fecha = new Date(e.fecha);
                 const diff = Math.round((fecha - ahora) / (1000 * 60));
                 if (diff <= 5 && diff >= 0) {
-                    alert(`🔔 ${e.titulo} - ${e.descripcion || ''}`);
+                    alert(`🔔 ${e.titulo}`);
                     activas = true;
                 }
             });
             if (!activas) alert('✨ No hay alarmas próximas');
         };
-
-        // ===== NOTAS =====
-        if (notas) notasTextarea.value = notas;
-        notasTextarea.addEventListener('input', (e) => {
-            localStorage.setItem('notasYobanaNeonCompleta', e.target.value);
-        });
-
-        // ===== NAVEGACIÓN MESES =====
+        
+        // ========== EXPORTAR PDF COMPLETO (CON TODA LA INFORMACIÓN) ==========
+        window.exportarPDFCompleto = (tipo) => {
+            let titulo = '';
+            let contenido = '';
+            const fechaBase = new Date(fechaSeleccionada);
+            
+            if(tipo === 'dia'){
+                titulo = `Reporte del Día: ${formatearFechaMostrar(fechaSeleccionada)}`;
+                const { materias, eventos: evs } = obtenerActividadesPorFecha(fechaSeleccionada);
+                const notaPersonal = diarioPersonal[fechaSeleccionada]?.nota || '';
+                const fotos = diarioPersonal[fechaSeleccionada]?.fotos || [];
+                
+                contenido = `
+                    <div class="pdf-section">
+                        <h3>📅 FECHA: ${formatearFechaMostrar(fechaSeleccionada)}</h3>
+                        
+                        ${materias.length > 0 ? `
+                            <h3>🎭 ACTIVIDADES ACADÉMICAS</h3>
+                            ${materias.map(m => `
+                                <div class="pdf-materia">
+                                    <strong>${m.nombre}</strong> (${m.codigo})<br>
+                                    📌 Tipo: ${m.tipo}<br>
+                                    ⏰ Horario: ${m.hora}<br>
+                                    👩‍🏫 Docente: ${m.docente} ${m.email ? `- ${m.email}` : ''}<br>
+                                    📅 Semana: ${m.semana}
+                                </div>
+                            `).join('')}
+                        ` : ''}
+                        
+                        ${evs.length > 0 ? `
+                            <h3>📌 MIS EVENTOS</h3>
+                            ${evs.map(e => `
+                                <div class="pdf-evento">
+                                    <strong>${e.titulo}</strong><br>
+                                    🕐 Hora: ${new Date(e.fecha).toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' })}<br>
+                                    🎭 Tipo: ${e.tipo}<br>
+                                    📝 Descripción:<br>
+                                    <div style="white-space: pre-wrap; margin-top: 5px;">${e.descripcion || 'Sin descripción'}</div>
+                                    ${e.links && e.links.length > 0 ? `
+                                        <div class="pdf-links">
+                                            🔗 Links:<br>
+                                            ${e.links.map(l => `&nbsp;&nbsp;• <a href="${l}" target="_blank">${l.substring(0, 80)}...</a><br>`).join('')}
+                                        </div>
+                                    ` : ''}
+                                    ${e.archivos && e.archivos.length > 0 ? `
+                                        <div class="pdf-links">
+                                            📎 Archivos:<br>
+                                            ${e.archivos.map(a => `&nbsp;&nbsp;• <a href="${a}" target="_blank">${a.substring(0, 80)}...</a><br>`).join('')}
+                                        </div>
+                                    ` : ''}
+                                </div>
+                            `).join('')}
+                        ` : ''}
+                        
+                        ${notaPersonal ? `
+                            <h3>📝 NOTA PERSONAL DEL DÍA</h3>
+                            <div class="pdf-nota">
+                                ${notaPersonal.replace(/\n/g, '<br>')}
+                            </div>
+                        ` : ''}
+                        
+                        ${fotos.length > 0 ? `
+                            <h3>📸 EVIDENCIAS (${fotos.length} foto(s))</h3>
+                            <div style="text-align: center;">
+                                ${fotos.map((foto, i) => `<img src="${foto}" style="max-width: 200px; margin: 10px; border: 2px solid #ff1493; border-radius: 10px;">`).join('')}
+                            </div>
+                        ` : ''}
+                        
+                        ${materias.length === 0 && evs.length === 0 && !notaPersonal && fotos.length === 0 ? `
+                            <div style="text-align: center; padding: 40px;">✨ No hay actividades registradas para este día ✨</div>
+                        ` : ''}
+                    </div>
+                `;
+            }
+            else if(tipo === 'semana'){
+                titulo = `Reporte Semanal (7 días) desde ${formatearFechaMostrar(fechaSeleccionada)}`;
+                contenido = '';
+                for(let i=0; i<7; i++){
+                    const fecha = new Date(fechaBase);
+                    fecha.setDate(fechaBase.getDate() + i);
+                    const fechaStr = fecha.toISOString().split('T')[0];
+                    const { materias, eventos: evs } = obtenerActividadesPorFecha(fechaStr);
+                    const notaPersonal = diarioPersonal[fechaStr]?.nota || '';
+                    
+                    contenido += `
+                        <div class="pdf-fecha">📅 ${formatearFechaMostrar(fechaStr)}</div>
+                        ${materias.length > 0 ? materias.map(m => `
+                            <div class="pdf-materia">
+                                <strong>${m.nombre}</strong> - ${m.tipo}<br>
+                                ⏰ ${m.hora} | 👩‍🏫 ${m.docente}
+                            </div>
+                        `).join('') : ''}
+                        ${evs.length > 0 ? evs.map(e => `
+                            <div class="pdf-evento">
+                                <strong>${e.titulo}</strong><br>
+                                🕐 ${new Date(e.fecha).toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' })}<br>
+                                📝 ${e.descripcion ? e.descripcion.substring(0, 300) + (e.descripcion.length > 300 ? '...' : '') : ''}
+                                ${e.links && e.links.length > 0 ? `<div class="pdf-links">🔗 ${e.links.length} link(s)</div>` : ''}
+                            </div>
+                        `).join('') : ''}
+                        ${notaPersonal ? `<div class="pdf-nota">📝 ${notaPersonal.substring(0, 200)}${notaPersonal.length > 200 ? '...' : ''}</div>` : ''}
+                        ${materias.length === 0 && evs.length === 0 && !notaPersonal ? '<div style="color: #999;">✨ Sin actividades</div>' : ''}
+                        <hr style="margin: 15px 0;">
+                    `;
+                }
+            }
+            else { // mes
+                const nombreMes = new Date(currentYear, currentMonth).toLocaleDateString('es-ES', { month: 'long', year: 'numeric' });
+                titulo = `Reporte Mensual - ${nombreMes.charAt(0).toUpperCase() + nombreMes.slice(1)}`;
+                contenido = '';
+                const diasEnMes = new Date(currentYear, currentMonth + 1, 0).getDate();
+                
+                for(let d=1; d<=diasEnMes; d++){
+                    const fechaStr = `${currentYear}-${String(currentMonth+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+                    const { materias, eventos: evs } = obtenerActividadesPorFecha(fechaStr);
+                    
+                    if(materias.length > 0 || evs.length > 0){
+                        contenido += `
+                            <div class="pdf-fecha">📅 ${formatearFechaMostrar(fechaStr)}</div>
+                            ${materias.length > 0 ? `
+                                <table style="margin-bottom: 10px;">
+                                    <tr><th style="background: #ff1493;">Materia</th><th style="background: #ff1493;">Tipo</th><th style="background: #ff1493;">Horario</th></tr>
+                                    ${materias.map(m => `<tr><td>${m.nombre}</td><td>${m.tipo}</td><td>${m.hora}</td></tr>`).join('')}
+                                </table>
+                            ` : ''}
+                            ${evs.length > 0 ? evs.map(e => `
+                                <div class="pdf-evento" style="margin-bottom: 10px;">
+                                    <strong>${e.titulo}</strong><br>
+                                    📝 ${e.descripcion ? e.descripcion.substring(0, 200) + (e.descripcion.length > 200 ? '...' : '') : ''}
+                                </div>
+                            `).join('') : ''}
+                        `;
+                    }
+                }
+                if(contenido === '') contenido = '<div style="text-align: center; padding: 40px;">✨ No hay actividades registradas en este mes ✨</div>';
+            }
+            
+            const ventana = window.open('', '_blank');
+            ventana.document.write(`
+                <html>
+                <head>
+                    <title>${titulo}</title>
+                    <style>
+                        * { font-family: 'Segoe UI', Arial, sans-serif; }
+                        body { 
+                            padding: 40px; 
+                            max-width: 1200px; 
+                            margin: 0 auto;
+                            background: white;
+                            color: #333;
+                        }
+                        .pdf-header {
+                            text-align: center;
+                            margin-bottom: 30px;
+                            border-bottom: 3px solid #ff1493;
+                            padding-bottom: 20px;
+                        }
+                        .pdf-header h1 { color: #ff1493; font-size: 28px; margin: 0; }
+                        .pdf-header h2 { color: #00cccc; font-size: 18px; margin: 10px 0 0; }
+                        .pdf-header p { color: #666; margin-top: 10px; }
+                        .pdf-section { margin-bottom: 30px; page-break-inside: avoid; }
+                        .pdf-section h3 {
+                            background: #ff1493;
+                            color: white;
+                            padding: 10px 15px;
+                            border-radius: 8px;
+                            margin: 20px 0 15px;
+                            font-size: 18px;
+                        }
+                        .pdf-materia {
+                            border-left: 4px solid #ff1493;
+                            padding: 12px 15px;
+                            margin-bottom: 12px;
+                            background: #f9f9f9;
+                            border-radius: 0 8px 8px 0;
+                        }
+                        .pdf-evento {
+                            border-left: 4px solid #00cccc;
+                            padding: 12px 15px;
+                            margin-bottom: 12px;
+                            background: #f9f9f9;
+                            border-radius: 0 8px 8px 0;
+                        }
+                        .pdf-fecha {
+                            font-size: 20px;
+                            font-weight: bold;
+                            color: #ff1493;
+                            margin: 25px 0 15px;
+                            border-bottom: 2px solid #ff1493;
+                            padding-bottom: 5px;
+                        }
+                        .pdf-nota {
+                            background: #f0f0f0;
+                            padding: 12px 15px;
+                            border-radius: 8px;
+                            margin: 10px 0;
+                            font-style: italic;
+                        }
+                        .pdf-links {
+                            margin-top: 8px;
+                            font-size: 11px;
+                            word-break: break-all;
+                            background: #e8e8e8;
+                            padding: 8px;
+                            border-radius: 5px;
+                        }
+                        .pdf-links a { color: #0066cc; text-decoration: none; }
+                        table {
+                            width: 100%;
+                            border-collapse: collapse;
+                            margin: 10px 0;
+                        }
+                        th, td {
+                            border: 1px solid #ddd;
+                            padding: 8px;
+                            text-align: left;
+                            vertical-align: top;
+                        }
+                        th { background: #ff1493; color: white; }
+                        hr { margin: 20px 0; border: 0; border-top: 1px solid #ddd; }
+                        @media print {
+                            body { padding: 20px; }
+                            .pdf-evento, .pdf-materia { break-inside: avoid; }
+                        }
+                    </style>
+                </head>
+                <body>
+                    <div class="pdf-header">
+                        <h1>📅 AGENDA YOBANA - EDUCACIÓN ARTÍSTICA</h1>
+                        <h2>${titulo}</h2>
+                        <p>Generado: ${new Date().toLocaleString('es-ES')}</p>
+                    </div>
+                    ${contenido}
+                    <div style="text-align: center; margin-top: 40px; color: #999; font-size: 12px;">
+                        Documento generado desde Agenda Personal Yobana 2026
+                    </div>
+                </body>
+                </html>
+            `);
+            ventana.document.close();
+            ventana.print();
+        };
+        
+        // ========== RESPALDO ==========
+        window.exportarRespaldo = () => {
+            const backup = { eventos, diarioPersonal, notasGenerales: notasGeneralesTextarea.value, fecha: new Date().toISOString() };
+            const link = document.createElement('a');
+            link.download = `yobana_backup_${new Date().toISOString().slice(0,10)}.json`;
+            link.href = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(backup, null, 2));
+            link.click();
+        };
+        
+        // ========== NOTAS GENERALES ==========
+        if(notasGenerales) notasGeneralesTextarea.value = notasGenerales;
+        notasGeneralesTextarea.addEventListener('input', () => localStorage.setItem('notasYobanaNeonCompleta', notasGeneralesTextarea.value));
+        
+        // ========== NAVEGACIÓN MESES ==========
         document.getElementById('prevMonthBtn').addEventListener('click', () => {
-            if (currentMonth === 0) { currentMonth = 11; currentYear--; } 
-            else { currentMonth--; }
+            if(currentMonth === 0){ currentMonth = 11; currentYear--; }
+            else currentMonth--;
             renderCalendario();
         });
-
         document.getElementById('nextMonthBtn').addEventListener('click', () => {
-            if (currentMonth === 11) { currentMonth = 0; currentYear++; } 
-            else { currentMonth++; }
+            if(currentMonth === 11){ currentMonth = 0; currentYear++; }
+            else currentMonth++;
             renderCalendario();
         });
-
-        // ===== FECHA ACTUAL =====
+        
+        // ========== FECHA ACTUAL ==========
         function actualizarFecha() {
-            const op = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
-            fechaActualElement.textContent = new Date().toLocaleDateString('es-ES', op);
+            document.getElementById('fechaActual').textContent = new Date().toLocaleDateString('es-ES', { weekday: 'long', year:'numeric', month:'long', day:'numeric', hour:'2-digit', minute:'2-digit' });
         }
-
-        // ===== PERMISOS =====
+        
+        // ========== PERMISOS NOTIFICACIONES ==========
         if (Notification.permission !== 'granted') Notification.requestPermission();
-
-        // ===== INICIALIZAR =====
-        function init() {
-            mostrarHorarioCompleto();
-            actualizarFecha();
+        
+        // ========== INICIALIZAR ==========
+        function init(){
+            mostrarHorario();
             mostrarEventos();
             renderCalendario();
+            cargarDiaSeleccionado();
+            actualizarFecha();
             setInterval(actualizarFecha, 60000);
         }
         
